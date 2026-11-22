@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "name": "TheoTown Lua API",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "Lua.workspace.library": [
+      "./types"
+    ],
+    "Lua.runtime.version": "Lua 5.2",
+    "Lua.completion.callSnippet": "Replace",
+    "Lua.completion.showWord": "Disable",
+    "Lua.completion.workspaceWord": false
+  }
+}

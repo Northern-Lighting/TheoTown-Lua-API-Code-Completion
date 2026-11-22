@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua API</title>
+    <link rel="stylesheet" href="ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Lua API</h1>
+
+
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="modules/Array.html">Array</a></li>
+  <li><a href="modules/Builder.html">Builder</a></li>
+  <li><a href="modules/Building.html">Building</a></li>
+  <li><a href="modules/Car.html">Car</a></li>
+  <li><a href="modules/City.html">City</a></li>
+  <li><a href="modules/DSA.html">DSA</a></li>
+  <li><a href="modules/Debug.html">Debug</a></li>
+  <li><a href="modules/Draft.html">Draft</a></li>
+  <li><a href="modules/Drawing.html">Drawing</a></li>
+  <li><a href="modules/GUI.html">GUI</a></li>
+  <li><a href="modules/NeighborCity.html">NeighborCity</a></li>
+  <li><a href="modules/Runtime.html">Runtime</a></li>
+  <li><a href="modules/Script.html">Script</a></li>
+  <li><a href="modules/TheoTown.html">TheoTown</a></li>
+  <li><a href="modules/Tile.html">Tile</a></li>
+  <li><a href="modules/Util.html">Util</a></li>
+  <li><a href="modules/Vector.html">Vector</a></li>
+  <li><a href="modules/string.html">string</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="topics/00-intro.md.html">Introduction</a></li>
+  <li><a href="topics/01-lua.md.html">Lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+  <h2>The TheoTown Lua API for plugins features a wide set of functions for interacting with the game and its players.</h2>
+
+<h2>Modules</h2>
+<table class="module_list">
+	<tr>
+		<td class="name"  nowrap><a href="modules/Array.html">Array</a></td>
+		<td class="summary">A set of tools to extend Lua's quite simple arrays with more intuitive,
+traditional methods.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/Builder.html">Builder</a></td>
+		<td class="summary">Functions to create and destroy buildings, roads, trees and more.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/Building.html">Building</a></td>
+		<td class="summary">Building library for TheoTown</p>
+
+<p>A building object represents one building in a city.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/Car.html">Car</a></td>
+		<td class="summary">Car library for TheoTown.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/City.html">City</a></td>
+		<td class="summary">This library contains functions to access and modify city information,
+  general buildings and roads.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/DSA.html">DSA</a></td>
+		<td class="summary">This library contains functions associated with the DSA integration.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/Debug.html">Debug</a></td>
+		<td class="summary">Functions for debugging.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/Draft.html">Draft</a></td>
+		<td class="summary">Draft library for TheoTown</p>
+
+<p>A draft can be considered a single "plugin object" like the template for a
+building.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/Drawing.html">Drawing</a></td>
+		<td class="summary">Functions for drawing images and text.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/GUI.html">GUI</a></td>
+		<td class="summary">Allows to access UI elements of the game.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/NeighborCity.html">NeighborCity</a></td>
+		<td class="summary">Neighbor City library for TheoTown.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/Runtime.html">Runtime</a></td>
+		<td class="summary">Functions to access general runtime information.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/Script.html">Script</a></td>
+		<td class="summary">The Script module provides callbacks for scripts attached to drafts.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/TheoTown.html">TheoTown</a></td>
+		<td class="summary">TheoTown specific functions that don't fit into other libraries.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/Tile.html">Tile</a></td>
+		<td class="summary">Contains functions to query single tiles for information about objects on them.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/Util.html">Util</a></td>
+		<td class="summary">Some general utility functions.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/Vector.html">Vector</a></td>
+		<td class="summary">A 3-dimensional vector implementation that can be used for convenience.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/string.html">string</a></td>
+		<td class="summary">This module extends the functionality contained in the string table
+for convenience.</td>
+	</tr>
+</table>
+<h2>Topics</h2>
+<table class="module_list">
+	<tr>
+		<td class="name"  nowrap><a href="topics/00-intro.md.html">00-intro.md</a></td>
+		<td class="summary"></td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="topics/01-lua.md.html">01-lua.md</a></td>
+		<td class="summary"></td>
+	</tr>
+</table>
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2026-11-20 13:32:29 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

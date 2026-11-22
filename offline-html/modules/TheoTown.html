@@ -1,0 +1,785 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua API</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Lua API</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/Array.html">Array</a></li>
+  <li><a href="../modules/Builder.html">Builder</a></li>
+  <li><a href="../modules/Building.html">Building</a></li>
+  <li><a href="../modules/Car.html">Car</a></li>
+  <li><a href="../modules/City.html">City</a></li>
+  <li><a href="../modules/DSA.html">DSA</a></li>
+  <li><a href="../modules/Debug.html">Debug</a></li>
+  <li><a href="../modules/Draft.html">Draft</a></li>
+  <li><a href="../modules/Drawing.html">Drawing</a></li>
+  <li><a href="../modules/GUI.html">GUI</a></li>
+  <li><a href="../modules/NeighborCity.html">NeighborCity</a></li>
+  <li><a href="../modules/Runtime.html">Runtime</a></li>
+  <li><a href="../modules/Script.html">Script</a></li>
+  <li><strong>TheoTown</strong></li>
+  <li><a href="../modules/Tile.html">Tile</a></li>
+  <li><a href="../modules/Util.html">Util</a></li>
+  <li><a href="../modules/Vector.html">Vector</a></li>
+  <li><a href="../modules/string.html">string</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../topics/00-intro.md.html">Introduction</a></li>
+  <li><a href="../topics/01-lua.md.html">Lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>TheoTown</code></h1>
+<p>TheoTown specific functions that don't fit into other libraries.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#execute">execute (cmd, receiver)</a></td>
+	<td class="summary">Executes a command as if it was entered into the console.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#formatMoney">formatMoney (amount[, signed=false])</a></td>
+	<td class="summary">Formats a number as an amount of money and appends the Theon symbol.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#formatNumber">formatNumber (amount[, signed=false[, abbreviate=true]])</a></td>
+	<td class="summary">Formats a (big) number.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getDiamonds">getDiamonds ()</a></td>
+	<td class="summary">Returns the number of diamonds that the user currently has.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getFileStorage">getFileStorage ()</a></td>
+	<td class="summary">Returns a game wide storage table that's backed by an actual file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getGlobalFunVar">getGlobalFunVar (name[, fallbackValue])</a></td>
+	<td class="summary">Returns the value of the global fun variable of the given name or
+fallbackValue if no such variable has been defined, yet.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getPlayTime">getPlayTime ()</a></td>
+	<td class="summary">Returns the play time in the game in seconds.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getStorage">getStorage ()</a></td>
+	<td class="summary">Returns a game wide storage table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getUserName">getUserName ()</a></td>
+	<td class="summary">Returns the name of the currently logged-in user, or nil if the player is not
+logged in.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#isMultiplayer">isMultiplayer ()</a></td>
+	<td class="summary">Returns true iff this version of the game is capable of running multiplayer
+mode.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#isRTL">isRTL ()</a></td>
+	<td class="summary">Returns true if the currently selected language prefers a right to left layout.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#loadCity">loadCity (path[, overwrite[, private[, target]]])</a></td>
+	<td class="summary">Loads a city file provided by the plugin.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#playSound">playSound (sound[, volume=1[, loop=false]])</a></td>
+	<td class="summary">Plays a sound.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#registerCommand">registerCommand (name, action)</a></td>
+	<td class="summary">Registers a function that can be called from the console.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setGlobalFunVar">setGlobalFunVar (name, value)</a></td>
+	<td class="summary">Sets the value of a global fun variable called name.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#spendDiamonds">spendDiamonds (amount)</a></td>
+	<td class="summary">Spends amount diamonds if possible.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#translate">translate (id)</a></td>
+	<td class="summary">Translates an id into the corresponding string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#translateInline">translateInline (str)</a></td>
+	<td class="summary">Resolves the translation of an inline translation string.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "execute"></a>
+    <strong>execute (cmd, receiver)</strong>
+    </dt>
+    <dd>
+    Executes a command as if it was entered into the console.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cmd</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The command to execute.
+        </li>
+        <li><span class="parameter">receiver</span>
+            <span class="types"><span class="type">function</span></span>
+         A function with one parameter that will be called
+for any feedback.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "formatMoney"></a>
+    <strong>formatMoney (amount[, signed=false])</strong>
+    </dt>
+    <dd>
+    Formats a number as an amount of money and appends the Theon symbol.
+Optionally prefixes a + sign for positive numbers if signed is set to true.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">amount</span>
+            <span class="types"><span class="type">number</span></span>
+         The amount of money to format.
+        </li>
+        <li><span class="parameter">signed</span>
+            <span class="types"><span class="type">boolean</span></span>
+         If set to true the plus sign may be prefixed.
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        The formatted money.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "formatNumber"></a>
+    <strong>formatNumber (amount[, signed=false[, abbreviate=true]])</strong>
+    </dt>
+    <dd>
+    Formats a (big) number.
+Optionally prefixes a + sign for positive numbers if signed is set to true.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">amount</span>
+            <span class="types"><span class="type">number</span></span>
+         The number to format.
+        </li>
+        <li><span class="parameter">signed</span>
+            <span class="types"><span class="type">boolean</span></span>
+         If set to true the plus sign may be prefixed.
+         (<em>default</em> false)
+        </li>
+        <li><span class="parameter">abbreviate</span>
+            <span class="types"><span class="type">boolean</span></span>
+         Set this to false to not abbreviate.
+         (<em>default</em> true)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        The formatted number.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getDiamonds"></a>
+    <strong>getDiamonds ()</strong>
+    </dt>
+    <dd>
+    Returns the number of diamonds that the user currently has.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        Amount of diamonds that the user currently has.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getFileStorage"></a>
+    <strong>getFileStorage ()</strong>
+    </dt>
+    <dd>
+    Returns a game wide storage table that's backed by an actual file.
+The file will even persist if the user deleted the game. Only a deletion
+of the TheoTown folder will reset this storage.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        Persistent game wide storage table.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getGlobalFunVar"></a>
+    <strong>getGlobalFunVar (name[, fallbackValue])</strong>
+    </dt>
+    <dd>
+    Returns the value of the global fun variable of the given name or
+fallbackValue if no such variable has been defined, yet.
+fallbackValue is 0 by default.
+Note that fun variables can only contain numbers. Use City.getStorage()
+or TheoTown.getStorage() to store more fancy stuff.
+Global fun variables are indicated by a leading ! in their name.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">fallbackValue</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        Value of the variable or the fallback value
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getPlayTime"></a>
+    <strong>getPlayTime ()</strong>
+    </dt>
+    <dd>
+    Returns the play time in the game in seconds.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        Play time in seconds.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getStorage"></a>
+    <strong>getStorage ()</strong>
+    </dt>
+    <dd>
+    Returns a game wide storage table.  Use it to save data permanently across
+all cities.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        Game wide storage table.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getUserName"></a>
+    <strong>getUserName ()</strong>
+    </dt>
+    <dd>
+    Returns the name of the currently logged-in user, or nil if the player is not
+logged in.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        Name of the current user or nil if the player is not
+logged in.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "isMultiplayer"></a>
+    <strong>isMultiplayer ()</strong>
+    </dt>
+    <dd>
+    Returns true iff this version of the game is capable of running multiplayer
+mode.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        Whether the game is capable of running multiplayer mode or not.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "isRTL"></a>
+    <strong>isRTL ()</strong>
+    </dt>
+    <dd>
+    Returns true if the currently selected language prefers a right to left layout.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "loadCity"></a>
+    <strong>loadCity (path[, overwrite[, private[, target]]])</strong>
+    </dt>
+    <dd>
+    Loads a city file provided by the plugin.  path is the file of the city file
+(thus it includes the .city file ending).
+Prior to loading the city will be copied to maps or private maps folder first
+(depending on private value).
+If a city of similar file name already exists at that directory it will be
+overridden if overwrite flag is set.
+The target file name can be changed by specifying a target name.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">overwrite</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">private</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">target</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "playSound"></a>
+    <strong>playSound (sound[, volume=1[, loop=false]])</strong>
+    </dt>
+    <dd>
+    Plays a sound.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sound</span>
+            <span class="types"><span class="type">draft</span></span>
+         A sound draft or id of a sound draft.
+        </li>
+        <li><span class="parameter">volume</span>
+            <span class="types"><span class="type">number</span></span>
+         A value between 0 and 1.
+         (<em>default</em> 1)
+        </li>
+        <li><span class="parameter">loop</span>
+            <span class="types"><span class="type">boolean</span></span>
+         Whether or not to loop the sound.
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        A table that contains functions to control the sound.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "registerCommand"></a>
+    <strong>registerCommand (name, action)</strong>
+    </dt>
+    <dd>
+    Registers a function that can be called from the console.
+Instead of a name, you can provide a predicate that returns true for commands
+the action function should handle.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">function</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">action</span>
+            <span class="types"><span class="type">function</span></span>
+         A function that will be called when the command got
+entered.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+TheoTown.registerCommand(<span class="string">'test'</span>, <span class="keyword">function</span>(name, arg)
+  <span class="keyword">return</span> arg  <span class="comment">-- Will be displayed as result
+</span><span class="keyword">end</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "setGlobalFunVar"></a>
+    <strong>setGlobalFunVar (name, value)</strong>
+    </dt>
+    <dd>
+    Sets the value of a global fun variable called name.
+Note that fun variables can only contain numbers. Use City.getStorage()
+or TheoTown.getStorage() to store more fancy stuff.
+Global fun variables are indicated by a leading ! in their name.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">value</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "spendDiamonds"></a>
+    <strong>spendDiamonds (amount)</strong>
+    </dt>
+    <dd>
+    Spends amount diamonds if possible.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">amount</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        Whether spending was successful.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "translate"></a>
+    <strong>translate (id)</strong>
+    </dt>
+    <dd>
+    Translates an id into the corresponding string.
+Instead of TheoTown.translate('key') you can write Translation.key
+for convenience.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The ID of a translation to translate.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        The translation.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "translateInline"></a>
+    <strong>translateInline (str)</strong>
+    </dt>
+    <dd>
+    Resolves the translation of an inline translation string.
+Such a string may look like "default[de]German[fr]French...".
+The result will be the appropriate part based on language settings.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         A packed string to pick a translation from.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        The picked translation.
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2026-11-20 13:32:29 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

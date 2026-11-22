@@ -1,0 +1,3269 @@
+{
+  "manifest": {
+    "source": "https://doc.theotown.com/",
+    "generated_at": "2026-11-22T14:43:29.567368+00:00",
+    "modules": [
+      {
+        "name": "Array",
+        "summary": "A set of tools to extend Lua's quite simple arrays with more intuitive, traditional methods. The library is implemented as a metatable for array objects and can therefore be applied to arrays without a copy operation. Technically Lua has no arrays but tables only. However, a table whose keys are 1,2,...,n only can be seen as an array. The extended functionality added by this module allows you to change size of the array. You can therefore also use it as a list interface. Note that nil is not an allowed value in an array since it confuses the # (length-)operator. Creating a new \"array\" with extended functionality is quite easy. After the creation you can call the methods mentioned below on it. Usage: local arr = Array() --Creates an empty array local arr = Array{1, 2, 3} --Creates an array with content local arr = {1, 2, 3} Array(arr) --Here the functionality of an existing array is extended print(arr[1]) --Prints 1 print(arr[#arr]) --Prints 3 print(arr[-1]) --Prints 3 print(tostring(arr)) --Prints {1, 2, 3}",
+        "url": "https://doc.theotown.com/modules/Array.html",
+        "function_count": 0,
+        "class_method_count": 24
+      },
+      {
+        "name": "Builder",
+        "summary": "Functions to create and destroy buildings, roads, trees and more. For convenience you can provide the id of a draft as a string instead of the draft itself whenever a draft is needed. There are different types of drafts. Ensure that you use the correct functions to build them. For example, $park00 is a building draft, so use Builder.buildBuilding rather than Builder.buildRoad. For each type of object that can be built there's typically a function to check in advance whether the actual building process will be successful. It's good style to use these checks, even though the builder functions check validity on their own. Usage: if Builder.isBuildingBuildable('$park00', 2, 4) then Builder.buildBuilding('$park00', 2, 4) end",
+        "url": "https://doc.theotown.com/modules/Builder.html",
+        "function_count": 43,
+        "class_method_count": 0
+      },
+      {
+        "name": "Building",
+        "summary": "Building library for TheoTown A building object represents one building in a city. You can use it for convenience instead of using the building related functions in the Tile module directly. Usage: local building = Tile.getBuilding(x, y) print('Building: '..building:getX()..', '..building:getY())",
+        "url": "https://doc.theotown.com/modules/Building.html",
+        "function_count": 0,
+        "class_method_count": 43
+      },
+      {
+        "name": "Car",
+        "summary": "Car library for TheoTown. This library provides general car related functions. Furthermore, objects of this type can be used to control cars after they have been spawned. Smart-car callbacks on Script receive a car object for cars spawned with a storage table via Car.spawn(...). Such cars that were created with a storage table and therefore can be controlled afterwards are called smart cars as they can do potentially smart things. The smart car event functions will be called for all scripts that are attached to the draft that originally called Car.spawn(...). This concept is called car ownership and helps to only call the car event functions for scripts that are interested in it for the respective cars. There are no fixed callback functions that can be provided to Car.spawn(...) since these would not work after saving and re-loading the city (functions cannot be serialized in Lua). Instead you can use the storage table in the cars to store information in them that can be serialized. This is how the lifecycle and event function calls for smart cars looks like: This library was newly introduced in 1.10.51. It is only available while a city is open.",
+        "url": "https://doc.theotown.com/modules/Car.html",
+        "function_count": 2,
+        "class_method_count": 26
+      },
+      {
+        "name": "City",
+        "summary": "This library contains functions to access and modify city information, general buildings and roads.",
+        "url": "https://doc.theotown.com/modules/City.html",
+        "function_count": 85,
+        "class_method_count": 0
+      },
+      {
+        "name": "Debug",
+        "summary": "Functions for debugging. Don't forget to remove/comment out your debug functions before publishing your script/plugin. Usage: Debug.log('Hello World', 'Multiple arguments') Debug.toast('I am a toast') Debug.info('I am displayed in debug overlay')",
+        "url": "https://doc.theotown.com/modules/Debug.html",
+        "function_count": 3,
+        "class_method_count": 0
+      },
+      {
+        "name": "Draft",
+        "summary": "Draft library for TheoTown A draft can be considered a single \"plugin object\" like the template for a building. This library contains functions and methods to access drafts and query basic information about them. Multiple scripts can be attached to a single draft. Usage: local d = Draft.getDraft('$park00') print(d:getId())",
+        "url": "https://doc.theotown.com/modules/Draft.html",
+        "function_count": 5,
+        "class_method_count": 62
+      },
+      {
+        "name": "Drawing",
+        "summary": "Functions for drawing images and text. See here for more information: link",
+        "url": "https://doc.theotown.com/modules/Drawing.html",
+        "function_count": 43,
+        "class_method_count": 0
+      },
+      {
+        "name": "DSA",
+        "summary": "This library contains functions associated with the DSA integration.",
+        "url": "https://doc.theotown.com/modules/DSA.html",
+        "function_count": 2,
+        "class_method_count": 0
+      },
+      {
+        "name": "GUI",
+        "summary": "Allows to access UI elements of the game. See the GUI Compendium for a broader explanation of how to use the GUI module and what you can do with it.",
+        "url": "https://doc.theotown.com/modules/GUI.html",
+        "function_count": 9,
+        "class_method_count": 53
+      },
+      {
+        "name": "NeighborCity",
+        "summary": "Neighbor City library for TheoTown. This library provides functions to manage custom, virtual neighboring cities that the player can trade with. The goal is to extend the user experience especially in Online Mode where by default no neighborhood commercial is available. Each neighbor city belongs to the draft that created it. Because of that, uninstalling a plugin that created a virtual neighbor will also remove that neighbor city. This library is only available while a city is open.",
+        "url": "https://doc.theotown.com/modules/NeighborCity.html",
+        "function_count": 3,
+        "class_method_count": 14
+      },
+      {
+        "name": "Runtime",
+        "summary": "Functions to access general runtime information.",
+        "url": "https://doc.theotown.com/modules/Runtime.html",
+        "function_count": 13,
+        "class_method_count": 0
+      },
+      {
+        "name": "Script",
+        "summary": "The Script module provides callbacks for scripts attached to drafts. Each script instance is attached to one draft. Define callback methods on script to respond to lifecycle events and interactions with that draft. The game calls these methods when the corresponding events occur. Usage: local x = 0 function script:init() Debug.toast('init') end function script:update() Debug.info(x) x = x + 1 end",
+        "url": "https://doc.theotown.com/modules/Script.html",
+        "function_count": 2,
+        "class_method_count": 12
+      },
+      {
+        "name": "string",
+        "summary": "This module extends the functionality contained in the string table for convenience. See the official string documentation for other functions that are available in the string table. Since the string table is the hardwired __index table for string objects you can call them using the short : notion. Usage: local str = 'Hello World' print(string.startsWith(str, 'Hello')) -- Prints true print(str:startsWith('Hello')) -- Equivalent to previous line -- Note that you have to put parentheses () around a string if you want to call a function on it directly print(('Hello World'):startsWith('Hello')) -- Prints true print(Array(str:split(' '))) -- Prints {Hello, World} print(str:split(' ')[1]) -- Prints Hello print(str:split(' ')[2]) -- Prints World",
+        "url": "https://doc.theotown.com/modules/string.html",
+        "function_count": 5,
+        "class_method_count": 0
+      },
+      {
+        "name": "TheoTown",
+        "summary": "TheoTown specific functions that don't fit into other libraries.",
+        "url": "https://doc.theotown.com/modules/TheoTown.html",
+        "function_count": 18,
+        "class_method_count": 0
+      },
+      {
+        "name": "Tile",
+        "summary": "Contains functions to query single tiles for information about objects on them.",
+        "url": "https://doc.theotown.com/modules/Tile.html",
+        "function_count": 109,
+        "class_method_count": 0
+      },
+      {
+        "name": "Util",
+        "summary": "Some general utility functions.",
+        "url": "https://doc.theotown.com/modules/Util.html",
+        "function_count": 8,
+        "class_method_count": 0
+      },
+      {
+        "name": "Vector",
+        "summary": "A 3-dimensional vector implementation that can be used for convenience. Arithmetic methods return new vectors rather than modifying their operands. Vector components can still be assigned directly, as shown below. Vectors support arithmetic operations like a + b and comparisons like a == b. Usage: local v = Vector(1, 2, 3) v.x = 7 print(v.x) print(v:length()) print(tostring(v)) print(tostring(2 * v + v:normalized()))",
+        "url": "https://doc.theotown.com/modules/Vector.html",
+        "function_count": 0,
+        "class_method_count": 9
+      }
+    ],
+    "module_function_count": 350,
+    "class_method_count": 243,
+    "total_api_count": 593
+  },
+  "modules": [
+    {
+      "name": "Array",
+      "summary": "A set of tools to extend Lua's quite simple arrays with more intuitive, traditional methods. The library is implemented as a metatable for array objects and can therefore be applied to arrays without a copy operation. Technically Lua has no arrays but tables only. However, a table whose keys are 1,2,...,n only can be seen as an array. The extended functionality added by this module allows you to change size of the array. You can therefore also use it as a list interface. Note that nil is not an allowed value in an array since it confuses the # (length-)operator. Creating a new \"array\" with extended functionality is quite easy. After the creation you can call the methods mentioned below on it. Usage: local arr = Array() --Creates an empty array local arr = Array{1, 2, 3} --Creates an array with content local arr = {1, 2, 3} Array(arr) --Here the functionality of an existing array is extended print(arr[1]) --Prints 1 print(arr[#arr]) --Prints 3 print(arr[-1]) --Prints 3 print(tostring(arr)) --Prints {1, 2, 3}",
+      "url": "https://doc.theotown.com/modules/Array.html",
+      "functions": [],
+      "classes": {
+        "Array": [
+          {
+            "signature": "Array:add (element[, index])",
+            "summary": "Adds an object to the array.",
+            "anchor": "Array:add"
+          },
+          {
+            "signature": "Array:addAll (arr[, index])",
+            "summary": "Adds all elements of another array.",
+            "anchor": "Array:addAll"
+          },
+          {
+            "signature": "Array:clear ()",
+            "summary": "Clears the array by removing all elements.",
+            "anchor": "Array:clear"
+          },
+          {
+            "signature": "Array:contains (element)",
+            "summary": "Returns true iff the given object is part of the array.",
+            "anchor": "Array:contains"
+          },
+          {
+            "signature": "Array:copy ()",
+            "summary": "Returns a copy of the array.",
+            "anchor": "Array:copy"
+          },
+          {
+            "signature": "Array:count (predicate)",
+            "summary": "Counts how many elements fulfill a given predicate.",
+            "anchor": "Array:count"
+          },
+          {
+            "signature": "Array:exists (predicate)",
+            "summary": "Returns true iff at least one element matches the given predicate.",
+            "anchor": "Array:exists"
+          },
+          {
+            "signature": "Array:filter (filterFunction)",
+            "summary": "Creates a copy that only contains filtered elements.",
+            "anchor": "Array:filter"
+          },
+          {
+            "signature": "Array:find (element)",
+            "summary": "Returns the index of an object in the array.",
+            "anchor": "Array:find"
+          },
+          {
+            "signature": "Array:first ([predicate=nil])",
+            "summary": "Returns the first object that meets the given condition function or just the first element if no predicate function was given.",
+            "anchor": "Array:first"
+          },
+          {
+            "signature": "Array:forEach (callbackFunction)",
+            "summary": "Iterates over all elements of the array and applies a function on them.",
+            "anchor": "Array:forEach"
+          },
+          {
+            "signature": "Array:isEmpty ()",
+            "summary": "Returns true iff the array is empty.",
+            "anchor": "Array:isEmpty"
+          },
+          {
+            "signature": "Array:join ([separator])",
+            "summary": "Joins the contents of the array into a string using the specified separator.",
+            "anchor": "Array:join"
+          },
+          {
+            "signature": "Array:last ([predicate=nil])",
+            "summary": "Returns the last object that meets the given condition function or just the last element if no predicate function was given.",
+            "anchor": "Array:last"
+          },
+          {
+            "signature": "Array:map (mapFunction)",
+            "summary": "Maps all elements to a new array using a given function.",
+            "anchor": "Array:map"
+          },
+          {
+            "signature": "Array:pick ()",
+            "summary": "Returns a random element of the array.",
+            "anchor": "Array:pick"
+          },
+          {
+            "signature": "Array:remove (element)",
+            "summary": "Removes the first occurrence of an object from the array.",
+            "anchor": "Array:remove"
+          },
+          {
+            "signature": "Array:removeAt (i)",
+            "summary": "Removes the object at a specific index.",
+            "anchor": "Array:removeAt"
+          },
+          {
+            "signature": "Array:removeIf (predicate)",
+            "summary": "Removes the first object that meets the given condition function.",
+            "anchor": "Array:removeIf"
+          },
+          {
+            "signature": "Array:removeWhere (predicate)",
+            "summary": "Removes all elements that meet the given condition.",
+            "anchor": "Array:removeWhere"
+          },
+          {
+            "signature": "Array:shuffle ()",
+            "summary": "Shuffles the elements of the array into a random order.",
+            "anchor": "Array:shuffle"
+          },
+          {
+            "signature": "Array:sort ([compFunc])",
+            "summary": "Sorts the array in place using the elements' natural order.",
+            "anchor": "Array:sort"
+          },
+          {
+            "signature": "Array:sub (startIndex[, length])",
+            "summary": "Creates a sub-array for the specified range.",
+            "anchor": "Array:sub"
+          },
+          {
+            "signature": "Array:sum (eval)",
+            "summary": "Sums up the result of the given function called on all elements.",
+            "anchor": "Array:sum"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Builder",
+      "summary": "Functions to create and destroy buildings, roads, trees and more. For convenience you can provide the id of a draft as a string instead of the draft itself whenever a draft is needed. There are different types of drafts. Ensure that you use the correct functions to build them. For example, $park00 is a building draft, so use Builder.buildBuilding rather than Builder.buildRoad. For each type of object that can be built there's typically a function to check in advance whether the actual building process will be successful. It's good style to use these checks, even though the builder functions check validity on their own. Usage: if Builder.isBuildingBuildable('$park00', 2, 4) then Builder.buildBuilding('$park00', 2, 4) end",
+      "url": "https://doc.theotown.com/modules/Builder.html",
+      "functions": [
+        {
+          "signature": "buildBuilding (draft, x, y[, frame])",
+          "summary": "Tries to build the given building draft at the specified position and sets its frame if a frame was specified.",
+          "anchor": "buildBuilding"
+        },
+        {
+          "signature": "buildBuildingUpgrade (draft, x, y)",
+          "summary": "Applies a building upgrade to a building.",
+          "anchor": "buildBuildingUpgrade"
+        },
+        {
+          "signature": "buildBusStop (draft, x, y[, level=0])",
+          "summary": "Tries to build the given bus stop draft on the road on the specified location.",
+          "anchor": "buildBusStop"
+        },
+        {
+          "signature": "buildFence (fence, x, y, edge)",
+          "summary": "Builds fence on the specified edge of a tile.",
+          "anchor": "buildFence"
+        },
+        {
+          "signature": "buildFenceAround (fence, x, y, width, height)",
+          "summary": "Builds fence around the specified rectangle area.",
+          "anchor": "buildFenceAround"
+        },
+        {
+          "signature": "buildGround (draft, x, y)",
+          "summary": "Builds the specified ground draft and returns true iff building was successful.",
+          "anchor": "buildGround"
+        },
+        {
+          "signature": "buildPipe (draft, x0, y0[, x1=x0[, y1=y0]])",
+          "summary": "Tries to build the given pipe draft along the given line.",
+          "anchor": "buildPipe"
+        },
+        {
+          "signature": "buildRoad (draft, x0, y0, x1, y1[, level0=0[, level1=0[, bridge=false]]])",
+          "summary": "Tries to build the given road draft along the given line.",
+          "anchor": "buildRoad"
+        },
+        {
+          "signature": "buildRoadDeco (draft, x, y, level[, index=nil])",
+          "summary": "Tries to build the given road decoration draft on the road on the specified location.",
+          "anchor": "buildRoadDeco"
+        },
+        {
+          "signature": "buildTree (draft, x, y[, frame])",
+          "summary": "Tries to build the given tree draft at the specified position x, y and return true iff this was successful.",
+          "anchor": "buildTree"
+        },
+        {
+          "signature": "buildWire (draft, x0, y0[, x1[, y1]])",
+          "summary": "Tries to build the given wire draft along the given line.",
+          "anchor": "buildWire"
+        },
+        {
+          "signature": "buildZone (draft, x, y)",
+          "summary": "Builds the specified zone draft or removes it if draft is nil.",
+          "anchor": "buildZone"
+        },
+        {
+          "signature": "getBuildingPrice (draft, x, y)",
+          "summary": "Returns the price of the building.",
+          "anchor": "getBuildingPrice"
+        },
+        {
+          "signature": "getBuildingUpgradePrice (draft, x, y)",
+          "summary": "Returns the price of applying an upgrade to a building.",
+          "anchor": "getBuildingUpgradePrice"
+        },
+        {
+          "signature": "getBusStopPrice (draft, x, y[, level=0])",
+          "summary": "Returns the price of the bus stop.",
+          "anchor": "getBusStopPrice"
+        },
+        {
+          "signature": "getGroundPrice (draft, x, y)",
+          "summary": "Returns the price of the ground.",
+          "anchor": "getGroundPrice"
+        },
+        {
+          "signature": "getPipePrice (draft, x0, y0[, x1=x0[, y1=y0]])",
+          "summary": "Returns the price to build a pipe.",
+          "anchor": "getPipePrice"
+        },
+        {
+          "signature": "getRoadDecoPrice (draft, x, y, level)",
+          "summary": "Returns the price of the road deco.",
+          "anchor": "getRoadDecoPrice"
+        },
+        {
+          "signature": "getRoadPrice (draft, x0, y0, x1, y1[, level0=0[, level1=0[, bridge=false]]])",
+          "summary": "Returns the price of the road.",
+          "anchor": "getRoadPrice"
+        },
+        {
+          "signature": "getTerrainHeightPrice (x, y, height)",
+          "summary": "Queries the expected price to build the terrain height as specified.",
+          "anchor": "getTerrainHeightPrice"
+        },
+        {
+          "signature": "getTreePrice (draft, x, y)",
+          "summary": "Returns the price of the tree.",
+          "anchor": "getTreePrice"
+        },
+        {
+          "signature": "getWirePrice (draft, x0, y0[, x1=x0[, y1=y0]])",
+          "summary": "Returns the price to build a wire.",
+          "anchor": "getWirePrice"
+        },
+        {
+          "signature": "getZonePrice (draft, x, y)",
+          "summary": "Returns the price to build the given zone.",
+          "anchor": "getZonePrice"
+        },
+        {
+          "signature": "isBuildingBuildable (draft, x, y[, checkZone=true[, checkRoad=true]])",
+          "summary": "Checks whether the specified building draft can be built at the given position x, y.",
+          "anchor": "isBuildingBuildable"
+        },
+        {
+          "signature": "isBusStopBuildable (draft, x, y[, level=0])",
+          "summary": "Checks whether the specified bus stop draft can be built on the road at the specified location and level.",
+          "anchor": "isBusStopBuildable"
+        },
+        {
+          "signature": "isFenceBuildable (fence, x, y, edge)",
+          "summary": "Checks whether the fence can be built on the specified edge of a tile.",
+          "anchor": "isFenceBuildable"
+        },
+        {
+          "signature": "isGroundBuildable (draft, x, y)",
+          "summary": "Returns true iff the ground draft can be built at the given location.",
+          "anchor": "isGroundBuildable"
+        },
+        {
+          "signature": "isPipeBuildable (draft, x0, y0[, x1=x0[, y1=y0]])",
+          "summary": "Checks whether the specified pipe draft can be built along the given line x0,y0 - x1,y1.",
+          "anchor": "isPipeBuildable"
+        },
+        {
+          "signature": "isRoadBuildable (draft, x0, y0, x1, y1[, level0=0[, level1=0[, bridge=false]]])",
+          "summary": "Checks whether the specified road draft can be built along the given line x0,y0 - x1,y1.",
+          "anchor": "isRoadBuildable"
+        },
+        {
+          "signature": "isRoadDecoBuildable (draft, x, y, level)",
+          "summary": "Returns true iff the given road decoration can be applied to the road at the specified location.",
+          "anchor": "isRoadDecoBuildable"
+        },
+        {
+          "signature": "isTerrainHeightBuildable (x, y, height)",
+          "summary": "Queries whether the terrain height can be built as specified.",
+          "anchor": "isTerrainHeightBuildable"
+        },
+        {
+          "signature": "isTreeBuildable (draft, x, y)",
+          "summary": "Checks whether the specified tree draft can be built at the specified position.",
+          "anchor": "isTreeBuildable"
+        },
+        {
+          "signature": "isWireBuildable (draft, x0, y0[, x1=x0[, y1=y0]])",
+          "summary": "Checks whether the specified wire draft can be built along the given line x0,y0 - x1,y1.",
+          "anchor": "isWireBuildable"
+        },
+        {
+          "signature": "remove (x, y)",
+          "summary": "Removes anything from the specified location.",
+          "anchor": "remove"
+        },
+        {
+          "signature": "removeBuildingUpgrade (draft, x, y)",
+          "summary": "Removes a building upgrade from a building.",
+          "anchor": "removeBuildingUpgrade"
+        },
+        {
+          "signature": "removeBusStop (x, y[, level=0])",
+          "summary": "Removes the bus stop from a specified road.",
+          "anchor": "removeBusStop"
+        },
+        {
+          "signature": "removeFence (x, y[, edge])",
+          "summary": "Removes the fence on the specified edge of a tile.",
+          "anchor": "removeFence"
+        },
+        {
+          "signature": "removeFenceWithin (x, y, width, height)",
+          "summary": "Removes any fence within the specified rectangle area.",
+          "anchor": "removeFenceWithin"
+        },
+        {
+          "signature": "removeGround (x, y)",
+          "summary": "Removes the ground decal at the given position if there is any.",
+          "anchor": "removeGround"
+        },
+        {
+          "signature": "removePipe (x, y)",
+          "summary": "Dedicated remove function to remove pipes only.",
+          "anchor": "removePipe"
+        },
+        {
+          "signature": "removeRoadDeco (x, y[, level=0[, index=nil]])",
+          "summary": "Removes all or a specific road decoration from a specified road.",
+          "anchor": "removeRoadDeco"
+        },
+        {
+          "signature": "removeWire (x, y, level)",
+          "summary": "Dedicated remove function to remove wires only.",
+          "anchor": "removeWire"
+        },
+        {
+          "signature": "setTerrainHeight (x, y, height)",
+          "summary": "Tries to set the terrain height of the given location to the given height.",
+          "anchor": "setTerrainHeight"
+        }
+      ],
+      "classes": {}
+    },
+    {
+      "name": "Building",
+      "summary": "Building library for TheoTown A building object represents one building in a city. You can use it for convenience instead of using the building related functions in the Tile module directly. Usage: local building = Tile.getBuilding(x, y) print('Building: '..building:getX()..', '..building:getY())",
+      "url": "https://doc.theotown.com/modules/Building.html",
+      "functions": [],
+      "classes": {
+        "Building": [
+          {
+            "signature": "abandon ()",
+            "summary": "Abandons this (RCI) building.",
+            "anchor": "abandon"
+          },
+          {
+            "signature": "extinguish ()",
+            "summary": "Extinguishes the fire of this building in case it's burning.",
+            "anchor": "extinguish"
+          },
+          {
+            "signature": "getAnimationColor ([slot=1])",
+            "summary": "Gets the color of an animation of the building.",
+            "anchor": "getAnimationColor"
+          },
+          {
+            "signature": "getAnimationFrame ([slot=1])",
+            "summary": "Returns the current frame of an animation that is attached to this building.",
+            "anchor": "getAnimationFrame"
+          },
+          {
+            "signature": "getBuildHeight ()",
+            "summary": "Returns the build height of the building.",
+            "anchor": "getBuildHeight"
+          },
+          {
+            "signature": "getDaysBuilt ()",
+            "summary": "Returns the number of days since this building was constructed.",
+            "anchor": "getDaysBuilt"
+          },
+          {
+            "signature": "getDraft ()",
+            "summary": "Returns the draft of the building.",
+            "anchor": "getDraft"
+          },
+          {
+            "signature": "getDrawXY ()",
+            "summary": "Returns the draw pivot position of this building.",
+            "anchor": "getDrawXY"
+          },
+          {
+            "signature": "getFrame ()",
+            "summary": "Returns the current frame of the building.",
+            "anchor": "getFrame"
+          },
+          {
+            "signature": "getHeight ()",
+            "summary": "Returns the height of the base area of the building.",
+            "anchor": "getHeight"
+          },
+          {
+            "signature": "getIcon (x, y)",
+            "summary": "Gets the currently set custom building icon.",
+            "anchor": "getIcon"
+          },
+          {
+            "signature": "getId ()",
+            "summary": "Shortcut for the id of the building's draft.",
+            "anchor": "getId"
+          },
+          {
+            "signature": "getName ()",
+            "summary": "Gets the name of this building.",
+            "anchor": "getName"
+          },
+          {
+            "signature": "getPerformance ()",
+            "summary": "Returns the current performance of this building.",
+            "anchor": "getPerformance"
+          },
+          {
+            "signature": "getStorage ()",
+            "summary": "Returns the storage table of the building.",
+            "anchor": "getStorage"
+          },
+          {
+            "signature": "getText ()",
+            "summary": "Returns the text set to the building.",
+            "anchor": "getText"
+          },
+          {
+            "signature": "getWidth ()",
+            "summary": "Returns the width of the base area of the building.",
+            "anchor": "getWidth"
+          },
+          {
+            "signature": "getX ()",
+            "summary": "Returns the x position of this building.",
+            "anchor": "getX"
+          },
+          {
+            "signature": "getXY ()",
+            "summary": "Returns the pivot position of this building.",
+            "anchor": "getXY"
+          },
+          {
+            "signature": "getY ()",
+            "summary": "Returns the y position of this building.",
+            "anchor": "getY"
+          },
+          {
+            "signature": "hasNeededRoad ()",
+            "summary": "Returns true if this building does not need a road connection or has one.",
+            "anchor": "hasNeededRoad"
+          },
+          {
+            "signature": "hasRoad ()",
+            "summary": "Returns true iff this building has a road connection (even if it doesn't require one according to its json).",
+            "anchor": "hasRoad"
+          },
+          {
+            "signature": "hasUpgrade (upgradeId)",
+            "summary": "Returns true iff this building has a specific upgrade applied to it.",
+            "anchor": "hasUpgrade"
+          },
+          {
+            "signature": "isAnimationPaused ([slot=1])",
+            "summary": "Returns whether an animation attached to this building is paused.",
+            "anchor": "isAnimationPaused"
+          },
+          {
+            "signature": "isBurning ()",
+            "summary": "Returns true iff this building is burning right now.",
+            "anchor": "isBurning"
+          },
+          {
+            "signature": "isEmpty ()",
+            "summary": "Returns true iff this building is empty right now.",
+            "anchor": "isEmpty"
+          },
+          {
+            "signature": "isFullOfDeadPeople ()",
+            "summary": "Returns true iff this building has transport issues with dead bodies right now.",
+            "anchor": "isFullOfDeadPeople"
+          },
+          {
+            "signature": "isFullOfWaste ()",
+            "summary": "Returns true iff this building is full of garbage right now.",
+            "anchor": "isFullOfWaste"
+          },
+          {
+            "signature": "isIll ()",
+            "summary": "Returns true iff this building contains ill people right now.",
+            "anchor": "isIll"
+          },
+          {
+            "signature": "isInConstruction ()",
+            "summary": "Returns true iff this building is in construction right now.",
+            "anchor": "isInConstruction"
+          },
+          {
+            "signature": "isUntouchable ()",
+            "summary": "Determines whether this (RCI) building is untouchable.",
+            "anchor": "isUntouchable"
+          },
+          {
+            "signature": "isUpgradeInConstruction ()",
+            "summary": "Returns true iff this building has a pending upgrade right now.",
+            "anchor": "isUpgradeInConstruction"
+          },
+          {
+            "signature": "isWorking ()",
+            "summary": "Returns true iff this building is working right now.",
+            "anchor": "isWorking"
+          },
+          {
+            "signature": "pauseAnimation ([slot=1])",
+            "summary": "Pauses an animation that is attached to this building.",
+            "anchor": "pauseAnimation"
+          },
+          {
+            "signature": "resumeAnimation ([slot=1[, speed=1.0]])",
+            "summary": "Resumes an animation that is attached to this building.",
+            "anchor": "resumeAnimation"
+          },
+          {
+            "signature": "setAnimationColor (red, green, blue[, alpha=255[, slot=1]])",
+            "summary": "Sets the color of an animation of the building.",
+            "anchor": "setAnimationColor"
+          },
+          {
+            "signature": "setAnimationFrame (frame[, slot=1])",
+            "summary": "Sets the current frame of an animation regardless of whether the animation is playing right now.",
+            "anchor": "setAnimationFrame"
+          },
+          {
+            "signature": "setFrame (frame)",
+            "summary": "Sets the current frame of the building.",
+            "anchor": "setFrame"
+          },
+          {
+            "signature": "setIcon (icon)",
+            "summary": "Sets a building icon.",
+            "anchor": "setIcon"
+          },
+          {
+            "signature": "setName (name)",
+            "summary": "Sets the name of this building.",
+            "anchor": "setName"
+          },
+          {
+            "signature": "setPerformance (performance)",
+            "summary": "Sets the performance of this building.",
+            "anchor": "setPerformance"
+          },
+          {
+            "signature": "setText (text)",
+            "summary": "Sets a building text or resets it.",
+            "anchor": "setText"
+          },
+          {
+            "signature": "setUntouchable ([state=true])",
+            "summary": "Marks this (RCI) building as untouchable or touchable.",
+            "anchor": "setUntouchable"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Car",
+      "summary": "Car library for TheoTown. This library provides general car related functions. Furthermore, objects of this type can be used to control cars after they have been spawned. Smart-car callbacks on Script receive a car object for cars spawned with a storage table via Car.spawn(...). Such cars that were created with a storage table and therefore can be controlled afterwards are called smart cars as they can do potentially smart things. The smart car event functions will be called for all scripts that are attached to the draft that originally called Car.spawn(...). This concept is called car ownership and helps to only call the car event functions for scripts that are interested in it for the respective cars. There are no fixed callback functions that can be provided to Car.spawn(...) since these would not work after saving and re-loading the city (functions cannot be serialized in Lua). Instead you can use the storage table in the cars to store information in them that can be serialized. This is how the lifecycle and event function calls for smart cars looks like: This library was newly introduced in 1.10.51. It is only available while a city is open.",
+      "url": "https://doc.theotown.com/modules/Car.html",
+      "functions": [
+        {
+          "signature": "getCars ()",
+          "summary": "Returns an array of smart cars that are owned by the calling draft.",
+          "anchor": "getCars"
+        },
+        {
+          "signature": "spawn (carDraft, startX, startY, targetX, targetY[, frame=nil[, storage=nil[, startLevel=nil[, targetLevel=nil]]]])",
+          "summary": "Spawns a car at a given position/position of a building that drives to the given target/building at the target.",
+          "anchor": "spawn"
+        }
+      ],
+      "classes": {
+        "Car": [
+          {
+            "signature": "car:addTail (draft[, position=nil[, frame=-1]])",
+            "summary": "Adds a segment to the tail of a car.",
+            "anchor": "car:addTail"
+          },
+          {
+            "signature": "car:despawn ()",
+            "summary": "Signals that the car should be deleted.",
+            "anchor": "car:despawn"
+          },
+          {
+            "signature": "car:driveTo (x, y[, level=nil])",
+            "summary": "Will issue a new location for the car to drive to.",
+            "anchor": "car:driveTo"
+          },
+          {
+            "signature": "car:getCapacity ()",
+            "summary": "Returns the overall capacity of a car.",
+            "anchor": "car:getCapacity"
+          },
+          {
+            "signature": "car:getDir ()",
+            "summary": "Returns the current direction of the car.",
+            "anchor": "car:getDir"
+          },
+          {
+            "signature": "car:getDraft ()",
+            "summary": "Returns the car draft of the car.",
+            "anchor": "car:getDraft"
+          },
+          {
+            "signature": "car:getEffectiveSpeed ()",
+            "summary": "Returns the current effective speed of the car.",
+            "anchor": "car:getEffectiveSpeed"
+          },
+          {
+            "signature": "car:getFrame ()",
+            "summary": "Returns the current frame of the car.",
+            "anchor": "car:getFrame"
+          },
+          {
+            "signature": "car:getLevel ()",
+            "summary": "Returns the current height level of the car.",
+            "anchor": "car:getLevel"
+          },
+          {
+            "signature": "car:getSpeed ()",
+            "summary": "Returns the current target speed factor of the car.",
+            "anchor": "car:getSpeed"
+          },
+          {
+            "signature": "car:getStorage ()",
+            "summary": "Returns the storage table of the car.",
+            "anchor": "car:getStorage"
+          },
+          {
+            "signature": "car:getTailDraft (position)",
+            "summary": "Returns the car draft of a tail segment.",
+            "anchor": "car:getTailDraft"
+          },
+          {
+            "signature": "car:getTailFrame (position)",
+            "summary": "Returns the car frame of a tail segment.",
+            "anchor": "car:getTailFrame"
+          },
+          {
+            "signature": "car:getX ()",
+            "summary": "Returns the current x tile position of the car.",
+            "anchor": "car:getX"
+          },
+          {
+            "signature": "car:getXY ()",
+            "summary": "Returns the current position and level of the car all at once.",
+            "anchor": "car:getXY"
+          },
+          {
+            "signature": "car:getY ()",
+            "summary": "Returns the current y tile position of the car.",
+            "anchor": "car:getY"
+          },
+          {
+            "signature": "car:isValid ()",
+            "summary": "Returns whether this car is still valid.",
+            "anchor": "car:isValid"
+          },
+          {
+            "signature": "car:openFollowTool ()",
+            "summary": "Opens the follow car tool for this specific car.",
+            "anchor": "car:openFollowTool"
+          },
+          {
+            "signature": "car:removeTail ([position=nil])",
+            "summary": "Removes a tail segment.",
+            "anchor": "car:removeTail"
+          },
+          {
+            "signature": "car:removeWholeTail ()",
+            "summary": "Removes the whole tail.",
+            "anchor": "car:removeWholeTail"
+          },
+          {
+            "signature": "car:setColor (hexColor[, tailIndex=-1])",
+            "summary": "Sets a blending color for the car.",
+            "anchor": "car:setColor"
+          },
+          {
+            "signature": "car:setFrame (frame)",
+            "summary": "Sets the current frame of the car.",
+            "anchor": "car:setFrame"
+          },
+          {
+            "signature": "car:setSpeed (speed)",
+            "summary": "Sets the target speed factor of the car.",
+            "anchor": "car:setSpeed"
+          },
+          {
+            "signature": "car:setTailFrame (position, frame)",
+            "summary": "Sets the car frame of a tail segment.",
+            "anchor": "car:setTailFrame"
+          },
+          {
+            "signature": "car:tailSize ()",
+            "summary": "Returns the size of the tail of a car.",
+            "anchor": "car:tailSize"
+          },
+          {
+            "signature": "car:wait ()",
+            "summary": "Makes the car wait briefly.",
+            "anchor": "car:wait"
+          }
+        ]
+      }
+    },
+    {
+      "name": "City",
+      "summary": "This library contains functions to access and modify city information, general buildings and roads.",
+      "url": "https://doc.theotown.com/modules/City.html",
+      "functions": [
+        {
+          "signature": "addBuildingListener (tbl)",
+          "summary": "Adds one or multiple event listeners for (specific) buildings in the city.",
+          "anchor": "addBuildingListener"
+        },
+        {
+          "signature": "addRoadListener (tbl)",
+          "summary": "Adds one or multiple event listeners for (specific) roads in the city.",
+          "anchor": "addRoadListener"
+        },
+        {
+          "signature": "alert (actionPlaceType, x, y)",
+          "summary": "Sets an action marker (or removes the one previously set there).",
+          "anchor": "alert"
+        },
+        {
+          "signature": "canSpend (amount)",
+          "summary": "Returns true if the city can spend the specified amount of money.",
+          "anchor": "canSpend"
+        },
+        {
+          "signature": "countBuildings ([draft])",
+          "summary": "Returns the overall amount of buildings.",
+          "anchor": "countBuildings"
+        },
+        {
+          "signature": "countBuildingsOfType (type[, level])",
+          "summary": "Returns the number of buildings of a specific building type.",
+          "anchor": "countBuildingsOfType"
+        },
+        {
+          "signature": "countCars ()",
+          "summary": "Returns the number of cars currently active.",
+          "anchor": "countCars"
+        },
+        {
+          "signature": "countPipes ()",
+          "summary": "Returns the overall amount of pipes in the city.",
+          "anchor": "countPipes"
+        },
+        {
+          "signature": "countRoads ([draft])",
+          "summary": "Returns the overall amount of roads.",
+          "anchor": "countRoads"
+        },
+        {
+          "signature": "countWires ()",
+          "summary": "Returns the overall amount of wires in the city.",
+          "anchor": "countWires"
+        },
+        {
+          "signature": "countZones ([draft])",
+          "summary": "Returns the overall amount of zones.",
+          "anchor": "countZones"
+        },
+        {
+          "signature": "createDraftDrawer (draft[, alsoHidden=false])",
+          "summary": "Returns a table with functions to draw the draft and query some information about it.",
+          "anchor": "createDraftDrawer"
+        },
+        {
+          "signature": "enableDisaster (name[, state])",
+          "summary": "Enables or disables the automatic disaster of the given name.",
+          "anchor": "enableDisaster"
+        },
+        {
+          "signature": "execute (cmd, receiver)",
+          "summary": "Executes a command as if it was entered into the console.",
+          "anchor": "execute"
+        },
+        {
+          "signature": "exit ([save=false])",
+          "summary": "Closes the current city and will go back to region view.",
+          "anchor": "exit"
+        },
+        {
+          "signature": "getAbsoluteDay ()",
+          "summary": "Returns the current absolute day of the city.",
+          "anchor": "getAbsoluteDay"
+        },
+        {
+          "signature": "getAuthor ()",
+          "summary": "Returns the name of the author that the player entered",
+          "anchor": "getAuthor"
+        },
+        {
+          "signature": "getBackground ()",
+          "summary": "Returns the current background draft of the city.",
+          "anchor": "getBackground"
+        },
+        {
+          "signature": "getBuilding (index[, draft])",
+          "summary": "Gets the position of a specific building of a specific draft by its index.",
+          "anchor": "getBuilding"
+        },
+        {
+          "signature": "getCommercialJobs ([level[, progress=false]])",
+          "summary": "Returns the total commercial jobs per level.",
+          "anchor": "getCommercialJobs"
+        },
+        {
+          "signature": "getCurrency (name)",
+          "summary": "Returns the available amount of the named currency and its formatted value.",
+          "anchor": "getCurrency"
+        },
+        {
+          "signature": "getDay ()",
+          "summary": "Returns the current day of the month of the city.",
+          "anchor": "getDay"
+        },
+        {
+          "signature": "getDayPart ()",
+          "summary": "Returns the current part of the day with 0 being the start and 1 being the end.",
+          "anchor": "getDayPart"
+        },
+        {
+          "signature": "getDisaster ()",
+          "summary": "Returns the name of the currently active disaster or nil if none is active.",
+          "anchor": "getDisaster"
+        },
+        {
+          "signature": "getFileName ()",
+          "summary": "Returns the name of the file of the city.",
+          "anchor": "getFileName"
+        },
+        {
+          "signature": "getFunVar (name[, fallbackValue])",
+          "summary": "Returns the value of the classic fun variable of the given name or fallbackValue if no such variable has been defined, yet.",
+          "anchor": "getFunVar"
+        },
+        {
+          "signature": "getHappiness ([happinessType])",
+          "summary": "Returns the average happiness.",
+          "anchor": "getHappiness"
+        },
+        {
+          "signature": "getHeight ()",
+          "summary": "Height of the city in tiles",
+          "anchor": "getHeight"
+        },
+        {
+          "signature": "getId ()",
+          "summary": "Returns the ID of the city.",
+          "anchor": "getId"
+        },
+        {
+          "signature": "getIncome ()",
+          "summary": "Returns the monthly income of the city.",
+          "anchor": "getIncome"
+        },
+        {
+          "signature": "getIndustrialJobs ([level[, progress=false]])",
+          "summary": "Returns the total industrial jobs per level.",
+          "anchor": "getIndustrialJobs"
+        },
+        {
+          "signature": "getMoney ()",
+          "summary": "Returns the estate of the city.",
+          "anchor": "getMoney"
+        },
+        {
+          "signature": "getMonth ()",
+          "summary": "Returns the current month of the city.",
+          "anchor": "getMonth"
+        },
+        {
+          "signature": "getName ()",
+          "summary": "Name of the current city",
+          "anchor": "getName"
+        },
+        {
+          "signature": "getOwnerId ()",
+          "summary": "Returns the id of the owner of the city if the city is online.",
+          "anchor": "getOwnerId"
+        },
+        {
+          "signature": "getOwnerName ()",
+          "summary": "Returns the name of the owner of the city if the city is online.",
+          "anchor": "getOwnerName"
+        },
+        {
+          "signature": "getPeople ([level])",
+          "summary": "Returns the number of people at the specified level (0, 1 or 2), or the total population if no level is specified.",
+          "anchor": "getPeople"
+        },
+        {
+          "signature": "getPipe (index)",
+          "summary": "Returns the x and y coordinates and draft of the pipe at the given index.",
+          "anchor": "getPipe"
+        },
+        {
+          "signature": "getPlayTime ()",
+          "summary": "Returns the play time in this city in seconds.",
+          "anchor": "getPlayTime"
+        },
+        {
+          "signature": "getRank ()",
+          "summary": "Returns the current rank draft and the rank index.",
+          "anchor": "getRank"
+        },
+        {
+          "signature": "getRegionId ()",
+          "summary": "Returns the id of the region or nil if the city is not in a region.",
+          "anchor": "getRegionId"
+        },
+        {
+          "signature": "getRegionName ()",
+          "summary": "Returns the name of the region this city is located in, or nil for individual cities.",
+          "anchor": "getRegionName"
+        },
+        {
+          "signature": "getResidentialSpace ([level[, progress=false]])",
+          "summary": "Returns the residential space (in buildings) per level.",
+          "anchor": "getResidentialSpace"
+        },
+        {
+          "signature": "getRoad (index[, draft])",
+          "summary": "Gets the position and level of a specific road (of a specific draft) by its index.",
+          "anchor": "getRoad"
+        },
+        {
+          "signature": "getRotation ()",
+          "summary": "Returns the current rotation of the city.",
+          "anchor": "getRotation"
+        },
+        {
+          "signature": "getScale ()",
+          "summary": "Gets the current scaling of the city with 1.0 being no scaling.",
+          "anchor": "getScale"
+        },
+        {
+          "signature": "getSeed ()",
+          "summary": "Returns the seed that was used to generate the city",
+          "anchor": "getSeed"
+        },
+        {
+          "signature": "getSpeed ()",
+          "summary": "Returns the current simulation speed of the city.",
+          "anchor": "getSpeed"
+        },
+        {
+          "signature": "getStorage ()",
+          "summary": "Use this storage table to save things city wide",
+          "anchor": "getStorage"
+        },
+        {
+          "signature": "getTax (rci, level)",
+          "summary": "Returns the current taxes applied to a certain building type and level",
+          "anchor": "getTax"
+        },
+        {
+          "signature": "getTime ()",
+          "summary": "Returns the animation time of the game in milliseconds.",
+          "anchor": "getTime"
+        },
+        {
+          "signature": "getTimeDelta ()",
+          "summary": "Returns the delta animation time in milliseconds.",
+          "anchor": "getTimeDelta"
+        },
+        {
+          "signature": "getToolId ()",
+          "summary": "Returns the id of the currently opened tool.",
+          "anchor": "getToolId"
+        },
+        {
+          "signature": "getToolName ()",
+          "summary": "Returns the name of the currently opened tool.",
+          "anchor": "getToolName"
+        },
+        {
+          "signature": "getView ()",
+          "summary": "Returns the tile position the camera is currently looking at as well as the current scale.",
+          "anchor": "getView"
+        },
+        {
+          "signature": "getWidth ()",
+          "summary": "Width of the city in tiles",
+          "anchor": "getWidth"
+        },
+        {
+          "signature": "getWire (index)",
+          "summary": "Returns the coordinates, level and draft of the wire at the given index.",
+          "anchor": "getWire"
+        },
+        {
+          "signature": "getXp ()",
+          "summary": "Returns the amount of experience of the city.",
+          "anchor": "getXp"
+        },
+        {
+          "signature": "getYear ()",
+          "summary": "Returns the current year of the city.",
+          "anchor": "getYear"
+        },
+        {
+          "signature": "hash ([x[, y]])",
+          "summary": "Returns a pseudo random positive 32bit integer number.",
+          "anchor": "hash"
+        },
+        {
+          "signature": "isLeftSideTraffic ()",
+          "summary": "Returns true if the current city is using left side traffic.",
+          "anchor": "isLeftSideTraffic"
+        },
+        {
+          "signature": "isOnline ()",
+          "summary": "Indicates whether this city is an online city.",
+          "anchor": "isOnline"
+        },
+        {
+          "signature": "isReadonly ()",
+          "summary": "Indicates whether this city is readonly.",
+          "anchor": "isReadonly"
+        },
+        {
+          "signature": "isSandbox ()",
+          "summary": "Determines whether the city is in free or sandbox mode",
+          "anchor": "isSandbox"
+        },
+        {
+          "signature": "isUber ()",
+          "summary": "Returns true if uber is activated for that city.",
+          "anchor": "isUber"
+        },
+        {
+          "signature": "issueDisaster (name[, x=-1[, y=-1[, radius=20[, radioactive=true]]]])",
+          "summary": "Issues the disaster of the given name at the given position x, y.",
+          "anchor": "issueDisaster"
+        },
+        {
+          "signature": "load (path[, overwrite[, private[, target]]])",
+          "summary": "Loads a city file provided by the plugin.",
+          "anchor": "load"
+        },
+        {
+          "signature": "move (x, y)",
+          "summary": "Moves the city according to the given screen space coordinates.",
+          "anchor": "move"
+        },
+        {
+          "signature": "noise (x, y[, z[, w]])",
+          "summary": "Returns a noise value for the specified coordinates.",
+          "anchor": "noise"
+        },
+        {
+          "signature": "openInfo (infoType)",
+          "summary": "Opens the city information screen of the given type.",
+          "anchor": "openInfo"
+        },
+        {
+          "signature": "playSound (sound, x, y[, volume=1[, loop=false]])",
+          "summary": "Plays a sound.",
+          "anchor": "playSound"
+        },
+        {
+          "signature": "rebuildUI ()",
+          "summary": "Rebuilds the UI of the city view including the toolbar.",
+          "anchor": "rebuildUI"
+        },
+        {
+          "signature": "save ([enforce=false])",
+          "summary": "Saves the city if the user has autosave enabled.",
+          "anchor": "save"
+        },
+        {
+          "signature": "setAuthor (name)",
+          "summary": "Sets a new author name for the city.",
+          "anchor": "setAuthor"
+        },
+        {
+          "signature": "setBackground (draft)",
+          "summary": "Sets a background.",
+          "anchor": "setBackground"
+        },
+        {
+          "signature": "setFunVar (name, value)",
+          "summary": "Sets the value of a classic fun variable called name.",
+          "anchor": "setFunVar"
+        },
+        {
+          "signature": "setLeftSideTraffic (leftSide)",
+          "summary": "Sets whether the current city should use left side traffic.",
+          "anchor": "setLeftSideTraffic"
+        },
+        {
+          "signature": "setName (newName)",
+          "summary": "Sets a new city name",
+          "anchor": "setName"
+        },
+        {
+          "signature": "setRotation (r)",
+          "summary": "Sets the rotation of the city.",
+          "anchor": "setRotation"
+        },
+        {
+          "signature": "setScale (scale)",
+          "summary": "Sets the scale of the city with 1.0 being no scaling.",
+          "anchor": "setScale"
+        },
+        {
+          "signature": "setSpeed (speed)",
+          "summary": "Sets the simulation speed of the city.",
+          "anchor": "setSpeed"
+        },
+        {
+          "signature": "setView (x, y[, scale[, adjustY=true]])",
+          "summary": "Sets the view to a specified tile x, y using the provided scale.",
+          "anchor": "setView"
+        },
+        {
+          "signature": "showNotification (tableOfArguments)",
+          "summary": "Shows a notification.",
+          "anchor": "showNotification"
+        },
+        {
+          "signature": "spendCurrency (name, amount)",
+          "summary": "Spends amount of the currency named name.",
+          "anchor": "spendCurrency"
+        },
+        {
+          "signature": "spendMoney (amount[, x[, y[, budgetItem]]])",
+          "summary": "Spends some money.",
+          "anchor": "spendMoney"
+        }
+      ],
+      "classes": {}
+    },
+    {
+      "name": "Debug",
+      "summary": "Functions for debugging. Don't forget to remove/comment out your debug functions before publishing your script/plugin. Usage: Debug.log('Hello World', 'Multiple arguments') Debug.toast('I am a toast') Debug.info('I am displayed in debug overlay')",
+      "url": "https://doc.theotown.com/modules/Debug.html",
+      "functions": [
+        {
+          "signature": "info (message1[, message2[, message3[, ...]]])",
+          "summary": "Logs a message into the debug overlay of the game.",
+          "anchor": "info"
+        },
+        {
+          "signature": "log (message1[, message2[, message3[, ...]]])",
+          "summary": "Logs a message to the script's internal log.",
+          "anchor": "log"
+        },
+        {
+          "signature": "toast (message1[, message2[, message3[, ...]]])",
+          "summary": "Shows the specified message as a toast overlay.",
+          "anchor": "toast"
+        }
+      ],
+      "classes": {}
+    },
+    {
+      "name": "Draft",
+      "summary": "Draft library for TheoTown A draft can be considered a single \"plugin object\" like the template for a building. This library contains functions and methods to access drafts and query basic information about them. Multiple scripts can be attached to a single draft. Usage: local d = Draft.getDraft('$park00') print(d:getId())",
+      "url": "https://doc.theotown.com/modules/Draft.html",
+      "functions": [
+        {
+          "signature": "append (json)",
+          "summary": "Adds a JSON code to the list of JSON codes that will be loaded by the game.",
+          "anchor": "append"
+        },
+        {
+          "signature": "callAll (name[, arg1[, arg2[, ...]]])",
+          "summary": "Calls the event function called name on all scripts if defined.",
+          "anchor": "callAll"
+        },
+        {
+          "signature": "getDraft (id)",
+          "summary": "Returns the draft of the given id.",
+          "anchor": "getDraft"
+        },
+        {
+          "signature": "getDrafts ([tag])",
+          "summary": "Returns an array of drafts that have the given tag defined.",
+          "anchor": "getDrafts"
+        },
+        {
+          "signature": "merge (json)",
+          "summary": "Merges the provided JSON object into the json object that is being loaded by the game right now.",
+          "anchor": "merge"
+        }
+      ],
+      "classes": {
+        "Draft": [
+          {
+            "signature": "draft:call (name[, arg1[, arg2[, ...]]])",
+            "summary": "Calls the event function called name on all scripts of the draft if defined.",
+            "anchor": "draft:call"
+          },
+          {
+            "signature": "draft:getAuthor ()",
+            "summary": "Returns the author of the draft as defined in its json definition.",
+            "anchor": "draft:getAuthor"
+          },
+          {
+            "signature": "draft:getBridgePrice ()",
+            "summary": "Returns the bridge price defined for this road draft.",
+            "anchor": "draft:getBridgePrice"
+          },
+          {
+            "signature": "draft:getBuildHeight ()",
+            "summary": "Returns the build height of the building.",
+            "anchor": "draft:getBuildHeight"
+          },
+          {
+            "signature": "draft:getCapacity ()",
+            "summary": "Returns the capacity of a car draft.",
+            "anchor": "draft:getCapacity"
+          },
+          {
+            "signature": "draft:getColors ()",
+            "summary": "Returns an array of hex colors for shading the primary frames of this draft.",
+            "anchor": "draft:getColors"
+          },
+          {
+            "signature": "draft:getContent ()",
+            "summary": "For data drafts only: returns the raw json definition of the draft.",
+            "anchor": "draft:getContent"
+          },
+          {
+            "signature": "draft:getDepotCapacity ()",
+            "summary": "Returns the amount of vehicles that can be stored in the given depot building.",
+            "anchor": "draft:getDepotCapacity"
+          },
+          {
+            "signature": "draft:getDiamondPrice ()",
+            "summary": "Returns the diamond price defined for this draft.",
+            "anchor": "draft:getDiamondPrice"
+          },
+          {
+            "signature": "draft:getFrame ([frameIndex=1])",
+            "summary": "Returns a frame specified by its index (starting with 1).",
+            "anchor": "draft:getFrame"
+          },
+          {
+            "signature": "draft:getFrameCount ()",
+            "summary": "Returns the number of frames defined in that draft.",
+            "anchor": "draft:getFrameCount"
+          },
+          {
+            "signature": "draft:getFrameType ([frameIndex=1])",
+            "summary": "Returns the frame type of a frame based on its index (starting with 1).",
+            "anchor": "draft:getFrameType"
+          },
+          {
+            "signature": "draft:getHeight ()",
+            "summary": "Returns the height of the building.",
+            "anchor": "draft:getHeight"
+          },
+          {
+            "signature": "draft:getId ()",
+            "summary": "Returns the ID of the draft.",
+            "anchor": "draft:getId"
+          },
+          {
+            "signature": "draft:getLevel ()",
+            "summary": "Returns the wealth level of building drafts.",
+            "anchor": "draft:getLevel"
+          },
+          {
+            "signature": "draft:getMeta ()",
+            "summary": "Returns the meta table of the draft if available.",
+            "anchor": "draft:getMeta"
+          },
+          {
+            "signature": "draft:getMonthlyPrice ()",
+            "summary": "Returns the monthly price defined for this draft.",
+            "anchor": "draft:getMonthlyPrice"
+          },
+          {
+            "signature": "draft:getOrdinal ()",
+            "summary": "Returns the ordinality of the draft.",
+            "anchor": "draft:getOrdinal"
+          },
+          {
+            "signature": "draft:getOverlayColors ()",
+            "summary": "Returns an array of hex colors for shading the overlay frames of this draft.",
+            "anchor": "draft:getOverlayColors"
+          },
+          {
+            "signature": "draft:getOverlayFrame ([frameIndex=1])",
+            "summary": "Returns an overlay frame specified by its index (starting with 1).",
+            "anchor": "draft:getOverlayFrame"
+          },
+          {
+            "signature": "draft:getOverlayFrameCount ()",
+            "summary": "Returns the number of overlay frames defined in this car draft.",
+            "anchor": "draft:getOverlayFrameCount"
+          },
+          {
+            "signature": "draft:getPluginId ()",
+            "summary": "Returns the plugin ID of the plugin the draft belongs to.",
+            "anchor": "draft:getPluginId"
+          },
+          {
+            "signature": "draft:getPower ()",
+            "summary": "Returns the amount of power the building produces.",
+            "anchor": "draft:getPower"
+          },
+          {
+            "signature": "draft:getPreviewFrame ([frameIndex=1])",
+            "summary": "Returns a preview frame specified by its index (starting with 1).",
+            "anchor": "draft:getPreviewFrame"
+          },
+          {
+            "signature": "draft:getPreviewFrameCount ()",
+            "summary": "Returns the number of preview frames defined in that draft.",
+            "anchor": "draft:getPreviewFrameCount"
+          },
+          {
+            "signature": "draft:getPrice ()",
+            "summary": "Returns the price defined for this draft.",
+            "anchor": "draft:getPrice"
+          },
+          {
+            "signature": "draft:getScripts ()",
+            "summary": "Returns an array of all attached scripts to this draft.",
+            "anchor": "draft:getScripts"
+          },
+          {
+            "signature": "draft:getSpeed ()",
+            "summary": "Returns the speed of a car draft.",
+            "anchor": "draft:getSpeed"
+          },
+          {
+            "signature": "draft:getTail ()",
+            "summary": "Returns the tail of a car draft.",
+            "anchor": "draft:getTail"
+          },
+          {
+            "signature": "draft:getText ()",
+            "summary": "Returns the localized description of the draft.",
+            "anchor": "draft:getText"
+          },
+          {
+            "signature": "draft:getTitle ()",
+            "summary": "Returns the localized title of the draft.",
+            "anchor": "draft:getTitle"
+          },
+          {
+            "signature": "draft:getTunnelDiamondPrice ()",
+            "summary": "Returns the diamond price defined for this road draft.",
+            "anchor": "draft:getTunnelDiamondPrice"
+          },
+          {
+            "signature": "draft:getTunnelPrice ()",
+            "summary": "Returns the tunnel price defined for this road draft.",
+            "anchor": "draft:getTunnelPrice"
+          },
+          {
+            "signature": "draft:getType ()",
+            "summary": "Returns a string that represents the concrete type of the draft.",
+            "anchor": "draft:getType"
+          },
+          {
+            "signature": "draft:getUnifiedId ()",
+            "summary": "Returns the unified ID of the draft.",
+            "anchor": "draft:getUnifiedId"
+          },
+          {
+            "signature": "draft:getWater ()",
+            "summary": "Returns the amount of water the building produces.",
+            "anchor": "draft:getWater"
+          },
+          {
+            "signature": "draft:getWidth ()",
+            "summary": "Returns the width of the building.",
+            "anchor": "draft:getWidth"
+          },
+          {
+            "signature": "draft:hasDecorations ()",
+            "summary": "Returns true iff the draft is a road draft and has automatic road decorations.",
+            "anchor": "draft:hasDecorations"
+          },
+          {
+            "signature": "draft:hasLights ()",
+            "summary": "Returns true if a building, road, road decoration, or fence draft has an animation spot whose animation is marked as a light or a switching light.",
+            "anchor": "draft:hasLights"
+          },
+          {
+            "signature": "draft:isAnimation ()",
+            "summary": "Returns true iff the draft defines an animation.",
+            "anchor": "draft:isAnimation"
+          },
+          {
+            "signature": "draft:isBuilding ()",
+            "summary": "Returns true iff the draft defines a building.",
+            "anchor": "draft:isBuilding"
+          },
+          {
+            "signature": "draft:isCar ()",
+            "summary": "Returns true iff the draft defines a car.",
+            "anchor": "draft:isCar"
+          },
+          {
+            "signature": "draft:isCategory ()",
+            "summary": "Returns true iff the draft defines a category.",
+            "anchor": "draft:isCategory"
+          },
+          {
+            "signature": "draft:isCommercial ()",
+            "summary": "Returns true iff the draft defines a commercial building.",
+            "anchor": "draft:isCommercial"
+          },
+          {
+            "signature": "draft:isComposition ()",
+            "summary": "Returns true iff the building is a composition.",
+            "anchor": "draft:isComposition"
+          },
+          {
+            "signature": "draft:isFinal ()",
+            "summary": "Returns true iff the draft is declared as final (isFinal in json definition).",
+            "anchor": "draft:isFinal"
+          },
+          {
+            "signature": "draft:isGround ()",
+            "summary": "Returns true iff the draft defines a ground type.",
+            "anchor": "draft:isGround"
+          },
+          {
+            "signature": "draft:isIndustrial ()",
+            "summary": "Returns true iff the draft defines an industrial building.",
+            "anchor": "draft:isIndustrial"
+          },
+          {
+            "signature": "draft:isLoaded ()",
+            "summary": "True unless the plugin is unloaded right now.",
+            "anchor": "draft:isLoaded"
+          },
+          {
+            "signature": "draft:isPlugin ()",
+            "summary": "Returns true iff the draft is part of a plugin (also local ones).",
+            "anchor": "draft:isPlugin"
+          },
+          {
+            "signature": "draft:isRCI ()",
+            "summary": "Returns true iff the draft defines a building that is either residential, commercial or industrial.",
+            "anchor": "draft:isRCI"
+          },
+          {
+            "signature": "draft:isResidential ()",
+            "summary": "Returns true iff the draft defines a residential building.",
+            "anchor": "draft:isResidential"
+          },
+          {
+            "signature": "draft:isRoad ()",
+            "summary": "Returns true iff the draft defines a road.",
+            "anchor": "draft:isRoad"
+          },
+          {
+            "signature": "draft:isRoadDecoration ()",
+            "summary": "Returns true iff the draft defines a road decoration.",
+            "anchor": "draft:isRoadDecoration"
+          },
+          {
+            "signature": "draft:isTemplate ()",
+            "summary": "Returns true iff the draft defines a draft template.",
+            "anchor": "draft:isTemplate"
+          },
+          {
+            "signature": "draft:isTree ()",
+            "summary": "Returns true iff the draft defines a tree.",
+            "anchor": "draft:isTree"
+          },
+          {
+            "signature": "draft:isUnlocked ()",
+            "summary": "Returns whether this draft is unlocked.",
+            "anchor": "draft:isUnlocked"
+          },
+          {
+            "signature": "draft:isVisible ()",
+            "summary": "Returns true iff the draft is visible (corresponds to negated hidden attribute in json).",
+            "anchor": "draft:isVisible"
+          },
+          {
+            "signature": "draft:setFrame (frameIndex, frame)",
+            "summary": "Overrides a frame by index.",
+            "anchor": "draft:setFrame"
+          },
+          {
+            "signature": "draft:setFrameType (frameIndex, frameType)",
+            "summary": "Sets the frame type of a frame based on its index (starting with 1).",
+            "anchor": "draft:setFrameType"
+          },
+          {
+            "signature": "draft:setPreviewFrame (frameIndex, frame)",
+            "summary": "Overrides a frame by index.",
+            "anchor": "draft:setPreviewFrame"
+          },
+          {
+            "signature": "draft:setVisible (state)",
+            "summary": "Sets the visibility state of the draft (corresponds to negated hidden attribute in json).",
+            "anchor": "draft:setVisible"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Drawing",
+      "summary": "Functions for drawing images and text. See here for more information: link",
+      "url": "https://doc.theotown.com/modules/Drawing.html",
+      "functions": [
+        {
+          "signature": "addColor (r[, g=r[, b=g]])",
+          "summary": "Changes the currently set color in an additive way.",
+          "anchor": "addColor"
+        },
+        {
+          "signature": "adjustColor (r[, g=r[, b=g]])",
+          "summary": "Assumes the input color is a color as intended to be displayed in light mode.",
+          "anchor": "adjustColor"
+        },
+        {
+          "signature": "allocateFrameType ()",
+          "summary": "Allocates a free frame type integer for use with Drawing.setFrameType.",
+          "anchor": "allocateFrameType"
+        },
+        {
+          "signature": "drawCircle (x, y, w, h[, fillRatio=1[, startAngle=0[, endAngle=2*math.pi]]])",
+          "summary": "Draws a circle in the specified rectangle.",
+          "anchor": "drawCircle"
+        },
+        {
+          "signature": "drawImage (frame, x, y)",
+          "summary": "Draws a frame.",
+          "anchor": "drawImage"
+        },
+        {
+          "signature": "drawImageRect (frame, x, y, w, h)",
+          "summary": "Draws a frame into a specified rectangle.",
+          "anchor": "drawImageRect"
+        },
+        {
+          "signature": "drawImageRotated (frame, x, y, angle)",
+          "summary": "Draws a frame rotated around its image handle.",
+          "anchor": "drawImageRotated"
+        },
+        {
+          "signature": "drawLine (x0, y0, x1, y1[, width=1])",
+          "summary": "Draws a line.",
+          "anchor": "drawLine"
+        },
+        {
+          "signature": "drawNinePatch (frame, x, y, w, h[, sparse=false])",
+          "summary": "Draws a nine patch into a specified rectangle.",
+          "anchor": "drawNinePatch"
+        },
+        {
+          "signature": "drawQuad (x0, y0, x1, y1, x2, y2, x3, y3[, frame=nil])",
+          "summary": "Draws a quad using four corner points.",
+          "anchor": "drawQuad"
+        },
+        {
+          "signature": "drawRect (x, y, w, h)",
+          "summary": "Draws a filled rectangle.",
+          "anchor": "drawRect"
+        },
+        {
+          "signature": "drawText (text, x, y[, font=nil[, centerX=0[, centerY=0]]])",
+          "summary": "Draws a text.",
+          "anchor": "drawText"
+        },
+        {
+          "signature": "drawTileFrame (frame)",
+          "summary": "Draws a tile frame on the currently set tile.",
+          "anchor": "drawTileFrame"
+        },
+        {
+          "signature": "drawTriangle (x0, y0, x1, y1, x2, y2[, frame=nil])",
+          "summary": "Draws a triangle.",
+          "anchor": "drawTriangle"
+        },
+        {
+          "signature": "flowImage (frame)",
+          "summary": "Draws an image.",
+          "anchor": "flowImage"
+        },
+        {
+          "signature": "flowText (text)",
+          "summary": "Draws a text.",
+          "anchor": "flowText"
+        },
+        {
+          "signature": "flush ()",
+          "summary": "Flushes the drawing pipeline.",
+          "anchor": "flush"
+        },
+        {
+          "signature": "getAdditive ()",
+          "summary": "Returns the current additive factor for drawing.",
+          "anchor": "getAdditive"
+        },
+        {
+          "signature": "getAlpha ()",
+          "summary": "Returns the current transparency for drawing.",
+          "anchor": "getAlpha"
+        },
+        {
+          "signature": "getColor ()",
+          "summary": "Returns the current drawing color.",
+          "anchor": "getColor"
+        },
+        {
+          "signature": "getDaytime ()",
+          "summary": "Returns the current part of the \"visual day\" with 0.5 being noon.",
+          "anchor": "getDaytime"
+        },
+        {
+          "signature": "getDaytimeColor ()",
+          "summary": "Returns the shading color that is used for the current day time.",
+          "anchor": "getDaytimeColor"
+        },
+        {
+          "signature": "getFlowHeight ()",
+          "summary": "Returns the total height used by flow functions within the current text frame.",
+          "anchor": "getFlowHeight"
+        },
+        {
+          "signature": "getFrameType ()",
+          "summary": "Gets the currently set frame type.",
+          "anchor": "getFrameType"
+        },
+        {
+          "signature": "getImageHandle (frame)",
+          "summary": "Returns the handle of an image/frame.",
+          "anchor": "getImageHandle"
+        },
+        {
+          "signature": "getImageSize (frame)",
+          "summary": "Returns the size of an image/frame.",
+          "anchor": "getImageSize"
+        },
+        {
+          "signature": "getScale ()",
+          "summary": "Returns the current scale factors set by setScale.",
+          "anchor": "getScale"
+        },
+        {
+          "signature": "getSize ()",
+          "summary": "Returns the current screen size width, height in pixels.",
+          "anchor": "getSize"
+        },
+        {
+          "signature": "getTextSize (text[, font=nil])",
+          "summary": "Queries the drawing size for a given text.",
+          "anchor": "getTextSize"
+        },
+        {
+          "signature": "nl ([spacing=0.0])",
+          "summary": "For flow text: starts a new line.",
+          "anchor": "nl"
+        },
+        {
+          "signature": "reset ()",
+          "summary": "Resets all drawing properties.",
+          "anchor": "reset"
+        },
+        {
+          "signature": "resetClipping ()",
+          "summary": "Resets clipping so that draw functions affect all pixels again.",
+          "anchor": "resetClipping"
+        },
+        {
+          "signature": "setAdditive (additive)",
+          "summary": "Sets the additive factor used for additive drawing.",
+          "anchor": "setAdditive"
+        },
+        {
+          "signature": "setAlpha (alpha)",
+          "summary": "Sets the transparency for drawing.",
+          "anchor": "setAlpha"
+        },
+        {
+          "signature": "setClipping (x, y, w, h)",
+          "summary": "Sets the clipping rect to a specified rectangle.",
+          "anchor": "setClipping"
+        },
+        {
+          "signature": "setColor (r, g, b)",
+          "summary": "Sets the drawing color.",
+          "anchor": "setColor"
+        },
+        {
+          "signature": "setDynamic (x, y, z[, offsetX=0[, offsetY=0[, localScaleX=1[, localScaleY=1]]]])",
+          "summary": "Sets the drawing origin and scale to a position on the map.",
+          "anchor": "setDynamic"
+        },
+        {
+          "signature": "setFont ([font=Font.DEFAULT])",
+          "summary": "Sets the default font for drawText, getTextSize and text frame related functions.",
+          "anchor": "setFont"
+        },
+        {
+          "signature": "setFrameType (frameType)",
+          "summary": "Sets a frame type that will be applied to the next drawn frames.",
+          "anchor": "setFrameType"
+        },
+        {
+          "signature": "setScale (scaleX, scaleY)",
+          "summary": "Sets the scale for drawing (absolute).",
+          "anchor": "setScale"
+        },
+        {
+          "signature": "setTextFrame (x, y, w, h)",
+          "summary": "Sets a text frame rectangle for flow text functions and resets the flow cursor.",
+          "anchor": "setTextFrame"
+        },
+        {
+          "signature": "setTile (tileX, tileY[, offsetX=0[, offsetY=0[, localScaleX=1[, localScaleY=1]]]])",
+          "summary": "Sets the current drawing offset and scale to a certain tile on the map.",
+          "anchor": "setTile"
+        },
+        {
+          "signature": "setUniform (name, v0[, v1[, v2[, v3]]])",
+          "summary": "Sets a uniform float vector that can be used in shaders.",
+          "anchor": "setUniform"
+        }
+      ],
+      "classes": {}
+    },
+    {
+      "name": "DSA",
+      "summary": "This library contains functions associated with the DSA integration.",
+      "url": "https://doc.theotown.com/modules/DSA.html",
+      "functions": [
+        {
+          "signature": "getSupplies ()",
+          "summary": "Returns the supply count of the DSA rocket station.",
+          "anchor": "getSupplies"
+        },
+        {
+          "signature": "isInMoon ()",
+          "summary": "Returns whether the current city is on the Moon.",
+          "anchor": "isInMoon"
+        }
+      ],
+      "classes": {}
+    },
+    {
+      "name": "GUI",
+      "summary": "Allows to access UI elements of the game. See the GUI Compendium for a broader explanation of how to use the GUI module and what you can do with it.",
+      "url": "https://doc.theotown.com/modules/GUI.html",
+      "functions": [
+        {
+          "signature": "createDialog (args)",
+          "summary": "Shows a dialog on the screen.",
+          "anchor": "createDialog"
+        },
+        {
+          "signature": "createMenu (args)",
+          "summary": "Shows a menu with various actions in it.",
+          "anchor": "createMenu"
+        },
+        {
+          "signature": "createRenameDialog (args)",
+          "summary": "Shows a dialog that allows the user to enter some text.",
+          "anchor": "createRenameDialog"
+        },
+        {
+          "signature": "createSelectDraftDialog (args)",
+          "summary": "Shows a dialog that allows the user to select a single or multiple drafts from a list of drafts.",
+          "anchor": "createSelectDraftDialog"
+        },
+        {
+          "signature": "get (id)",
+          "summary": "Finds a GUI object by its id.",
+          "anchor": "get"
+        },
+        {
+          "signature": "getRoot ()",
+          "summary": "Returns the root GUI object.",
+          "anchor": "getRoot"
+        },
+        {
+          "signature": "getThemeId ()",
+          "summary": "Returns the id of the currently active theme.",
+          "anchor": "getThemeId"
+        },
+        {
+          "signature": "isDarkMode ()",
+          "summary": "Returns true if dark mode theme is enabled.",
+          "anchor": "isDarkMode"
+        },
+        {
+          "signature": "showColorPicker (args)",
+          "summary": "Shows a color picker.",
+          "anchor": "showColorPicker"
+        }
+      ],
+      "classes": {
+        "GUI": [
+          {
+            "signature": "gui:addButton (args)",
+            "summary": "Adds a button object.",
+            "anchor": "gui:addButton"
+          },
+          {
+            "signature": "gui:addCanvas (args)",
+            "summary": "Adds a canvas object.",
+            "anchor": "gui:addCanvas"
+          },
+          {
+            "signature": "gui:addHotkey (key[, mod=nil])",
+            "summary": "Adds a hotkey to a GUI object.",
+            "anchor": "gui:addHotkey"
+          },
+          {
+            "signature": "gui:addIcon (args)",
+            "summary": "Adds an icon object.",
+            "anchor": "gui:addIcon"
+          },
+          {
+            "signature": "gui:addLabel (args)",
+            "summary": "Adds a label object.",
+            "anchor": "gui:addLabel"
+          },
+          {
+            "signature": "gui:addLayout (args)",
+            "summary": "Adds a layout object.",
+            "anchor": "gui:addLayout"
+          },
+          {
+            "signature": "gui:addListBox (args)",
+            "summary": "Adds a listbox object.",
+            "anchor": "gui:addListBox"
+          },
+          {
+            "signature": "gui:addPanel (args)",
+            "summary": "Adds a panel object.",
+            "anchor": "gui:addPanel"
+          },
+          {
+            "signature": "gui:addSlider (args)",
+            "summary": "Adds a slider object.",
+            "anchor": "gui:addSlider"
+          },
+          {
+            "signature": "gui:addTextField (args)",
+            "summary": "Adds a textfield object.",
+            "anchor": "gui:addTextField"
+          },
+          {
+            "signature": "gui:addTextFrame (args)",
+            "summary": "Adds a textframe object.",
+            "anchor": "gui:addTextFrame"
+          },
+          {
+            "signature": "gui:countChildren ()",
+            "summary": "Returns the number of children GUI objects this object has.",
+            "anchor": "gui:countChildren"
+          },
+          {
+            "signature": "gui:delete ()",
+            "summary": "Removes this GUI object from the active GUI hierarchy which will effectively delete it.",
+            "anchor": "gui:delete"
+          },
+          {
+            "signature": "gui:getAbsoluteParent ()",
+            "summary": "Returns the top-most parent of this GUI object.",
+            "anchor": "gui:getAbsoluteParent"
+          },
+          {
+            "signature": "gui:getAbsoluteX ()",
+            "summary": "Returns the absolute x location of the GUI object.",
+            "anchor": "gui:getAbsoluteX"
+          },
+          {
+            "signature": "gui:getAbsoluteY ()",
+            "summary": "Returns the absolute y location of the GUI object.",
+            "anchor": "gui:getAbsoluteY"
+          },
+          {
+            "signature": "gui:getChild (index)",
+            "summary": "Gets a child by its index.",
+            "anchor": "gui:getChild"
+          },
+          {
+            "signature": "gui:getChildIndex ()",
+            "summary": "Gets the child index of this GUI object.",
+            "anchor": "gui:getChildIndex"
+          },
+          {
+            "signature": "gui:getClientHeight ()",
+            "summary": "Returns the height of the inner area of the GUI object.",
+            "anchor": "gui:getClientHeight"
+          },
+          {
+            "signature": "gui:getClientWidth ()",
+            "summary": "Returns the width of the inner area of the GUI object.",
+            "anchor": "gui:getClientWidth"
+          },
+          {
+            "signature": "gui:getFont ()",
+            "summary": "Gets the font of a GUI object.",
+            "anchor": "gui:getFont"
+          },
+          {
+            "signature": "gui:getHeight ()",
+            "summary": "Returns the height of the GUI object.",
+            "anchor": "gui:getHeight"
+          },
+          {
+            "signature": "gui:getIcon ()",
+            "summary": "Gets the set icon of a GUI object.",
+            "anchor": "gui:getIcon"
+          },
+          {
+            "signature": "gui:getId ()",
+            "summary": "Gets the id of the GUI object.",
+            "anchor": "gui:getId"
+          },
+          {
+            "signature": "gui:getPadding ()",
+            "summary": "Returns the padding of this GUI object.",
+            "anchor": "gui:getPadding"
+          },
+          {
+            "signature": "gui:getParent ()",
+            "summary": "Returns the parent GUI object of this object.",
+            "anchor": "gui:getParent"
+          },
+          {
+            "signature": "gui:getShiftY ()",
+            "summary": "For list boxes returns the current y offset.",
+            "anchor": "gui:getShiftY"
+          },
+          {
+            "signature": "gui:getText ()",
+            "summary": "Returns the text of a GUI object.",
+            "anchor": "gui:getText"
+          },
+          {
+            "signature": "gui:getTouchPoint ()",
+            "summary": "Returns the active touch point that is active in this GUI object if there is any and if this object is touch sensitive (like buttons, canvases, ...).",
+            "anchor": "gui:getTouchPoint"
+          },
+          {
+            "signature": "gui:getWidth ()",
+            "summary": "Returns the width of the GUI object.",
+            "anchor": "gui:getWidth"
+          },
+          {
+            "signature": "gui:getX ()",
+            "summary": "Returns the local x location of the GUI object relative to its parent.",
+            "anchor": "gui:getX"
+          },
+          {
+            "signature": "gui:getY ()",
+            "summary": "Returns the local y location of the GUI object relative to its parent.",
+            "anchor": "gui:getY"
+          },
+          {
+            "signature": "gui:isActive ()",
+            "summary": "For text fields: returns whether the text field is currently selected for input.",
+            "anchor": "gui:isActive"
+          },
+          {
+            "signature": "gui:isEnabled ()",
+            "summary": "Returns whether this GUI object is enabled right now.",
+            "anchor": "gui:isEnabled"
+          },
+          {
+            "signature": "gui:isMouseOver ()",
+            "summary": "Determines whether the mouse pointer is currently over the GUI object.",
+            "anchor": "gui:isMouseOver"
+          },
+          {
+            "signature": "gui:isValid ()",
+            "summary": "Determines whether this GUI object is valid.",
+            "anchor": "gui:isValid"
+          },
+          {
+            "signature": "gui:isVisible ()",
+            "summary": "Returns whether this GUI object is set to be visible right now.",
+            "anchor": "gui:isVisible"
+          },
+          {
+            "signature": "gui:layout ()",
+            "summary": "Issues a recalculation of this GUI object's layout and its children.",
+            "anchor": "gui:layout"
+          },
+          {
+            "signature": "gui:removeHotkey (key[, mod=nil])",
+            "summary": "Removes a hotkey from the GUI object.",
+            "anchor": "gui:removeHotkey"
+          },
+          {
+            "signature": "gui:setActive ()",
+            "summary": "Marks a text field as active, meaning that it will be focused for user input.",
+            "anchor": "gui:setActive"
+          },
+          {
+            "signature": "gui:setChildIndex (index)",
+            "summary": "Sets the child index of this GUI object.",
+            "anchor": "gui:setChildIndex"
+          },
+          {
+            "signature": "gui:setEnabled (state)",
+            "summary": "Enables or disables this GUI object.",
+            "anchor": "gui:setEnabled"
+          },
+          {
+            "signature": "gui:setFont (font)",
+            "summary": "Sets the font of a GUI object.",
+            "anchor": "gui:setFont"
+          },
+          {
+            "signature": "gui:setIcon (icon)",
+            "summary": "Sets the icon of a GUI object.",
+            "anchor": "gui:setIcon"
+          },
+          {
+            "signature": "gui:setId (id)",
+            "summary": "Sets the id of the GUI object.",
+            "anchor": "gui:setId"
+          },
+          {
+            "signature": "gui:setPadding (left, top, right, bottom)",
+            "summary": "Sets the padding of this GUI object.",
+            "anchor": "gui:setPadding"
+          },
+          {
+            "signature": "gui:setPosition (x, y)",
+            "summary": "Sets the position of that GUI object to the given location.",
+            "anchor": "gui:setPosition"
+          },
+          {
+            "signature": "gui:setShiftY (y)",
+            "summary": "Sets the scrolling offset for a list box.",
+            "anchor": "gui:setShiftY"
+          },
+          {
+            "signature": "gui:setShowBorder (state)",
+            "summary": "Sets the visibility of the border and background of a textframe or listbox.",
+            "anchor": "gui:setShowBorder"
+          },
+          {
+            "signature": "gui:setSize (width, height)",
+            "summary": "Sets the size of the GUI object.",
+            "anchor": "gui:setSize"
+          },
+          {
+            "signature": "gui:setText (text)",
+            "summary": "Sets the text of a GUI object.",
+            "anchor": "gui:setText"
+          },
+          {
+            "signature": "gui:setTouchThrough (state)",
+            "summary": "Sets the touch-through state of the GUI object.",
+            "anchor": "gui:setTouchThrough"
+          },
+          {
+            "signature": "gui:setVisible (state)",
+            "summary": "Sets this GUI object to be visible or invisible.",
+            "anchor": "gui:setVisible"
+          }
+        ]
+      }
+    },
+    {
+      "name": "NeighborCity",
+      "summary": "Neighbor City library for TheoTown. This library provides functions to manage custom, virtual neighboring cities that the player can trade with. The goal is to extend the user experience especially in Online Mode where by default no neighborhood commercial is available. Each neighbor city belongs to the draft that created it. Because of that, uninstalling a plugin that created a virtual neighbor will also remove that neighbor city. This library is only available while a city is open.",
+      "url": "https://doc.theotown.com/modules/NeighborCity.html",
+      "functions": [
+        {
+          "signature": "create (id[, name=nil])",
+          "summary": "Creates a new virtual neighboring city using the given id and name.",
+          "anchor": "create"
+        },
+        {
+          "signature": "get (id)",
+          "summary": "Returns the neighbor city object of this draft that has the given id.",
+          "anchor": "get"
+        },
+        {
+          "signature": "getNeighbors ()",
+          "summary": "Returns an array of all neighbor city objects that belong to this draft.",
+          "anchor": "getNeighbors"
+        }
+      ],
+      "classes": {
+        "NeighborCity": [
+          {
+            "signature": "neighborCity:delete ()",
+            "summary": "Deletes this neighbor city so it can no longer be used for trading.",
+            "anchor": "neighborCity:delete"
+          },
+          {
+            "signature": "neighborCity:getBodyDisposal ()",
+            "summary": "Returns the amount of body disposal services this neighbor city can export.",
+            "anchor": "neighborCity:getBodyDisposal"
+          },
+          {
+            "signature": "neighborCity:getId ()",
+            "summary": "Returns the unique id of this neighbor city.",
+            "anchor": "neighborCity:getId"
+          },
+          {
+            "signature": "neighborCity:getName ()",
+            "summary": "Returns the displayed name for this city.",
+            "anchor": "neighborCity:getName"
+          },
+          {
+            "signature": "neighborCity:getPower ()",
+            "summary": "Returns the amount of power this neighbor city can export.",
+            "anchor": "neighborCity:getPower"
+          },
+          {
+            "signature": "neighborCity:getPowerExport ()",
+            "summary": "Returns the current power trade with this neighbor city.",
+            "anchor": "neighborCity:getPowerExport"
+          },
+          {
+            "signature": "neighborCity:getWasteDisposal ()",
+            "summary": "Returns the amount of waste disposal services this neighbor city can export.",
+            "anchor": "neighborCity:getWasteDisposal"
+          },
+          {
+            "signature": "neighborCity:getWater ()",
+            "summary": "Returns the amount of water this neighbor city can export.",
+            "anchor": "neighborCity:getWater"
+          },
+          {
+            "signature": "neighborCity:isValid ()",
+            "summary": "Determines whether this neighbor city object is valid.",
+            "anchor": "neighborCity:isValid"
+          },
+          {
+            "signature": "neighborCity:setBodyDisposal (amount)",
+            "summary": "Sets the amount of body disposal services this neighbor city can export.",
+            "anchor": "neighborCity:setBodyDisposal"
+          },
+          {
+            "signature": "neighborCity:setName (name)",
+            "summary": "Sets a visible name for this city.",
+            "anchor": "neighborCity:setName"
+          },
+          {
+            "signature": "neighborCity:setPower (amount)",
+            "summary": "Sets the amount of power this neighbor city can export.",
+            "anchor": "neighborCity:setPower"
+          },
+          {
+            "signature": "neighborCity:setWasteDisposal (amount)",
+            "summary": "Sets the amount of waste disposal services this neighbor city can export.",
+            "anchor": "neighborCity:setWasteDisposal"
+          },
+          {
+            "signature": "neighborCity:setWater (amount)",
+            "summary": "Sets the amount of water this neighbor city can export.",
+            "anchor": "neighborCity:setWater"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Runtime",
+      "summary": "Functions to access general runtime information.",
+      "url": "https://doc.theotown.com/modules/Runtime.html",
+      "functions": [
+        {
+          "signature": "fromJson (json)",
+          "summary": "Converts a JSON string into a Lua table.",
+          "anchor": "fromJson"
+        },
+        {
+          "signature": "getId ()",
+          "summary": "Package id of the app, should be 'info.flowersoft.theotown.theotown'",
+          "anchor": "getId"
+        },
+        {
+          "signature": "getModel ()",
+          "summary": "Returns model name and manufacturer of the device.",
+          "anchor": "getModel"
+        },
+        {
+          "signature": "getName ()",
+          "summary": "Name of the application, should be 'TheoTown'",
+          "anchor": "getName"
+        },
+        {
+          "signature": "getOSVersion ()",
+          "summary": "Returns the OS version (e.g.",
+          "anchor": "getOSVersion"
+        },
+        {
+          "signature": "getPlatform ()",
+          "summary": "Returns a string representing the platform TheoTown is running on right now.",
+          "anchor": "getPlatform"
+        },
+        {
+          "signature": "getTime ()",
+          "summary": "Unix timestamp in milliseconds",
+          "anchor": "getTime"
+        },
+        {
+          "signature": "getUuid ()",
+          "summary": "Returns a random uuid string.",
+          "anchor": "getUuid"
+        },
+        {
+          "signature": "getVersion ()",
+          "summary": "Current version of TheoTown, e.g.",
+          "anchor": "getVersion"
+        },
+        {
+          "signature": "getVersionCode ()",
+          "summary": "Current version of TheoTown as number, e.g.",
+          "anchor": "getVersionCode"
+        },
+        {
+          "signature": "isPremium ()",
+          "summary": "Returns true iff this copy of TheoTown is a premium version.",
+          "anchor": "isPremium"
+        },
+        {
+          "signature": "postpone (func[, delayMS])",
+          "summary": "Postpones the execution of a function.",
+          "anchor": "postpone"
+        },
+        {
+          "signature": "toJson (table)",
+          "summary": "Converts a table into a JSON string.",
+          "anchor": "toJson"
+        }
+      ],
+      "classes": {}
+    },
+    {
+      "name": "Script",
+      "summary": "The Script module provides callbacks for scripts attached to drafts. Each script instance is attached to one draft. Define callback methods on script to respond to lifecycle events and interactions with that draft. The game calls these methods when the corresponding events occur. Usage: local x = 0 function script:init() Debug.toast('init') end function script:update() Debug.info(x) x = x + 1 end",
+      "url": "https://doc.theotown.com/modules/Script.html",
+      "functions": [
+        {
+          "signature": "getScript ()",
+          "summary": "Returns the current script or nil if no script is running right now.",
+          "anchor": "getScript"
+        },
+        {
+          "signature": "getScripts ([tag])",
+          "summary": "Returns an array of all scripts, or, if tag is specified, an array of all scripts that defined the given tag.",
+          "anchor": "getScripts"
+        }
+      ],
+      "classes": {
+        "Script": [
+          {
+            "signature": "Script:addScript (name, draft[, initializer])",
+            "summary": "Adds a script to a draft.",
+            "anchor": "Script:addScript"
+          },
+          {
+            "signature": "Script:addTag (tag)",
+            "summary": "Adds a tag to this script.",
+            "anchor": "Script:addTag"
+          },
+          {
+            "signature": "Script:getDraft ()",
+            "summary": "Returns the draft the script is attached to.",
+            "anchor": "Script:getDraft"
+          },
+          {
+            "signature": "Script:getId ()",
+            "summary": "Every script is uniquely identified by a single number.",
+            "anchor": "Script:getId"
+          },
+          {
+            "signature": "Script:getLocation ()",
+            "summary": "Returns a readable location identifier that contains the draft id.",
+            "anchor": "Script:getLocation"
+          },
+          {
+            "signature": "Script:getName ()",
+            "summary": "Returns the name of the script.",
+            "anchor": "Script:getName"
+          },
+          {
+            "signature": "Script:getParent ()",
+            "summary": "Returns the parent script if there is any, nil otherwise.",
+            "anchor": "Script:getParent"
+          },
+          {
+            "signature": "Script:getParents ()",
+            "summary": "Returns an array of all parent scripts.",
+            "anchor": "Script:getParents"
+          },
+          {
+            "signature": "Script:getPath ()",
+            "summary": "Returns the relative path of the script.",
+            "anchor": "Script:getPath"
+          },
+          {
+            "signature": "Script:getTags ()",
+            "summary": "Returns an array that contains the tags that have been defined for that script.",
+            "anchor": "Script:getTags"
+          },
+          {
+            "signature": "Script:isActive ()",
+            "summary": "Determines whether the script is active right now.",
+            "anchor": "Script:isActive"
+          },
+          {
+            "signature": "Script:setActive (state)",
+            "summary": "Activates or disables the script.",
+            "anchor": "Script:setActive"
+          }
+        ]
+      }
+    },
+    {
+      "name": "string",
+      "summary": "This module extends the functionality contained in the string table for convenience. See the official string documentation for other functions that are available in the string table. Since the string table is the hardwired __index table for string objects you can call them using the short : notion. Usage: local str = 'Hello World' print(string.startsWith(str, 'Hello')) -- Prints true print(str:startsWith('Hello')) -- Equivalent to previous line -- Note that you have to put parentheses () around a string if you want to call a function on it directly print(('Hello World'):startsWith('Hello')) -- Prints true print(Array(str:split(' '))) -- Prints {Hello, World} print(str:split(' ')[1]) -- Prints Hello print(str:split(' ')[2]) -- Prints World",
+      "url": "https://doc.theotown.com/modules/string.html",
+      "functions": [
+        {
+          "signature": "contains (needle)",
+          "summary": "Returns true iff the string matches the given Lua pattern.",
+          "anchor": "contains"
+        },
+        {
+          "signature": "endsWith (part)",
+          "summary": "Checks whether the string ends with the given string.",
+          "anchor": "endsWith"
+        },
+        {
+          "signature": "split (sep)",
+          "summary": "Splits the string into non-empty fields using separator characters.",
+          "anchor": "split"
+        },
+        {
+          "signature": "startsWith (part)",
+          "summary": "Checks whether the string starts with the given string.",
+          "anchor": "startsWith"
+        },
+        {
+          "signature": "trim ()",
+          "summary": "Removes whitespace from the start and end of the string.",
+          "anchor": "trim"
+        }
+      ],
+      "classes": {}
+    },
+    {
+      "name": "TheoTown",
+      "summary": "TheoTown specific functions that don't fit into other libraries.",
+      "url": "https://doc.theotown.com/modules/TheoTown.html",
+      "functions": [
+        {
+          "signature": "execute (cmd, receiver)",
+          "summary": "Executes a command as if it was entered into the console.",
+          "anchor": "execute"
+        },
+        {
+          "signature": "formatMoney (amount[, signed=false])",
+          "summary": "Formats a number as an amount of money and appends the Theon symbol.",
+          "anchor": "formatMoney"
+        },
+        {
+          "signature": "formatNumber (amount[, signed=false[, abbreviate=true]])",
+          "summary": "Formats a (big) number.",
+          "anchor": "formatNumber"
+        },
+        {
+          "signature": "getDiamonds ()",
+          "summary": "Returns the number of diamonds that the user currently has.",
+          "anchor": "getDiamonds"
+        },
+        {
+          "signature": "getFileStorage ()",
+          "summary": "Returns a game wide storage table that's backed by an actual file.",
+          "anchor": "getFileStorage"
+        },
+        {
+          "signature": "getGlobalFunVar (name[, fallbackValue])",
+          "summary": "Returns the value of the global fun variable of the given name or fallbackValue if no such variable has been defined, yet.",
+          "anchor": "getGlobalFunVar"
+        },
+        {
+          "signature": "getPlayTime ()",
+          "summary": "Returns the play time in the game in seconds.",
+          "anchor": "getPlayTime"
+        },
+        {
+          "signature": "getStorage ()",
+          "summary": "Returns a game wide storage table.",
+          "anchor": "getStorage"
+        },
+        {
+          "signature": "getUserName ()",
+          "summary": "Returns the name of the currently logged-in user, or nil if the player is not logged in.",
+          "anchor": "getUserName"
+        },
+        {
+          "signature": "isMultiplayer ()",
+          "summary": "Returns true iff this version of the game is capable of running multiplayer mode.",
+          "anchor": "isMultiplayer"
+        },
+        {
+          "signature": "isRTL ()",
+          "summary": "Returns true if the currently selected language prefers a right to left layout.",
+          "anchor": "isRTL"
+        },
+        {
+          "signature": "loadCity (path[, overwrite[, private[, target]]])",
+          "summary": "Loads a city file provided by the plugin.",
+          "anchor": "loadCity"
+        },
+        {
+          "signature": "playSound (sound[, volume=1[, loop=false]])",
+          "summary": "Plays a sound.",
+          "anchor": "playSound"
+        },
+        {
+          "signature": "registerCommand (name, action)",
+          "summary": "Registers a function that can be called from the console.",
+          "anchor": "registerCommand"
+        },
+        {
+          "signature": "setGlobalFunVar (name, value)",
+          "summary": "Sets the value of a global fun variable called name.",
+          "anchor": "setGlobalFunVar"
+        },
+        {
+          "signature": "spendDiamonds (amount)",
+          "summary": "Spends amount diamonds if possible.",
+          "anchor": "spendDiamonds"
+        },
+        {
+          "signature": "translate (id)",
+          "summary": "Translates an id into the corresponding string.",
+          "anchor": "translate"
+        },
+        {
+          "signature": "translateInline (str)",
+          "summary": "Resolves the translation of an inline translation string.",
+          "anchor": "translateInline"
+        }
+      ],
+      "classes": {}
+    },
+    {
+      "name": "Tile",
+      "summary": "Contains functions to query single tiles for information about objects on them.",
+      "url": "https://doc.theotown.com/modules/Tile.html",
+      "functions": [
+        {
+          "signature": "abandonBuilding (x, y)",
+          "summary": "Abandons the building at the given location.",
+          "anchor": "abandonBuilding"
+        },
+        {
+          "signature": "countRoadBridgeType (x, y, level)",
+          "summary": "Returns the bridges number of the road at a given position and level.",
+          "anchor": "countRoadBridgeType"
+        },
+        {
+          "signature": "countRoadDecos (x, y, level)",
+          "summary": "Returns the number of decorations on the road at a given position and level.",
+          "anchor": "countRoadDecos"
+        },
+        {
+          "signature": "extinguishBurningBuilding (x, y)",
+          "summary": "Extinguishes the fire of a building at a given position.",
+          "anchor": "extinguishBurningBuilding"
+        },
+        {
+          "signature": "getBuilding (x, y)",
+          "summary": "Returns a building object for calling building-related functions more conveniently.",
+          "anchor": "getBuilding"
+        },
+        {
+          "signature": "getBuildingAnimationColor (x, y[, slot=1])",
+          "summary": "Gets the color of an animation of a building.",
+          "anchor": "getBuildingAnimationColor"
+        },
+        {
+          "signature": "getBuildingAnimationFrame (x, y[, slot=1])",
+          "summary": "Returns the current frame of an animation that is attached to a building.",
+          "anchor": "getBuildingAnimationFrame"
+        },
+        {
+          "signature": "getBuildingDaysBuilt (x, y)",
+          "summary": "Returns the number of days since this building was constructed.",
+          "anchor": "getBuildingDaysBuilt"
+        },
+        {
+          "signature": "getBuildingDraft (x, y)",
+          "summary": "Returns the draft of a building at a given position.",
+          "anchor": "getBuildingDraft"
+        },
+        {
+          "signature": "getBuildingDrawXY (x, y)",
+          "summary": "Returns the draw pivot position of the building at a given position.",
+          "anchor": "getBuildingDrawXY"
+        },
+        {
+          "signature": "getBuildingFrame (x, y)",
+          "summary": "Returns the current frame of a building at a given position.",
+          "anchor": "getBuildingFrame"
+        },
+        {
+          "signature": "getBuildingIcon (x, y)",
+          "summary": "Gets the currently set custom building icon for the specified building.",
+          "anchor": "getBuildingIcon"
+        },
+        {
+          "signature": "getBuildingName (x, y)",
+          "summary": "Gets the name of a building",
+          "anchor": "getBuildingName"
+        },
+        {
+          "signature": "getBuildingPerformance (x, y)",
+          "summary": "Returns the current performance of a building at a given position.",
+          "anchor": "getBuildingPerformance"
+        },
+        {
+          "signature": "getBuildingStorage (x, y)",
+          "summary": "Returns the storage table of the building at a given position.",
+          "anchor": "getBuildingStorage"
+        },
+        {
+          "signature": "getBuildingXY (x, y)",
+          "summary": "Returns the pivot position of a building at a given position.",
+          "anchor": "getBuildingXY"
+        },
+        {
+          "signature": "getBusStop (x, y, level)",
+          "summary": "Returns the draft of the bus stop on the road at a given position and level.",
+          "anchor": "getBusStop"
+        },
+        {
+          "signature": "getCornerTerrainHeight (x, y)",
+          "summary": "Returns the terrain height of the tile corner at a given position.",
+          "anchor": "getCornerTerrainHeight"
+        },
+        {
+          "signature": "getFenceDraft (x, y, edge)",
+          "summary": "Returns the fence draft of the fence at the given location at the given edge.",
+          "anchor": "getFenceDraft"
+        },
+        {
+          "signature": "getGroundDraft (x, y[, level=0])",
+          "summary": "Returns the ground draft at a given position.",
+          "anchor": "getGroundDraft"
+        },
+        {
+          "signature": "getGroundHeight (x, y)",
+          "summary": "Returns the legacy ground height at a given position.",
+          "anchor": "getGroundHeight"
+        },
+        {
+          "signature": "getInfluence (influenceType, x, y)",
+          "summary": "Returns the influence value for a given type at a position.",
+          "anchor": "getInfluence"
+        },
+        {
+          "signature": "getPipeDraft (x, y)",
+          "summary": "Returns the draft of the pipe at a given location.",
+          "anchor": "getPipeDraft"
+        },
+        {
+          "signature": "getPipeFrame (x, y)",
+          "summary": "Returns the active frame of the pipe at a given location.",
+          "anchor": "getPipeFrame"
+        },
+        {
+          "signature": "getRoadAbsoluteLevel (x, y, level)",
+          "summary": "Returns the absolute level of a road at a given position and level.",
+          "anchor": "getRoadAbsoluteLevel"
+        },
+        {
+          "signature": "getRoadAlign (x, y, level)",
+          "summary": "Returns the alignment of a road at a given position and level.",
+          "anchor": "getRoadAlign"
+        },
+        {
+          "signature": "getRoadAnimationColor (x, y[, level=0[, slot=1]])",
+          "summary": "Gets the color of an animation of a road.",
+          "anchor": "getRoadAnimationColor"
+        },
+        {
+          "signature": "getRoadAnimationColorFG (x, y[, level=0[, slot=1]])",
+          "summary": "Gets the color of an animation of a road.",
+          "anchor": "getRoadAnimationColorFG"
+        },
+        {
+          "signature": "getRoadAnimationFrame (x, y[, level=0[, slot=1]])",
+          "summary": "Returns the current frame of an animation that is attached to a road.",
+          "anchor": "getRoadAnimationFrame"
+        },
+        {
+          "signature": "getRoadAnimationFrameFG (x, y[, level=0[, slot=1]])",
+          "summary": "Returns the current frame of an animation that is attached to a road.",
+          "anchor": "getRoadAnimationFrameFG"
+        },
+        {
+          "signature": "getRoadBridgeType (x, y, level)",
+          "summary": "Returns the bridge type of a road at a given position and level.",
+          "anchor": "getRoadBridgeType"
+        },
+        {
+          "signature": "getRoadCarCount (x, y, level)",
+          "summary": "Returns the absolute car counter of the road at a given position and level.",
+          "anchor": "getRoadCarCount"
+        },
+        {
+          "signature": "getRoadChargeableCarCount (x, y, level)",
+          "summary": "Returns the absolute chargeable car counter of the road at a given position and level.",
+          "anchor": "getRoadChargeableCarCount"
+        },
+        {
+          "signature": "getRoadDeco (x, y, level[, index=1])",
+          "summary": "Returns the draft of the road decoration on the road at a given position and level.",
+          "anchor": "getRoadDeco"
+        },
+        {
+          "signature": "getRoadDirection (x, y, level)",
+          "summary": "Returns the direction of a road at a given position and level.",
+          "anchor": "getRoadDirection"
+        },
+        {
+          "signature": "getRoadDraft (x, y, level)",
+          "summary": "Returns the draft of the road at a given position and level.",
+          "anchor": "getRoadDraft"
+        },
+        {
+          "signature": "getRoadFrame (x, y, level)",
+          "summary": "Returns the frame of a road at a given position and level.",
+          "anchor": "getRoadFrame"
+        },
+        {
+          "signature": "getRoadOccupation (x, y[, level=0])",
+          "summary": "Returns the draft of the road occupation at a given position and level.",
+          "anchor": "getRoadOccupation"
+        },
+        {
+          "signature": "getRoadSlopeDirection (x, y, level)",
+          "summary": "Returns the bridge entrance or exit direction of a road at a given position and level.",
+          "anchor": "getRoadSlopeDirection"
+        },
+        {
+          "signature": "getRoadStorage (x, y, level)",
+          "summary": "Returns the storage table of the road at a given position and level.",
+          "anchor": "getRoadStorage"
+        },
+        {
+          "signature": "getRoadTraffic (x, y, level)",
+          "summary": "Returns the amount of traffic on a road tile.",
+          "anchor": "getRoadTraffic"
+        },
+        {
+          "signature": "getTerrainHeight (x, y)",
+          "summary": "Returns the average terrain height at a given position.",
+          "anchor": "getTerrainHeight"
+        },
+        {
+          "signature": "getTreeDraft (x, y)",
+          "summary": "Returns the draft of the tree at the given position.",
+          "anchor": "getTreeDraft"
+        },
+        {
+          "signature": "getTreeFrame (x, y)",
+          "summary": "Returns the frame of the tree at the given position.",
+          "anchor": "getTreeFrame"
+        },
+        {
+          "signature": "getWireDraft (x, y[, level=0])",
+          "summary": "Returns the draft of the wire at a given location.",
+          "anchor": "getWireDraft"
+        },
+        {
+          "signature": "getWireFrame (x, y[, level=0])",
+          "summary": "Returns the frame of the wire at a given location.",
+          "anchor": "getWireFrame"
+        },
+        {
+          "signature": "getZoneDraft (x, y)",
+          "summary": "Returns the draft of the zone at a given location.",
+          "anchor": "getZoneDraft"
+        },
+        {
+          "signature": "hasBuildingNeededRoad (x, y)",
+          "summary": "Returns true iff the building at the given position does not need a road connection or has the road connection it needs.",
+          "anchor": "hasBuildingNeededRoad"
+        },
+        {
+          "signature": "hasBuildingPendingUpgrade (upgradeId, x, y)",
+          "summary": "Returns true iff the building at a given position has a specific pending upgrade on it.",
+          "anchor": "hasBuildingPendingUpgrade"
+        },
+        {
+          "signature": "hasBuildingRoad (x, y)",
+          "summary": "Returns true iff there's a building at a given position that has a road connection.",
+          "anchor": "hasBuildingRoad"
+        },
+        {
+          "signature": "hasBuildingUpgrade (upgradeId, x, y)",
+          "summary": "Returns true iff the building at a given position has a specific upgrade applied to it.",
+          "anchor": "hasBuildingUpgrade"
+        },
+        {
+          "signature": "hasFence (x, y[, edge])",
+          "summary": "Returns true iff there is any fence at the given location.",
+          "anchor": "hasFence"
+        },
+        {
+          "signature": "hasFenceWithin (x, y, width, height)",
+          "summary": "Returns true iff there is any fence within a specified rectangle.",
+          "anchor": "hasFenceWithin"
+        },
+        {
+          "signature": "hasRoad (x, y)",
+          "summary": "Returns true if there's any road at the given position regardless of the level.",
+          "anchor": "hasRoad"
+        },
+        {
+          "signature": "hasRoadOccupation (x, y, level)",
+          "summary": "Returns true iff there's a road occupation on the road at a given position and level.",
+          "anchor": "hasRoadOccupation"
+        },
+        {
+          "signature": "hasWire (x, y)",
+          "summary": "Determines whether there is any wire at the given location regardless of the level.",
+          "anchor": "hasWire"
+        },
+        {
+          "signature": "isBuilding (x, y)",
+          "summary": "Returns true iff there's a building at a given position.",
+          "anchor": "isBuilding"
+        },
+        {
+          "signature": "isBuildingAnimationPaused (x, y[, slot=1])",
+          "summary": "Returns whether an animation attached to a building is paused.",
+          "anchor": "isBuildingAnimationPaused"
+        },
+        {
+          "signature": "isBuildingBurning (x, y)",
+          "summary": "Returns true iff there is a building at the given position that is burning right now.",
+          "anchor": "isBuildingBurning"
+        },
+        {
+          "signature": "isBuildingEmpty (x, y)",
+          "summary": "Returns true iff there's a building at a given position that is empty right now.",
+          "anchor": "isBuildingEmpty"
+        },
+        {
+          "signature": "isBuildingFullOfDeadPeople (x, y)",
+          "summary": "Returns true iff there's a building at a given position that has transport issues with dead bodies right now.",
+          "anchor": "isBuildingFullOfDeadPeople"
+        },
+        {
+          "signature": "isBuildingFullOfWaste (x, y)",
+          "summary": "Returns true iff there's a building at a given position that is full of garbage right now.",
+          "anchor": "isBuildingFullOfWaste"
+        },
+        {
+          "signature": "isBuildingIll (x, y)",
+          "summary": "Returns true iff there's a building at a given position that contains ill people right now.",
+          "anchor": "isBuildingIll"
+        },
+        {
+          "signature": "isBuildingInConstruction (x, y)",
+          "summary": "Returns true iff there's a building at a given position that is in construction right now.",
+          "anchor": "isBuildingInConstruction"
+        },
+        {
+          "signature": "isBuildingUntouchable (x, y)",
+          "summary": "Determines whether a RCI building is untouchable.",
+          "anchor": "isBuildingUntouchable"
+        },
+        {
+          "signature": "isBuildingUpgradeInConstruction (x, y)",
+          "summary": "Returns true iff there's a building at a given position that has a pending upgrade right now.",
+          "anchor": "isBuildingUpgradeInConstruction"
+        },
+        {
+          "signature": "isBuildingWorking (x, y)",
+          "summary": "Returns true iff there's a building at a given position that is working right now.",
+          "anchor": "isBuildingWorking"
+        },
+        {
+          "signature": "isBusStop (x, y, level)",
+          "summary": "Returns true iff there's a bus stop on the road at a given position and level.",
+          "anchor": "isBusStop"
+        },
+        {
+          "signature": "isCoast (x, y)",
+          "summary": "Returns true iff there's land at a given position and water on at least one of the four neighboring tiles.",
+          "anchor": "isCoast"
+        },
+        {
+          "signature": "isFlat (x, y)",
+          "summary": "Determines whether the ground is flat at a given position.",
+          "anchor": "isFlat"
+        },
+        {
+          "signature": "isLand (x, y)",
+          "summary": "Returns true iff there's land (the opposite of water) at a given position.",
+          "anchor": "isLand"
+        },
+        {
+          "signature": "isPipe (x, y)",
+          "summary": "Determines whether there is pipe at the given location.",
+          "anchor": "isPipe"
+        },
+        {
+          "signature": "isRoad (x, y, level)",
+          "summary": "Returns true if there's a road at a given position and level.",
+          "anchor": "isRoad"
+        },
+        {
+          "signature": "isRoadAnimationPaused (x, y[, level=0[, slot=1]])",
+          "summary": "Returns whether an animation attached to a road is paused.",
+          "anchor": "isRoadAnimationPaused"
+        },
+        {
+          "signature": "isRoadAnimationPausedFG (x, y[, level=0[, slot=1]])",
+          "summary": "Returns whether a road foreground animation is paused.",
+          "anchor": "isRoadAnimationPausedFG"
+        },
+        {
+          "signature": "isRoadDeco (x, y, level)",
+          "summary": "Returns true iff there's a road decoration on the road at a given position and level.",
+          "anchor": "isRoadDeco"
+        },
+        {
+          "signature": "isRoadPile (x, y, level)",
+          "summary": "Returns the bridge pile of a road at a given position and level.",
+          "anchor": "isRoadPile"
+        },
+        {
+          "signature": "isRoadSlope (x, y, level)",
+          "summary": "Returns true iff there's a bridge entrance or exit on the road at a given position and level.",
+          "anchor": "isRoadSlope"
+        },
+        {
+          "signature": "isSlope (x, y)",
+          "summary": "Determines whether there is a slope in the terrain at a given position.",
+          "anchor": "isSlope"
+        },
+        {
+          "signature": "isTree (x, y)",
+          "summary": "Returns true iff there's a tree at a given position.",
+          "anchor": "isTree"
+        },
+        {
+          "signature": "isValid (x, y)",
+          "summary": "Returns true iff a position is on the map.",
+          "anchor": "isValid"
+        },
+        {
+          "signature": "isWater (x, y)",
+          "summary": "Returns true iff there's water at a given position.",
+          "anchor": "isWater"
+        },
+        {
+          "signature": "isWire (x, y[, level=0])",
+          "summary": "Determines whether there is a wire at the given location and level.",
+          "anchor": "isWire"
+        },
+        {
+          "signature": "isWirePole (x, y[, level=0])",
+          "summary": "Returns true iff there's a pole on the wire at a given position and level.",
+          "anchor": "isWirePole"
+        },
+        {
+          "signature": "pauseBuildingAnimation (x, y[, slot=1])",
+          "summary": "Pauses an animation that is attached to a building.",
+          "anchor": "pauseBuildingAnimation"
+        },
+        {
+          "signature": "pauseRoadAnimation (x, y[, level=0[, slot=1]])",
+          "summary": "Pauses an animation that is attached to a road.",
+          "anchor": "pauseRoadAnimation"
+        },
+        {
+          "signature": "pauseRoadAnimationFG (x, y[, level=0[, slot=1]])",
+          "summary": "Pauses an animation that is attached to a road.",
+          "anchor": "pauseRoadAnimationFG"
+        },
+        {
+          "signature": "resumeBuildingAnimation (x, y[, slot=1[, speed=1.0]])",
+          "summary": "Resumes an animation that is attached to a building.",
+          "anchor": "resumeBuildingAnimation"
+        },
+        {
+          "signature": "resumeRoadAnimation (x, y[, level=0[, slot=1[, speed=1.0]]])",
+          "summary": "Resumes an animation that is attached to a road.",
+          "anchor": "resumeRoadAnimation"
+        },
+        {
+          "signature": "resumeRoadAnimationFG (x, y[, level=0[, slot=1[, speed=1.0]]])",
+          "summary": "Resumes an animation that is attached to a road.",
+          "anchor": "resumeRoadAnimationFG"
+        },
+        {
+          "signature": "setBuildingAnimationColor (x, y, red, green, blue[, alpha=255[, slot=1]])",
+          "summary": "Sets the color of an animation of a building.",
+          "anchor": "setBuildingAnimationColor"
+        },
+        {
+          "signature": "setBuildingAnimationFrame (x, y, frame[, slot=1])",
+          "summary": "Sets the current frame of an animation regardless of whether the animation is playing right now.",
+          "anchor": "setBuildingAnimationFrame"
+        },
+        {
+          "signature": "setBuildingFrame (x, y, frame)",
+          "summary": "Sets the frame of a building at a given position.",
+          "anchor": "setBuildingFrame"
+        },
+        {
+          "signature": "setBuildingIcon (x, y, icon)",
+          "summary": "Sets a building icon for the specified building.",
+          "anchor": "setBuildingIcon"
+        },
+        {
+          "signature": "setBuildingName (x, y, name)",
+          "summary": "Sets the name of a building",
+          "anchor": "setBuildingName"
+        },
+        {
+          "signature": "setBuildingPerformance (x, y, performance)",
+          "summary": "Sets the performance of a building.",
+          "anchor": "setBuildingPerformance"
+        },
+        {
+          "signature": "setBuildingUntouchable (x, y[, state=true])",
+          "summary": "Marks a RCI building as untouchable/touchable.",
+          "anchor": "setBuildingUntouchable"
+        },
+        {
+          "signature": "setGroundHeight (x, y, height)",
+          "summary": "Sets the legacy ground height of a tile.",
+          "anchor": "setGroundHeight"
+        },
+        {
+          "signature": "setRoadAlignment (x, y, level, alignment)",
+          "summary": "Sets the alignment of a road at a given position and level.",
+          "anchor": "setRoadAlignment"
+        },
+        {
+          "signature": "setRoadAnimationColor (x, y, level, red, green, blue[, alpha=255[, slot=1]])",
+          "summary": "Sets the color of an animation of a road.",
+          "anchor": "setRoadAnimationColor"
+        },
+        {
+          "signature": "setRoadAnimationColorFG (x, y, level, red, green, blue[, alpha=255[, slot=1]])",
+          "summary": "Sets the color of an animation of a road.",
+          "anchor": "setRoadAnimationColorFG"
+        },
+        {
+          "signature": "setRoadAnimationFrame (x, y, level, frame[, slot=1])",
+          "summary": "Sets the current frame of an animation regardless of whether the animation is playing right now.",
+          "anchor": "setRoadAnimationFrame"
+        },
+        {
+          "signature": "setRoadAnimationFrameFG (x, y, level, frame[, slot=1])",
+          "summary": "Sets the current frame of an animation regardless of whether the animation is playing right now.",
+          "anchor": "setRoadAnimationFrameFG"
+        },
+        {
+          "signature": "setRoadBridgeType (x, y, level[, index=0])",
+          "summary": "Sets the bridge type on the road at a given position and level.",
+          "anchor": "setRoadBridgeType"
+        },
+        {
+          "signature": "setRoadOccupation (draft, x, y[, level=0])",
+          "summary": "Sets the road occupation on the road at a given position and level.",
+          "anchor": "setRoadOccupation"
+        },
+        {
+          "signature": "setRoadOneWayAlignment (x, y, level, alignment)",
+          "summary": "Sets the direction and alignment of a road at a given position and level.",
+          "anchor": "setRoadOneWayAlignment"
+        },
+        {
+          "signature": "setRoadPile (x, y, level, state)",
+          "summary": "Sets the bridge pile on the road at a given position and level.",
+          "anchor": "setRoadPile"
+        },
+        {
+          "signature": "setWirePole (x, y[, level=0], state)",
+          "summary": "Sets the wire pole on the wire at a given position and level.",
+          "anchor": "setWirePole"
+        },
+        {
+          "signature": "spawnBuildingPedestrian (x, y[, amount=1])",
+          "summary": "Will register one or multiple pedestrians for spawning from this building.",
+          "anchor": "spawnBuildingPedestrian"
+        }
+      ],
+      "classes": {}
+    },
+    {
+      "name": "Util",
+      "summary": "Some general utility functions.",
+      "url": "https://doc.theotown.com/modules/Util.html",
+      "functions": [
+        {
+          "signature": "collectFullRectTiles (x, y, w, h)",
+          "summary": "Collects all tile positions in a rectangle.",
+          "anchor": "collectFullRectTiles"
+        },
+        {
+          "signature": "collectRectTiles (x, y, w, h[, noCorners=false])",
+          "summary": "Collects all tile positions along a rectangle.",
+          "anchor": "collectRectTiles"
+        },
+        {
+          "signature": "color2hex (red[, green=red[, blue=green]])",
+          "summary": "Converts three integer color values to a color hex string.",
+          "anchor": "color2hex"
+        },
+        {
+          "signature": "hex2color (hex)",
+          "summary": "Converts a color hex string into r, g, b color values.",
+          "anchor": "hex2color"
+        },
+        {
+          "signature": "hsv2rgb (h, s, v)",
+          "summary": "Converts a hsv color to the same color in rgb space.",
+          "anchor": "hsv2rgb"
+        },
+        {
+          "signature": "optStorage (src, name[, constructor])",
+          "summary": "Returns the named content of a storage table.",
+          "anchor": "optStorage"
+        },
+        {
+          "signature": "rgb2hsv (r, g, b)",
+          "summary": "Converts a rgb color to the same color in hsv space.",
+          "anchor": "rgb2hsv"
+        },
+        {
+          "signature": "unite (table1[, table2[, ...]])",
+          "summary": "Combines access to multiple tables.",
+          "anchor": "unite"
+        }
+      ],
+      "classes": {}
+    },
+    {
+      "name": "Vector",
+      "summary": "A 3-dimensional vector implementation that can be used for convenience. Arithmetic methods return new vectors rather than modifying their operands. Vector components can still be assigned directly, as shown below. Vectors support arithmetic operations like a + b and comparisons like a == b. Usage: local v = Vector(1, 2, 3) v.x = 7 print(v.x) print(v:length()) print(tostring(v)) print(tostring(2 * v + v:normalized()))",
+      "url": "https://doc.theotown.com/modules/Vector.html",
+      "functions": [],
+      "classes": {
+        "Vector": [
+          {
+            "signature": "Vector.x",
+            "summary": "X component of the vector.",
+            "anchor": "Vector.x"
+          },
+          {
+            "signature": "Vector.y",
+            "summary": "Y component of the vector.",
+            "anchor": "Vector.y"
+          },
+          {
+            "signature": "Vector.z",
+            "summary": "Z component of the vector.",
+            "anchor": "Vector.z"
+          },
+          {
+            "signature": "Vector:copy ()",
+            "summary": "Returns a 1:1 copy of the vector.",
+            "anchor": "Vector:copy"
+          },
+          {
+            "signature": "Vector:cross (o)",
+            "summary": "Returns the cross product of two vectors a and b.",
+            "anchor": "Vector:cross"
+          },
+          {
+            "signature": "Vector:dot (o)",
+            "summary": "Returns the dot product of two vectors a and b.",
+            "anchor": "Vector:dot"
+          },
+          {
+            "signature": "Vector:length ()",
+            "summary": "Returns the length of the vector.",
+            "anchor": "Vector:length"
+          },
+          {
+            "signature": "Vector:new ([x=0[, y=0[, z=0]]])",
+            "summary": "Creates a new vector out of the components x, y, z.",
+            "anchor": "Vector:new"
+          },
+          {
+            "signature": "Vector:normalized ()",
+            "summary": "Returns a unit vector pointing in the same direction as self.",
+            "anchor": "Vector:normalized"
+          }
+        ]
+      }
+    }
+  ]
+}

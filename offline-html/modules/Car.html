@@ -1,0 +1,1129 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua API</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Lua API</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_Car">Class Car </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/Array.html">Array</a></li>
+  <li><a href="../modules/Builder.html">Builder</a></li>
+  <li><a href="../modules/Building.html">Building</a></li>
+  <li><strong>Car</strong></li>
+  <li><a href="../modules/City.html">City</a></li>
+  <li><a href="../modules/DSA.html">DSA</a></li>
+  <li><a href="../modules/Debug.html">Debug</a></li>
+  <li><a href="../modules/Draft.html">Draft</a></li>
+  <li><a href="../modules/Drawing.html">Drawing</a></li>
+  <li><a href="../modules/GUI.html">GUI</a></li>
+  <li><a href="../modules/NeighborCity.html">NeighborCity</a></li>
+  <li><a href="../modules/Runtime.html">Runtime</a></li>
+  <li><a href="../modules/Script.html">Script</a></li>
+  <li><a href="../modules/TheoTown.html">TheoTown</a></li>
+  <li><a href="../modules/Tile.html">Tile</a></li>
+  <li><a href="../modules/Util.html">Util</a></li>
+  <li><a href="../modules/Vector.html">Vector</a></li>
+  <li><a href="../modules/string.html">string</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../topics/00-intro.md.html">Introduction</a></li>
+  <li><a href="../topics/01-lua.md.html">Lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Car</code></h1>
+<p>Car library for TheoTown.</p>
+<p>This library provides general car related functions.
+Furthermore, objects of this type can be used to control cars after they have
+been spawned.</p>
+
+<p>Smart-car callbacks on Script receive a car object for cars spawned with a
+storage table via Car.spawn(...).
+Such cars that were created with a storage table and therefore can be controlled
+afterwards are called smart cars as they can do potentially smart things.
+The smart car event functions will be called for all scripts that are attached
+to the draft that originally called Car.spawn(...).
+This concept is called car ownership and helps to only call the car event
+functions for scripts that are interested in it for the respective cars.
+There are no fixed callback functions that can be provided to Car.spawn(...)
+since these would not work after saving and re-loading the city
+(functions cannot be serialized in Lua).
+Instead you can use the storage table in the cars to store information
+in them that can be serialized.</p>
+
+<p>This is how the lifecycle and event function calls for smart cars looks like:</p>
+
+<p><img src="https://doc.theotown.com/umls/smartcarslc.svg" alt="Lifecycle"/></p>
+
+<p>This library was newly introduced in 1.10.51. It is only available while
+a city is open.</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#getCars">getCars ()</a></td>
+	<td class="summary">Returns an array of smart cars that are owned by the calling draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#spawn">spawn (carDraft, startX, startY, targetX, targetY[, frame=nil[, storage=nil[, startLevel=nil[, targetLevel=nil]]]])</a></td>
+	<td class="summary">Spawns a car at a given position/position of a building that drives to
+the given target/building at the target.</td>
+	</tr>
+</table>
+<h2><a href="#Class_Car">Class Car </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#car:addTail">car:addTail (draft[, position=nil[, frame=-1]])</a></td>
+	<td class="summary">Adds a segment to the tail of a car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:despawn">car:despawn ()</a></td>
+	<td class="summary">Signals that the car should be deleted.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:driveTo">car:driveTo (x, y[, level=nil])</a></td>
+	<td class="summary">Will issue a new location for the car to drive to.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:getCapacity">car:getCapacity ()</a></td>
+	<td class="summary">Returns the overall capacity of a car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:getDir">car:getDir ()</a></td>
+	<td class="summary">Returns the current direction of the car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:getDraft">car:getDraft ()</a></td>
+	<td class="summary">Returns the car draft of the car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:getEffectiveSpeed">car:getEffectiveSpeed ()</a></td>
+	<td class="summary">Returns the current effective speed of the car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:getFrame">car:getFrame ()</a></td>
+	<td class="summary">Returns the current frame of the car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:getLevel">car:getLevel ()</a></td>
+	<td class="summary">Returns the current height level of the car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:getSpeed">car:getSpeed ()</a></td>
+	<td class="summary">Returns the current target speed factor of the car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:getStorage">car:getStorage ()</a></td>
+	<td class="summary">Returns the storage table of the car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:getTailDraft">car:getTailDraft (position)</a></td>
+	<td class="summary">Returns the car draft of a tail segment.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:getTailFrame">car:getTailFrame (position)</a></td>
+	<td class="summary">Returns the car frame of a tail segment.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:getX">car:getX ()</a></td>
+	<td class="summary">Returns the current x tile position of the car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:getXY">car:getXY ()</a></td>
+	<td class="summary">Returns the current position and level of the car all at once.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:getY">car:getY ()</a></td>
+	<td class="summary">Returns the current y tile position of the car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:isValid">car:isValid ()</a></td>
+	<td class="summary">Returns whether this car is still valid.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:openFollowTool">car:openFollowTool ()</a></td>
+	<td class="summary">Opens the follow car tool for this specific car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:removeTail">car:removeTail ([position=nil])</a></td>
+	<td class="summary">Removes a tail segment.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:removeWholeTail">car:removeWholeTail ()</a></td>
+	<td class="summary">Removes the whole tail.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:setColor">car:setColor (hexColor[, tailIndex=-1])</a></td>
+	<td class="summary">Sets a blending color for the car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:setFrame">car:setFrame (frame)</a></td>
+	<td class="summary">Sets the current frame of the car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:setSpeed">car:setSpeed (speed)</a></td>
+	<td class="summary">Sets the target speed factor of the car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:setTailFrame">car:setTailFrame (position, frame)</a></td>
+	<td class="summary">Sets the car frame of a tail segment.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:tailSize">car:tailSize ()</a></td>
+	<td class="summary">Returns the size of the tail of a car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#car:wait">car:wait ()</a></td>
+	<td class="summary">Makes the car wait briefly.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "getCars"></a>
+    <strong>getCars ()</strong>
+    </dt>
+    <dd>
+    Returns an array of smart cars that are owned by the calling draft.
+Since this is a potentially heavy operation you should only call it at rare
+points in time e.g. when a city gets entered.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">Array</span></span>
+        An array of cars that belong to the calling draft.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "spawn"></a>
+    <strong>spawn (carDraft, startX, startY, targetX, targetY[, frame=nil[, storage=nil[, startLevel=nil[, targetLevel=nil]]]])</strong>
+    </dt>
+    <dd>
+    Spawns a car at a given position/position of a building that drives to
+the given target/building at the target.
+The car is spawned only after a path has been calculated. This happens
+asynchronously because path calculation can take some time.
+You can specify a frame to select a car variant when multiple variants are
+available. By default, a variant is chosen randomly.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">carDraft</span>
+            <span class="types"><span class="type">draft</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">startX</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">startY</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">targetX</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">targetY</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">frame</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+         (<em>default</em> nil)
+        </li>
+        <li><span class="parameter">storage</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         If you provide a table (may be empty) here the car
+will support smart car functionality like extended car event callbacks.
+         (<em>default</em> nil)
+        </li>
+        <li><span class="parameter">startLevel</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+         (<em>default</em> nil)
+        </li>
+        <li><span class="parameter">targetLevel</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+ <span class="comment">-- This script will wait for the player to tap on two buildings A and B.
+</span> <span class="comment">-- After that, it will spawn a police car from A that will drive to B and
+</span> <span class="comment">-- then back to A where it despawns.
+</span> <span class="comment">-- This will repeat indefinitely.
+</span><span class="keyword">local</span> carDraft = Draft.getDraft(<span class="string">'$carpolice00'</span>)
+<span class="keyword">local</span> startBuilding, endBuilding
+
+<span class="keyword">function</span> script:enterCity()
+  startBuilding, endBuilding = <span class="keyword">nil</span>, <span class="keyword">nil</span>
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> script:earlyTap(x, y)
+  <span class="keyword">local</span> b = Tile.getBuilding(x, y)
+  <span class="keyword">if</span> b <span class="keyword">and</span> <span class="keyword">not</span> startBuilding <span class="keyword">then</span>
+    Debug.toast(<span class="string">'Selected start building'</span>)
+    startBuilding = b
+    <span class="keyword">return</span> <span class="keyword">false</span>
+  <span class="keyword">elseif</span> b <span class="keyword">and</span> <span class="keyword">not</span> endBuilding <span class="keyword">then</span>
+    Debug.toast(<span class="string">'Selected end building'</span>)
+    endBuilding = b
+    <span class="keyword">return</span> <span class="keyword">false</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> script:onCarReached(car)
+  <span class="keyword">local</span> stg = car:getStorage()
+  <span class="comment">-- Drive back if first ending, otherwise do nothing -&gt; car will despawn
+</span>  <span class="keyword">if</span> stg.ctr == <span class="number">0</span> <span class="keyword">then</span>
+    car:driveTo(stg.x, stg.y)
+    stg.ctr = stg.ctr + <span class="number">1</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> script:nextDay()
+  <span class="keyword">if</span> #Car.getCars() == <span class="number">0</span> <span class="keyword">and</span> startBuilding <span class="keyword">and</span> endBuilding <span class="keyword">then</span>
+    <span class="comment">-- Let's spawn a car
+</span>    Car.spawn(
+      carDraft,
+      startBuilding:getX(),
+      startBuilding:getY(),
+      endBuilding:getX(),
+      endBuilding:getY(),
+      <span class="keyword">nil</span>,
+      {
+        x = startBuilding:getX(),
+        y = startBuilding:getY(),
+        ctr = <span class="number">0</span>
+      }
+    )
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre>
+    </ul>
+
+</dd>
+</dl>
+    <h2><a name="Class_Car"></a>Class Car </h2>
+
+        This type represents Car objects.
+    <dl class="function">
+    <dt>
+    <a name = "car:addTail"></a>
+    <strong>car:addTail (draft[, position=nil[, frame=-1]])</strong>
+    </dt>
+    <dd>
+    Adds a segment to the tail of a car.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">draft</span>
+            <span class="types"><span class="type">draft</span></span>
+         A car draft that will be used for the tail segment.
+In case of nil a placeholder car ($car_null00) will be used.
+        </li>
+        <li><span class="parameter">position</span>
+            <span class="types"><span class="type">int</span></span>
+         A one based tail index that indicates where
+the new tail segment should be inserted.
+If nil (the default), the segment is appended to the end of the tail.
+         (<em>default</em> nil)
+        </li>
+        <li><span class="parameter">frame</span>
+            <span class="types"><span class="type">int</span></span>
+         A zero based variant index that will be used for the car.
+In case of -1 a random variant will be used.
+         (<em>default</em> -1)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:despawn"></a>
+    <strong>car:despawn ()</strong>
+    </dt>
+    <dd>
+    Signals that the car should be deleted.  It may not be deleted immediately
+due to the asynchronous behavior of car updates.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:driveTo"></a>
+    <strong>car:driveTo (x, y[, level=nil])</strong>
+    </dt>
+    <dd>
+    Will issue a new location for the car to drive to.  Listening to smart car
+events will let you know whether the target can be reached.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">int</span></span>
+         The x tile position to target.
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">int</span></span>
+         The y tile position to target.
+        </li>
+        <li><span class="parameter">level</span>
+            <span class="types"><span class="type">int</span></span>
+         The level to target. By default the game will try
+to match anything the car can drive to (e.g. buildings or roads).
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:getCapacity"></a>
+    <strong>car:getCapacity ()</strong>
+    </dt>
+    <dd>
+    Returns the overall capacity of a car.
+The capacity of a car is a generic integer value defined in the car draft(s).
+The default capacity of a car draft is 0.
+This function returns the accumulated capacity of the car itself and its
+tail segments.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The overall capacity of the car.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:getDir"></a>
+    <strong>car:getDir ()</strong>
+    </dt>
+    <dd>
+    Returns the current direction of the car.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The current direction of the car (1=SE, 2=NE, 4=NW, 8=SW)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:getDraft"></a>
+    <strong>car:getDraft ()</strong>
+    </dt>
+    <dd>
+    Returns the car draft of the car.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">draft</span></span>
+        The car draft of the car.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:getEffectiveSpeed"></a>
+    <strong>car:getEffectiveSpeed ()</strong>
+    </dt>
+    <dd>
+    Returns the current effective speed of the car.
+The effective speed depends on road factors, car factors, target speed factors
+and so on.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">float</span></span>
+        The current effective speed of the car.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:getFrame"></a>
+    <strong>car:getFrame ()</strong>
+    </dt>
+    <dd>
+    Returns the current frame of the car.  The frame is actually the index of
+the variant determined by the total frames of the car / frames per variant.
+The first variant has index 0.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The index of the current frame.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:getLevel"></a>
+    <strong>car:getLevel ()</strong>
+    </dt>
+    <dd>
+    Returns the current height level of the car.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The height level of the car with 0 being ground.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:getSpeed"></a>
+    <strong>car:getSpeed ()</strong>
+    </dt>
+    <dd>
+    Returns the current target speed factor of the car.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">float</span></span>
+        The current target speed factor of the car.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:getStorage"></a>
+    <strong>car:getStorage ()</strong>
+    </dt>
+    <dd>
+    Returns the storage table of the car.  The table was provided in the
+Car.spawn(...) car spawn request.
+Note that as usual you cannot store functions in the storage table as these
+cannot be serialized.
+(that means they won't be there after saving and loading the city)
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        The storage table of the car.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:getTailDraft"></a>
+    <strong>car:getTailDraft (position)</strong>
+    </dt>
+    <dd>
+    Returns the car draft of a tail segment.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">position</span>
+            <span class="types"><span class="type">int</span></span>
+         A one based tail index that indicates which
+tail segment should be queried.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">draft</span></span>
+        The car draft of the tail segment.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:getTailFrame"></a>
+    <strong>car:getTailFrame (position)</strong>
+    </dt>
+    <dd>
+    Returns the car frame of a tail segment.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">position</span>
+            <span class="types"><span class="type">int</span></span>
+         A one based tail index that indicates which
+tail segment should be queried.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span> or <span class="type">nil</span></span>
+        The zero-based variant frame of the tail segment, or nil if there is no tail.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:getX"></a>
+    <strong>car:getX ()</strong>
+    </dt>
+    <dd>
+    Returns the current x tile position of the car.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The x tile position of the car.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:getXY"></a>
+    <strong>car:getXY ()</strong>
+    </dt>
+    <dd>
+    Returns the current position and level of the car all at once.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int,int,int</span></span>
+        The x, y tile position and level (0=ground) of the car.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:getY"></a>
+    <strong>car:getY ()</strong>
+    </dt>
+    <dd>
+    Returns the current y tile position of the car.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The y tile position of the car.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:isValid"></a>
+    <strong>car:isValid ()</strong>
+    </dt>
+    <dd>
+    Returns whether this car is still valid.  Discard the handle after the car
+becomes invalid; it cannot be respawned.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True iff the car is valid, false otherwise.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:openFollowTool"></a>
+    <strong>car:openFollowTool ()</strong>
+    </dt>
+    <dd>
+    Opens the follow car tool for this specific car.  The car cannot be changed and potentially not
+controlled by the player.
+If the car despawns the tool will close automatically.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:removeTail"></a>
+    <strong>car:removeTail ([position=nil])</strong>
+    </dt>
+    <dd>
+    Removes a tail segment.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">position</span>
+            <span class="types"><span class="type">int</span></span>
+         A one based tail index that indicates which
+tail segment should be removed.
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True iff a tail segment was removed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:removeWholeTail"></a>
+    <strong>car:removeWholeTail ()</strong>
+    </dt>
+    <dd>
+    Removes the whole tail.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True iff at least one tail segment was removed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:setColor"></a>
+    <strong>car:setColor (hexColor[, tailIndex=-1])</strong>
+    </dt>
+    <dd>
+    Sets a blending color for the car.  Will only apply to cars whose draft supports frame coloring.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">hexColor</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">nil</span></span>
+         A hex color string that denotes the color to set. nil to reset the color.
+        </li>
+        <li><span class="parameter">tailIndex</span>
+            <span class="types"><span class="type">int</span></span>
+         The index of the tail car to set the color to. -1 will set the color to the whole car chain.
+0 will only color the root car etc.
+         (<em>default</em> -1)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:setFrame"></a>
+    <strong>car:setFrame (frame)</strong>
+    </dt>
+    <dd>
+    Sets the current frame of the car.  The frame is actually the index of the
+variant determined by the total frames of the car / frames per variant.
+The first variant has index 0.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">frame</span>
+            <span class="types"><span class="type">int</span></span>
+         The frame to set.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:setSpeed"></a>
+    <strong>car:setSpeed (speed)</strong>
+    </dt>
+    <dd>
+    Sets the target speed factor of the car.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">speed</span>
+            <span class="types"><span class="type">float</span></span>
+         The target speed factor of the car. Normal is 1.0.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:setTailFrame"></a>
+    <strong>car:setTailFrame (position, frame)</strong>
+    </dt>
+    <dd>
+    Sets the car frame of a tail segment.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">position</span>
+            <span class="types"><span class="type">int</span></span>
+         A one based tail index that indicates which
+tail segment should be modified.
+        </li>
+        <li><span class="parameter">frame</span>
+            <span class="types"><span class="type">int</span></span>
+         The frame to set.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:tailSize"></a>
+    <strong>car:tailSize ()</strong>
+    </dt>
+    <dd>
+    Returns the size of the tail of a car.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        Size of the tail. If the result is 0 then there is no tail.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "car:wait"></a>
+    <strong>car:wait ()</strong>
+    </dt>
+    <dd>
+    Makes the car wait briefly.  The onCarReached callback is called once the
+wait ends.
+
+    </ul>
+    </ul>
+    <h3>New feature:</h3>
+    <ul>
+         This is a new feature that was added in version <b>1.12.81</b>
+    </ul>
+    </ul>
+    </ul>
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2026-11-20 13:32:29 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

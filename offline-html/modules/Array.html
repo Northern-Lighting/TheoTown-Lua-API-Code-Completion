@@ -1,0 +1,1079 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua API</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Lua API</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Class_Array">Class Array </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><strong>Array</strong></li>
+  <li><a href="../modules/Builder.html">Builder</a></li>
+  <li><a href="../modules/Building.html">Building</a></li>
+  <li><a href="../modules/Car.html">Car</a></li>
+  <li><a href="../modules/City.html">City</a></li>
+  <li><a href="../modules/DSA.html">DSA</a></li>
+  <li><a href="../modules/Debug.html">Debug</a></li>
+  <li><a href="../modules/Draft.html">Draft</a></li>
+  <li><a href="../modules/Drawing.html">Drawing</a></li>
+  <li><a href="../modules/GUI.html">GUI</a></li>
+  <li><a href="../modules/NeighborCity.html">NeighborCity</a></li>
+  <li><a href="../modules/Runtime.html">Runtime</a></li>
+  <li><a href="../modules/Script.html">Script</a></li>
+  <li><a href="../modules/TheoTown.html">TheoTown</a></li>
+  <li><a href="../modules/Tile.html">Tile</a></li>
+  <li><a href="../modules/Util.html">Util</a></li>
+  <li><a href="../modules/Vector.html">Vector</a></li>
+  <li><a href="../modules/string.html">string</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../topics/00-intro.md.html">Introduction</a></li>
+  <li><a href="../topics/01-lua.md.html">Lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Array</code></h1>
+<p>A set of tools to extend Lua's quite simple arrays with more intuitive,
+traditional methods.</p>
+<p> The library is implemented as a metatable for array
+objects and can therefore be applied to arrays without a copy operation.</p>
+
+<p>Technically Lua has no arrays but tables only. However, a table whose keys
+are 1,2,...,n only can be seen as an array. The extended functionality added
+by this module allows you to change size of the array. You can therefore
+also use it as a list interface.</p>
+
+<p>Note that <em>nil</em> is <strong>not</strong> an allowed value in an array since it confuses the
+<em>#</em> (length-)operator.</p>
+
+<p>Creating a new "array" with extended functionality is quite easy. After the
+creation you can call the methods mentioned below on it.</p>
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">local arr = Array()  --Creates an empty array</pre></li>
+        <li><pre class="example">local arr = Array{1, 2, 3}  --Creates an array with content</pre></li>
+        <li><pre class="example">
+local arr = {1, 2, 3}
+Array(arr)  --Here the functionality of an existing array is extended
+print(arr[1])  --Prints 1
+print(arr[#arr])  --Prints 3
+print(arr[-1])  --Prints 3
+print(tostring(arr))  --Prints {1, 2, 3}</pre></li>
+    </ul>
+
+
+<h2><a href="#Class_Array">Class Array </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Array:add">Array:add (element[, index])</a></td>
+	<td class="summary">Adds an object to the array.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:addAll">Array:addAll (arr[, index])</a></td>
+	<td class="summary">Adds all elements of another array.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:clear">Array:clear ()</a></td>
+	<td class="summary">Clears the array by removing all elements.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:contains">Array:contains (element)</a></td>
+	<td class="summary">Returns true iff the given object is part of the array.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:copy">Array:copy ()</a></td>
+	<td class="summary">Returns a copy of the array.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:count">Array:count (predicate)</a></td>
+	<td class="summary">Counts how many elements fulfill a given predicate.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:exists">Array:exists (predicate)</a></td>
+	<td class="summary">Returns true iff at least one element matches the given predicate.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:filter">Array:filter (filterFunction)</a></td>
+	<td class="summary">Creates a copy that only contains filtered elements.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:find">Array:find (element)</a></td>
+	<td class="summary">Returns the index of an object in the array.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:first">Array:first ([predicate=nil])</a></td>
+	<td class="summary">Returns the first object that meets the given condition function
+or just the first element if no predicate function was given.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:forEach">Array:forEach (callbackFunction)</a></td>
+	<td class="summary">Iterates over all elements of the array and applies a function on them.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:isEmpty">Array:isEmpty ()</a></td>
+	<td class="summary">Returns true iff the array is empty.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:join">Array:join ([separator])</a></td>
+	<td class="summary">Joins the contents of the array into a string using the specified separator.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:last">Array:last ([predicate=nil])</a></td>
+	<td class="summary">Returns the last object that meets the given condition function
+or just the last element if no predicate function was given.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:map">Array:map (mapFunction)</a></td>
+	<td class="summary">Maps all elements to a new array using a given function.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:pick">Array:pick ()</a></td>
+	<td class="summary">Returns a random element of the array.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:remove">Array:remove (element)</a></td>
+	<td class="summary">Removes the first occurrence of an object from the array.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:removeAt">Array:removeAt (i)</a></td>
+	<td class="summary">Removes the object at a specific index.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:removeIf">Array:removeIf (predicate)</a></td>
+	<td class="summary">Removes the first object that meets the given condition function.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:removeWhere">Array:removeWhere (predicate)</a></td>
+	<td class="summary">Removes all elements that meet the given condition.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:shuffle">Array:shuffle ()</a></td>
+	<td class="summary">Shuffles the elements of the array into a random order.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:sort">Array:sort ([compFunc])</a></td>
+	<td class="summary">Sorts the array in place using the elements' natural order.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:sub">Array:sub (startIndex[, length])</a></td>
+	<td class="summary">Creates a sub-array for the specified range.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Array:sum">Array:sum (eval)</a></td>
+	<td class="summary">Sums up the result of the given function called on all elements.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Class_Array"></a>Class Array </h2>
+
+
+    <dl class="function">
+    <dt>
+    <a name = "Array:add"></a>
+    <strong>Array:add (element[, index])</strong>
+    </dt>
+    <dd>
+    Adds an object to the array.  An index can be provided to specify a position
+for insertion.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">element</span>
+         Object to add. May <strong>not</strong> be <em>nil</em>.
+        </li>
+        <li><span class="parameter">index</span>
+            <span class="types"><span class="type">number</span></span>
+         Index of where the object should be inserted.
+If no index was provided the object will be appended to the array.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        Index of the inserted object.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> a = Array()
+a:add(<span class="number">1</span>)
+a:add(<span class="number">2</span>)
+a:add(<span class="number">3</span>, <span class="number">1</span>)
+<span class="global">print</span>(<span class="global">tostring</span>(a))  --Prints {<span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Array:addAll"></a>
+    <strong>Array:addAll (arr[, index])</strong>
+    </dt>
+    <dd>
+    Adds all elements of another array.  An index can specify where to insert
+them; otherwise they are appended.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">arr</span>
+         Array whose elements should be added.
+        </li>
+        <li><span class="parameter">index</span>
+            <span class="types"><span class="type">int</span></span>
+         Index of where the elements should be inserted.
+If no index was provided the elements will be appended to the array.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        Starting index of the inserted elements.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> a = Array{<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>}
+<span class="keyword">local</span> b = Array{<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>}
+a:addAll(b, <span class="number">2</span>)
+<span class="global">print</span>(<span class="global">tostring</span>(a))  --Prints {<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">3</span>}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Array:clear"></a>
+    <strong>Array:clear ()</strong>
+    </dt>
+    <dd>
+    Clears the array by removing all elements.  The resulting size of the array
+will be 0.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Array:contains"></a>
+    <strong>Array:contains (element)</strong>
+    </dt>
+    <dd>
+    Returns true iff the given object is part of the array.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">element</span>
+         The object to search for.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True iff the object is in the array.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> a = Array{<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>}
+<span class="global">print</span>(a:contains(<span class="string">'b'</span>))  <span class="comment">--Prints true
+</span><span class="global">print</span>(a:contains(<span class="string">'d'</span>))  --Prints <span class="keyword">false</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Array:copy"></a>
+    <strong>Array:copy ()</strong>
+    </dt>
+    <dd>
+    Returns a copy of the array.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">array</span></span>
+        The copy of the array.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> a = Array{<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>}
+<span class="keyword">local</span> b = a:copy()
+b[<span class="number">1</span>] = <span class="number">42</span>
+<span class="global">print</span>(<span class="global">tostring</span>(a))  <span class="comment">--Prints {1, 2, 3}
+</span><span class="global">print</span>(<span class="global">tostring</span>(b))  --Prints {<span class="number">42</span>, <span class="number">2</span>, <span class="number">3</span>}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Array:count"></a>
+    <strong>Array:count (predicate)</strong>
+    </dt>
+    <dd>
+    Counts how many elements fulfill a given predicate.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">predicate</span>
+            <span class="types"><span class="type">function</span></span>
+         A function that returns <strong>true</strong> or <strong>false</strong>
+for an element of the array.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Array:exists"></a>
+    <strong>Array:exists (predicate)</strong>
+    </dt>
+    <dd>
+    Returns true iff at least one element matches the given predicate.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">predicate</span>
+            <span class="types"><span class="type">function</span></span>
+         A function that returns <strong>true</strong> or <strong>false</strong>
+for an element of the array.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Array:filter"></a>
+    <strong>Array:filter (filterFunction)</strong>
+    </dt>
+    <dd>
+    Creates a copy that only contains filtered elements.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">filterFunction</span>
+            <span class="types"><span class="type">function</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">array</span></span>
+        The filtered array.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> a = Array{<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>}
+<span class="keyword">local</span> b = a:filter(<span class="keyword">function</span>(x) <span class="keyword">return</span> x % <span class="number">2</span> == <span class="number">1</span> <span class="keyword">end</span>) <span class="comment">-- Keep odd numbers
+</span><span class="global">print</span>(<span class="global">tostring</span>(b))  --Prints {<span class="number">1</span>, <span class="number">3</span>}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Array:find"></a>
+    <strong>Array:find (element)</strong>
+    </dt>
+    <dd>
+    Returns the index of an object in the array.  If the array doesn't contain
+it the function returns -1.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">element</span>
+         The object to search for.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The index of <em>element</em> or -1 if it's not in the array.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> a = Array{<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>}
+<span class="global">print</span>(a:find(<span class="string">'b'</span>))  --Prints <span class="number">2</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Array:first"></a>
+    <strong>Array:first ([predicate=nil])</strong>
+    </dt>
+    <dd>
+    Returns the first object that meets the given condition function
+or just the first element if no predicate function was given.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">predicate</span>
+            <span class="types"><span class="type">function</span></span>
+         A predicate function that returns true
+for the element that should be returned.
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The first element that met the condition / the first element / nil.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Array:forEach"></a>
+    <strong>Array:forEach (callbackFunction)</strong>
+    </dt>
+    <dd>
+    Iterates over all elements of the array and applies a function on them.
+This is especially useful to avoid explicit use of a for loop. However,
+this functional style comes at an allocation and performance cost
+because of the function. Use it when it suits your needs.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">callbackFunction</span>
+            <span class="types"><span class="type">function</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> a = Array{<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>}
+<span class="keyword">for</span> i = <span class="number">1</span>, #a <span class="keyword">do</span> <span class="comment">--Typical approach
+</span>  <span class="global">print</span>(a[i])
+<span class="keyword">end</span>
+a:forEach(<span class="keyword">function</span>(x) <span class="global">print</span>(x) <span class="keyword">end</span>) --Functional style</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Array:isEmpty"></a>
+    <strong>Array:isEmpty ()</strong>
+    </dt>
+    <dd>
+    Returns true iff the array is empty.  This is equivalent to checking the size
+of the array being 0 manually.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True iff the array is empty.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> a = Array()
+<span class="global">print</span>(a:isEmpty())
+a:add(<span class="number">1</span>)
+<span class="global">print</span>(a:isEmpty())</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Array:join"></a>
+    <strong>Array:join ([separator])</strong>
+    </dt>
+    <dd>
+    Joins the contents of the array into a string using the specified separator.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">separator</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Array:last"></a>
+    <strong>Array:last ([predicate=nil])</strong>
+    </dt>
+    <dd>
+    Returns the last object that meets the given condition function
+or just the last element if no predicate function was given.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">predicate</span>
+            <span class="types"><span class="type">function</span></span>
+         A predicate function that returns true
+for the element that should be returned.
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The last element that met the condition / the last element / nil.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Array:map"></a>
+    <strong>Array:map (mapFunction)</strong>
+    </dt>
+    <dd>
+    Maps all elements to a new array using a given function.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mapFunction</span>
+            <span class="types"><span class="type">function</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">array</span></span>
+        The mapped array.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> a = Array{<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>}
+<span class="keyword">local</span> b = a:map(<span class="keyword">function</span>(x) <span class="keyword">return</span> <span class="number">2</span> * x <span class="keyword">end</span>)
+<span class="global">print</span>(<span class="global">tostring</span>(b))  --Prints {<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Array:pick"></a>
+    <strong>Array:pick ()</strong>
+    </dt>
+    <dd>
+    Returns a random element of the array.  Returns <strong>nil</strong> if the array is empty.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Randomly selected element.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> a = Array{<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>}
+<span class="global">print</span>(a:pick())</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Array:remove"></a>
+    <strong>Array:remove (element)</strong>
+    </dt>
+    <dd>
+    Removes the first occurrence of an object from the array.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">element</span>
+         Object that should be found and removed.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True iff the object was found and removed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Array:removeAt"></a>
+    <strong>Array:removeAt (i)</strong>
+    </dt>
+    <dd>
+    Removes the object at a specific index.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">i</span>
+            <span class="types"><span class="type">number</span></span>
+         Index of the object that should be removed.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The removed object, or nil if no object has been removed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Array:removeIf"></a>
+    <strong>Array:removeIf (predicate)</strong>
+    </dt>
+    <dd>
+    Removes the first object that meets the given condition function.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">predicate</span>
+         A predicate function that returns true for the element
+that should be removed.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True iff an element met the condition and was removed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Array:removeWhere"></a>
+    <strong>Array:removeWhere (predicate)</strong>
+    </dt>
+    <dd>
+    Removes all elements that meet the given condition.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">predicate</span>
+         A predicate function that returns true for elements
+that should be removed.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The number of occurrences that were found and removed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Array:shuffle"></a>
+    <strong>Array:shuffle ()</strong>
+    </dt>
+    <dd>
+    Shuffles the elements of the array into a random order.  The function
+uses <em>math.random</em> internally so that the result is dependent on the current
+random seed value. To vary results between runs, seed the generator before
+shuffling (for example, with <em>math.randomseed(os.time())</em>).
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> a = Array{<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>}
+a:shuffle()
+<span class="global">print</span>(<span class="global">tostring</span>(a))  --Prints {<span class="number">5</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">0</span>}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Array:sort"></a>
+    <strong>Array:sort ([compFunc])</strong>
+    </dt>
+    <dd>
+    Sorts the array in place using the elements' natural order.
+You can optionally provide your own function for comparing two elements.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">compFunc</span>
+            <span class="types"><span class="type">function</span></span>
+         The comparison function must return a boolean value
+specifying whether the first argument should be before the second argument
+in the array. The default behaviour is ascending order.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> arr = Array{<span class="number">1</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>}
+arr:sort()
+<span class="global">print</span>(<span class="global">tostring</span>(arr))  <span class="comment">--Prints {0, 1, 1, 2, 3, 4, 5, 6}
+</span>arr:sort(<span class="keyword">function</span>(a,b) <span class="keyword">return</span> a &gt; b <span class="keyword">end</span>)
+<span class="global">print</span>(<span class="global">tostring</span>(arr))  --Prints {<span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Array:sub"></a>
+    <strong>Array:sub (startIndex[, length])</strong>
+    </dt>
+    <dd>
+    Creates a sub-array for the specified range.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">startIndex</span>
+            <span class="types"><span class="type">number</span></span>
+         The index from where to copy.
+        </li>
+        <li><span class="parameter">length</span>
+            <span class="types"><span class="type">int</span></span>
+         The length of the new array. By default the array
+will be copied to the end.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">array</span></span>
+        The created sub-array.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> a = Array{<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>}
+<span class="global">print</span>(<span class="global">tostring</span>(a))  <span class="comment">--Prints {1, 2, 3, 4, 5, 6}
+</span><span class="keyword">local</span> b = a:sub(<span class="number">2</span>, <span class="number">4</span>)
+<span class="global">print</span>(<span class="global">tostring</span>(b))  --Prints {<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Array:sum"></a>
+    <strong>Array:sum (eval)</strong>
+    </dt>
+    <dd>
+    Sums up the result of the given function called on all elements.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">eval</span>
+            <span class="types"><span class="type">function</span></span>
+         A function that associates each element with a number.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2026-11-20 13:32:29 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

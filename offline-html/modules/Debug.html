@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua API</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Lua API</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/Array.html">Array</a></li>
+  <li><a href="../modules/Builder.html">Builder</a></li>
+  <li><a href="../modules/Building.html">Building</a></li>
+  <li><a href="../modules/Car.html">Car</a></li>
+  <li><a href="../modules/City.html">City</a></li>
+  <li><a href="../modules/DSA.html">DSA</a></li>
+  <li><strong>Debug</strong></li>
+  <li><a href="../modules/Draft.html">Draft</a></li>
+  <li><a href="../modules/Drawing.html">Drawing</a></li>
+  <li><a href="../modules/GUI.html">GUI</a></li>
+  <li><a href="../modules/NeighborCity.html">NeighborCity</a></li>
+  <li><a href="../modules/Runtime.html">Runtime</a></li>
+  <li><a href="../modules/Script.html">Script</a></li>
+  <li><a href="../modules/TheoTown.html">TheoTown</a></li>
+  <li><a href="../modules/Tile.html">Tile</a></li>
+  <li><a href="../modules/Util.html">Util</a></li>
+  <li><a href="../modules/Vector.html">Vector</a></li>
+  <li><a href="../modules/string.html">string</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../topics/00-intro.md.html">Introduction</a></li>
+  <li><a href="../topics/01-lua.md.html">Lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Debug</code></h1>
+<p>Functions for debugging.</p>
+<p>Don't forget to remove/comment out your debug functions before
+publishing your script/plugin.</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+Debug.log(&apos;Hello World&apos;, &apos;Multiple arguments&apos;)
+Debug.toast(&apos;I am a toast&apos;)
+Debug.info(&apos;I am displayed in debug overlay&apos;)</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#info">info (message1[, message2[, message3[, ...]]])</a></td>
+	<td class="summary">Logs a message into the debug overlay of the game.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#log">log (message1[, message2[, message3[, ...]]])</a></td>
+	<td class="summary">Logs a message to the script's internal log.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#toast">toast (message1[, message2[, message3[, ...]]])</a></td>
+	<td class="summary">Shows the specified message as a toast overlay.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "info"></a>
+    <strong>info (message1[, message2[, message3[, ...]]])</strong>
+    </dt>
+    <dd>
+    Logs a message into the debug overlay of the game.  This function is meant
+to be used within the script:update() method since the log is cleared every
+frame.
+Calling this function opens the debug overlay automatically, so ensure to
+remove it in your production code.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message1</span>
+
+
+
+        </li>
+        <li><span class="parameter">message2</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">message3</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">...</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "log"></a>
+    <strong>log (message1[, message2[, message3[, ...]]])</strong>
+    </dt>
+    <dd>
+    Logs a message to the script's internal log.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message1</span>
+
+
+
+        </li>
+        <li><span class="parameter">message2</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">message3</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">...</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "toast"></a>
+    <strong>toast (message1[, message2[, message3[, ...]]])</strong>
+    </dt>
+    <dd>
+    Shows the specified message as a toast overlay.
+It's discouraged to call this function too often since new messages are
+postponed if a previous message is still displayed.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message1</span>
+
+
+
+        </li>
+        <li><span class="parameter">message2</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">message3</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">...</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2026-11-20 13:32:29 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

@@ -1,0 +1,2223 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua API</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Lua API</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_GUI">Class GUI </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/Array.html">Array</a></li>
+  <li><a href="../modules/Builder.html">Builder</a></li>
+  <li><a href="../modules/Building.html">Building</a></li>
+  <li><a href="../modules/Car.html">Car</a></li>
+  <li><a href="../modules/City.html">City</a></li>
+  <li><a href="../modules/DSA.html">DSA</a></li>
+  <li><a href="../modules/Debug.html">Debug</a></li>
+  <li><a href="../modules/Draft.html">Draft</a></li>
+  <li><a href="../modules/Drawing.html">Drawing</a></li>
+  <li><strong>GUI</strong></li>
+  <li><a href="../modules/NeighborCity.html">NeighborCity</a></li>
+  <li><a href="../modules/Runtime.html">Runtime</a></li>
+  <li><a href="../modules/Script.html">Script</a></li>
+  <li><a href="../modules/TheoTown.html">TheoTown</a></li>
+  <li><a href="../modules/Tile.html">Tile</a></li>
+  <li><a href="../modules/Util.html">Util</a></li>
+  <li><a href="../modules/Vector.html">Vector</a></li>
+  <li><a href="../modules/string.html">string</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../topics/00-intro.md.html">Introduction</a></li>
+  <li><a href="../topics/01-lua.md.html">Lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>GUI</code></h1>
+<p>Allows to access UI elements of the game.</p>
+<p>See the <a href="https://forum.theotown.com/viewtopic.php?p=164287">GUI Compendium</a>
+for a broader explanation of how to use the GUI module and what you can do with
+it.</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#createDialog">createDialog (args)</a></td>
+	<td class="summary">Shows a dialog on the screen.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#createMenu">createMenu (args)</a></td>
+	<td class="summary">Shows a menu with various actions in it.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#createRenameDialog">createRenameDialog (args)</a></td>
+	<td class="summary">Shows a dialog that allows the user to enter some text.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#createSelectDraftDialog">createSelectDraftDialog (args)</a></td>
+	<td class="summary">Shows a dialog that allows the user to select a single or multiple drafts
+from a list of drafts.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get">get (id)</a></td>
+	<td class="summary">Finds a GUI object by its id.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getRoot">getRoot ()</a></td>
+	<td class="summary">Returns the root GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getThemeId">getThemeId ()</a></td>
+	<td class="summary">Returns the id of the currently active theme.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#isDarkMode">isDarkMode ()</a></td>
+	<td class="summary">Returns true if dark mode theme is enabled.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#showColorPicker">showColorPicker (args)</a></td>
+	<td class="summary">Shows a color picker.</td>
+	</tr>
+</table>
+<h2><a href="#Class_GUI">Class GUI </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#gui:addButton">gui:addButton (args)</a></td>
+	<td class="summary">Adds a button object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:addCanvas">gui:addCanvas (args)</a></td>
+	<td class="summary">Adds a canvas object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:addHotkey">gui:addHotkey (key[, mod=nil])</a></td>
+	<td class="summary">Adds a hotkey to a GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:addIcon">gui:addIcon (args)</a></td>
+	<td class="summary">Adds an icon object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:addLabel">gui:addLabel (args)</a></td>
+	<td class="summary">Adds a label object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:addLayout">gui:addLayout (args)</a></td>
+	<td class="summary">Adds a layout object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:addListBox">gui:addListBox (args)</a></td>
+	<td class="summary">Adds a listbox object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:addPanel">gui:addPanel (args)</a></td>
+	<td class="summary">Adds a panel object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:addSlider">gui:addSlider (args)</a></td>
+	<td class="summary">Adds a slider object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:addTextField">gui:addTextField (args)</a></td>
+	<td class="summary">Adds a textfield object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:addTextFrame">gui:addTextFrame (args)</a></td>
+	<td class="summary">Adds a textframe object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:countChildren">gui:countChildren ()</a></td>
+	<td class="summary">Returns the number of children GUI objects this object has.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:delete">gui:delete ()</a></td>
+	<td class="summary">Removes this GUI object from the active GUI hierarchy which will effectively
+delete it.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getAbsoluteParent">gui:getAbsoluteParent ()</a></td>
+	<td class="summary">Returns the top-most parent of this GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getAbsoluteX">gui:getAbsoluteX ()</a></td>
+	<td class="summary">Returns the absolute x location of the GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getAbsoluteY">gui:getAbsoluteY ()</a></td>
+	<td class="summary">Returns the absolute y location of the GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getChild">gui:getChild (index)</a></td>
+	<td class="summary">Gets a child by its index.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getChildIndex">gui:getChildIndex ()</a></td>
+	<td class="summary">Gets the child index of this GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getClientHeight">gui:getClientHeight ()</a></td>
+	<td class="summary">Returns the height of the inner area of the GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getClientWidth">gui:getClientWidth ()</a></td>
+	<td class="summary">Returns the width of the inner area of the GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getFont">gui:getFont ()</a></td>
+	<td class="summary">Gets the font of a GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getHeight">gui:getHeight ()</a></td>
+	<td class="summary">Returns the height of the GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getIcon">gui:getIcon ()</a></td>
+	<td class="summary">Gets the set icon of a GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getId">gui:getId ()</a></td>
+	<td class="summary">Gets the id of the GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getPadding">gui:getPadding ()</a></td>
+	<td class="summary">Returns the padding of this GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getParent">gui:getParent ()</a></td>
+	<td class="summary">Returns the parent GUI object of this object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getShiftY">gui:getShiftY ()</a></td>
+	<td class="summary">For list boxes returns the current y offset.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getText">gui:getText ()</a></td>
+	<td class="summary">Returns the text of a GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getTouchPoint">gui:getTouchPoint ()</a></td>
+	<td class="summary">Returns the active touch point that is active in this GUI object if there
+is any and if this object is touch sensitive (like buttons, canvases, ...).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getWidth">gui:getWidth ()</a></td>
+	<td class="summary">Returns the width of the GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getX">gui:getX ()</a></td>
+	<td class="summary">Returns the local x location of the GUI object relative to its parent.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:getY">gui:getY ()</a></td>
+	<td class="summary">Returns the local y location of the GUI object relative to its parent.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:isActive">gui:isActive ()</a></td>
+	<td class="summary">For text fields: returns whether the text field is currently selected for
+input.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:isEnabled">gui:isEnabled ()</a></td>
+	<td class="summary">Returns whether this GUI object is enabled right now.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:isMouseOver">gui:isMouseOver ()</a></td>
+	<td class="summary">Determines whether the mouse pointer is currently over the GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:isValid">gui:isValid ()</a></td>
+	<td class="summary">Determines whether this GUI object is valid.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:isVisible">gui:isVisible ()</a></td>
+	<td class="summary">Returns whether this GUI object is set to be visible right now.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:layout">gui:layout ()</a></td>
+	<td class="summary">Issues a recalculation of this GUI object's layout and its children.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:removeHotkey">gui:removeHotkey (key[, mod=nil])</a></td>
+	<td class="summary">Removes a hotkey from the GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:setActive">gui:setActive ()</a></td>
+	<td class="summary">Marks a text field as active, meaning that it will be focused for
+user input.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:setChildIndex">gui:setChildIndex (index)</a></td>
+	<td class="summary">Sets the child index of this GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:setEnabled">gui:setEnabled (state)</a></td>
+	<td class="summary">Enables or disables this GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:setFont">gui:setFont (font)</a></td>
+	<td class="summary">Sets the font of a GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:setIcon">gui:setIcon (icon)</a></td>
+	<td class="summary">Sets the icon of a GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:setId">gui:setId (id)</a></td>
+	<td class="summary">Sets the id of the GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:setPadding">gui:setPadding (left, top, right, bottom)</a></td>
+	<td class="summary">Sets the padding of this GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:setPosition">gui:setPosition (x, y)</a></td>
+	<td class="summary">Sets the position of that GUI object to the given location.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:setShiftY">gui:setShiftY (y)</a></td>
+	<td class="summary">Sets the scrolling offset for a list box.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:setShowBorder">gui:setShowBorder (state)</a></td>
+	<td class="summary">Sets the visibility of the border and background of a textframe or listbox.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:setSize">gui:setSize (width, height)</a></td>
+	<td class="summary">Sets the size of the GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:setText">gui:setText (text)</a></td>
+	<td class="summary">Sets the text of a GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:setTouchThrough">gui:setTouchThrough (state)</a></td>
+	<td class="summary">Sets the touch-through state of the GUI object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gui:setVisible">gui:setVisible (state)</a></td>
+	<td class="summary">Sets this GUI object to be visible or invisible.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "createDialog"></a>
+    <strong>createDialog (args)</strong>
+    </dt>
+    <dd>
+    Shows a dialog on the screen.  See the <a href="https://forum.theotown.com/viewtopic.php?p=164287#dialog">GUI Compendium</a>
+for the parameters that can be provided in the args table.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table that contains various parameters.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        A table that represents the dialog.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "createMenu"></a>
+    <strong>createMenu (args)</strong>
+    </dt>
+    <dd>
+    Shows a menu with various actions in it.  An easy way to allow the user
+to pick from a set of things. See the <a href="https://forum.theotown.com/viewtopic.php?p=164287#menu">GUI Compendium</a>
+for the parameters that can be provided in the args table.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table that contains the actions.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "createRenameDialog"></a>
+    <strong>createRenameDialog (args)</strong>
+    </dt>
+    <dd>
+    Shows a dialog that allows the user to enter some text.  The game uses this
+dialog for rename operations, search query input and so on. You can use
+a textfield object instead if it suits your needs. Having a separate dialog
+prevents you from dealing with the quirks that some of the textfield
+implementations can have.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table that contains all of the parameters for the dialog
+creation. Usually all of the values are optional. See the example for
+available parameters.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        Returns a dialog table object similar to GUI.createDialog
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+GUI.createRenameDialog{
+  icon = Icon.OK,                  <span class="comment">-- An icon for the dialog
+</span>  title = <span class="string">'Enter something'</span>,       <span class="comment">-- Title for the dialog
+</span>  text = <span class="string">'Some explanation'</span>,       <span class="comment">-- A text to explain what the input is about
+</span>  value = <span class="string">'A text'</span>,                <span class="comment">-- Content of the textfield
+</span>  okText = <span class="string">'Ok'</span>,                   <span class="comment">-- Text for the apply button, "Rename" by default
+</span>  cancelText = <span class="string">'Cancel'</span>,           <span class="comment">-- Text for the cancel button, "Cancel" by default
+</span>  onOk = <span class="keyword">function</span>(value)           <span class="comment">-- Callback function that will be called when user pressed ok
+</span>    Debug.toast(<span class="string">'Entered '</span>..value)
+  <span class="keyword">end</span>,
+  onCancel = <span class="keyword">function</span>() <span class="keyword">end</span>,       <span class="comment">-- Callback function that will be called when user cancels input
+</span>  filter = <span class="keyword">function</span>(value)         <span class="comment">-- Predicate function that should only return true if the value is "valid input"
+</span>    <span class="keyword">return</span> value:len() &gt; <span class="number">5</span>
+  <span class="keyword">end</span>
+}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "createSelectDraftDialog"></a>
+    <strong>createSelectDraftDialog (args)</strong>
+    </dt>
+    <dd>
+    Shows a dialog that allows the user to select a single or multiple drafts
+from a list of drafts.
+This is for example used in the <a href="https://forum.theotown.com/viewtopic.php?f=115&amp;t=12179">tree planter tool</a> to allow the player to
+select species to plant.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table that contains all of the parameters for the dialog
+creation. Usually all of the values are optional. See the example for
+available parameters.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        Returns a dialog table object similar to GUI.createDialog
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+GUI.createSelectDraftDialog{
+  icon = Icon.OK,    <span class="comment">-- An icon for the dialog
+</span>  title = <span class="string">'My selection'</span>,  <span class="comment">-- A title for the dialog. Empty by default.
+</span>  drafts = Array{ Draft.getDraft(<span class="string">'$park00'</span>) }, <span class="comment">-- An array of available drafts
+</span>  selection = <span class="keyword">nil</span>,   <span class="comment">-- Either a single draft or a table of drafts. nil by default.
+</span>  multiple = <span class="keyword">false</span>,  <span class="comment">-- Allows selection of more than one draft. false by default.
+</span>  minSelection = <span class="number">0</span>,  <span class="comment">-- Minimum number of selected items. 0 by default.
+</span>  maxSelection = <span class="number">10</span>, <span class="comment">-- Maximum number of selected items. 99999 by default.
+</span>  selectableOnly = <span class="keyword">true</span>,      <span class="comment">-- Only show drafts that can actually be "used". true by default.
+</span>  onSelect = <span class="keyword">function</span>(selection) <span class="keyword">end</span>,  <span class="comment">-- Called on confirmation; receives a draft if multiple is false, otherwise an array of drafts.
+</span>  onCancel = <span class="keyword">function</span>() <span class="keyword">end</span>,  <span class="comment">-- Callback function that will be called when user cancels input
+</span>}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "get"></a>
+    <strong>get (id)</strong>
+    </dt>
+    <dd>
+    Finds a GUI object by its id.
+An id can be assigned to any GUI object to find it using this function.
+Some game made GUI objects also have an id that you can find using
+this function.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/GUI.html#GUI">GUI</a></span>
+        object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getRoot"></a>
+    <strong>getRoot ()</strong>
+    </dt>
+    <dd>
+    Returns the root GUI object.
+The root GUI object is a panel that stretches along the whole screen. All
+other GUI objects are directly or indirectly children of this object.
+Its padding leaves space for features such as notches. The inner area
+represents the safe area for placing UI elements.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/GUI.html#GUI">GUI</a></span>
+        object that has no parent
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getThemeId"></a>
+    <strong>getThemeId ()</strong>
+    </dt>
+    <dd>
+    Returns the id of the currently active theme.
+Returns nil in case the built-in dark or light theme is active.
+
+    </ul>
+    </ul>
+    <h3>New feature:</h3>
+    <ul>
+         This is a new feature that was added in version <b>1.12.99</b>
+    </ul>
+    </ul>
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "isDarkMode"></a>
+    <strong>isDarkMode ()</strong>
+    </dt>
+    <dd>
+    Returns true if dark mode theme is enabled.
+
+    </ul>
+    </ul>
+    <h3>New feature:</h3>
+    <ul>
+         This is a new feature that was added in version <b>1.12.85</b>
+    </ul>
+    </ul>
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "showColorPicker"></a>
+    <strong>showColorPicker (args)</strong>
+    </dt>
+    <dd>
+    Shows a color picker.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table of arguments.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> foo = <span class="keyword">function</span>(r, g, b) Debug.toast(<span class="string">'Selected:'</span>, r, g, b) <span class="keyword">end</span>
+
+GUI.showColorPicker {
+    r = <span class="number">42</span>,                   <span class="comment">-- Initial red color, range 0..255
+</span>    g = <span class="number">0</span>,                    <span class="comment">-- Initial green color, range 0..255
+</span>    b = <span class="number">255</span>,                  <span class="comment">-- Initial blue color, range 0..255
+</span>    onColor = foo,            <span class="comment">-- Called with r, g, b and the hex color string
+</span>    title = <span class="string">'Select a color'</span>, <span class="comment">-- A title for the color picker window; If not set a default title will be used
+</span>}</pre>
+    </ul>
+
+</dd>
+</dl>
+    <h2><a name="Class_GUI"></a>Class GUI </h2>
+
+        This type represents GUI objects.
+    <dl class="function">
+    <dt>
+    <a name = "gui:addButton"></a>
+    <strong>gui:addButton (args)</strong>
+    </dt>
+    <dd>
+    Adds a button object.
+See the <a href="https://forum.theotown.com/viewtopic.php?t=12185#button">GUI Compendium</a> for more information.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table that contains the GUI object creation parameters.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/GUI.html#GUI">GUI</a></span>
+        The created button object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:addCanvas"></a>
+    <strong>gui:addCanvas (args)</strong>
+    </dt>
+    <dd>
+    Adds a canvas object.
+See the <a href="https://forum.theotown.com/viewtopic.php?t=12185#canvas">GUI Compendium</a> for more information.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table that contains the GUI object creation parameters.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/GUI.html#GUI">GUI</a></span>
+        The created canvas object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:addHotkey"></a>
+    <strong>gui:addHotkey (key[, mod=nil])</strong>
+    </dt>
+    <dd>
+    Adds a hotkey to a GUI object.  If the button gets pressed the GUI object's
+onClick callback function will be called. Usually used for buttons.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><span class="type">number</span></span>
+         A keycode as defined in the Keys table.
+        </li>
+        <li><span class="parameter">mod</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         A modifier key code/name.
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+button:addHotkey(Keys.ENTER)
+
+ <span class="comment">-- The modifier key can be assigned by a string as modifier names: "ctrl", "shift", "alt".
+</span>button:addHotkey(Keys.A, <span class="string">"alt"</span>)
+
+ <span class="comment">-- Use plus "+" sign to assign multiple modifiers.
+</span>button:addHotkey(Keys.C, <span class="string">"ctrl+shift"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "gui:addIcon"></a>
+    <strong>gui:addIcon (args)</strong>
+    </dt>
+    <dd>
+    Adds an icon object.
+See the <a href="https://forum.theotown.com/viewtopic.php?t=12185#icon">GUI Compendium</a> for more information.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table that contains the GUI object creation parameters.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/GUI.html#GUI">GUI</a></span>
+        The created icon object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:addLabel"></a>
+    <strong>gui:addLabel (args)</strong>
+    </dt>
+    <dd>
+    Adds a label object.
+See the <a href="https://forum.theotown.com/viewtopic.php?t=12185#label">GUI Compendium</a> for more information.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table that contains the GUI object creation parameters.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/GUI.html#GUI">GUI</a></span>
+        The created label object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:addLayout"></a>
+    <strong>gui:addLayout (args)</strong>
+    </dt>
+    <dd>
+    Adds a layout object.
+See the <a href="https://forum.theotown.com/viewtopic.php?t=12185#layout">GUI Compendium</a> for more information.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table that contains the GUI object creation parameters.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/GUI.html#GUI">GUI</a></span>
+        The created layout object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:addListBox"></a>
+    <strong>gui:addListBox (args)</strong>
+    </dt>
+    <dd>
+    Adds a listbox object.
+See the <a href="https://forum.theotown.com/viewtopic.php?t=12185#listbox">GUI Compendium</a> for more information.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table that contains the GUI object creation parameters.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/GUI.html#GUI">GUI</a></span>
+        The created listbox object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:addPanel"></a>
+    <strong>gui:addPanel (args)</strong>
+    </dt>
+    <dd>
+    Adds a panel object.
+See the <a href="https://forum.theotown.com/viewtopic.php?t=12185#panel">GUI Compendium</a> for more information.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table that contains the GUI object creation parameters.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/GUI.html#GUI">GUI</a></span>
+        The created panel object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:addSlider"></a>
+    <strong>gui:addSlider (args)</strong>
+    </dt>
+    <dd>
+    Adds a slider object.
+See the <a href="https://forum.theotown.com/viewtopic.php?t=12185#slider">GUI Compendium</a> for more information.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table that contains the GUI object creation parameters.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/GUI.html#GUI">GUI</a></span>
+        The created slider object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:addTextField"></a>
+    <strong>gui:addTextField (args)</strong>
+    </dt>
+    <dd>
+    Adds a textfield object.
+See the <a href="https://forum.theotown.com/viewtopic.php?t=12185#textfield">GUI Compendium</a> for more information.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table that contains the GUI object creation parameters.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/GUI.html#GUI">GUI</a></span>
+        The created textfield object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:addTextFrame"></a>
+    <strong>gui:addTextFrame (args)</strong>
+    </dt>
+    <dd>
+    Adds a textframe object.
+See the <a href="https://forum.theotown.com/viewtopic.php?t=12185#textframe">GUI Compendium</a> for more information.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">args</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table that contains the GUI object creation parameters.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/GUI.html#GUI">GUI</a></span>
+        The created textframe object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:countChildren"></a>
+    <strong>gui:countChildren ()</strong>
+    </dt>
+    <dd>
+    Returns the number of children GUI objects this object has.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The number of children.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:delete"></a>
+    <strong>gui:delete ()</strong>
+    </dt>
+    <dd>
+    Removes this GUI object from the active GUI hierarchy which will effectively
+delete it.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getAbsoluteParent"></a>
+    <strong>gui:getAbsoluteParent ()</strong>
+    </dt>
+    <dd>
+    Returns the top-most parent of this GUI object.
+This object is not valid anymore if its absolute parent isn't
+the root GUI object.
+If the object has no parent the object itself will be returned.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/GUI.html#GUI">GUI</a></span>
+        The absolute parent GUI object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getAbsoluteX"></a>
+    <strong>gui:getAbsoluteX ()</strong>
+    </dt>
+    <dd>
+    Returns the absolute x location of the GUI object.
+This matches the x coordinate you would use for drawing or would find in
+touchpoints.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The absolute x location of the GUI object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getAbsoluteY"></a>
+    <strong>gui:getAbsoluteY ()</strong>
+    </dt>
+    <dd>
+    Returns the absolute y location of the GUI object.
+This matches the y coordinate you would use for drawing or would find in
+touchpoints.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The absolute y location of the GUI object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getChild"></a>
+    <strong>gui:getChild (index)</strong>
+    </dt>
+    <dd>
+    Gets a child by its index.
+The index ranges from 1 to <em>:countChildren()</em> of the parent object.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">index</span>
+            <span class="types"><span class="type">number</span></span>
+         The index of a child.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/GUI.html#GUI">GUI</a></span>
+        The GUI object of the given index.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getChildIndex"></a>
+    <strong>gui:getChildIndex ()</strong>
+    </dt>
+    <dd>
+    Gets the child index of this GUI object.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The child index of this object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getClientHeight"></a>
+    <strong>gui:getClientHeight ()</strong>
+    </dt>
+    <dd>
+    Returns the height of the inner area of the GUI object.
+The inner height is the height that is available for child objects.
+That is the height minus the top and bottom padding.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The height of the inner area.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getClientWidth"></a>
+    <strong>gui:getClientWidth ()</strong>
+    </dt>
+    <dd>
+    Returns the width of the inner area of the GUI object.
+The inner width is the width that is available for child objects.
+That is the width minus the left and right padding.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The width of the inner area.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getFont"></a>
+    <strong>gui:getFont ()</strong>
+    </dt>
+    <dd>
+    Gets the font of a GUI object.
+Only text related objects support this function, e.g. labels, buttons, ...
+Text fields do not support this function.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">font</span></span>
+        The font that is currently in use by that object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getHeight"></a>
+    <strong>gui:getHeight ()</strong>
+    </dt>
+    <dd>
+    Returns the height of the GUI object.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The height of the GUI object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getIcon"></a>
+    <strong>gui:getIcon ()</strong>
+    </dt>
+    <dd>
+    Gets the set icon of a GUI object.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The frame of the currently used icon.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getId"></a>
+    <strong>gui:getId ()</strong>
+    </dt>
+    <dd>
+    Gets the id of the GUI object.
+An id can be assigned to any GUI object to identify it.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        Returns the id of the GUI object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getPadding"></a>
+    <strong>gui:getPadding ()</strong>
+    </dt>
+    <dd>
+    Returns the padding of this GUI object.
+Padding defines the distances between the inner area to the border of this object.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        Padding on the left side.</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        Padding on the top side.</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        Padding on the right side.</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        Padding on the bottom side.</li>
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> left,top,right,bottom = obj:getPadding()</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "gui:getParent"></a>
+    <strong>gui:getParent ()</strong>
+    </dt>
+    <dd>
+    Returns the parent GUI object of this object.
+Can be <strong>nil</strong> if this is the root object or if this object is not valid anymore
+(that means not part of the active GUI hierarchy).
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/GUI.html#GUI">GUI</a></span>
+        The parent GUI object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getShiftY"></a>
+    <strong>gui:getShiftY ()</strong>
+    </dt>
+    <dd>
+    For list boxes returns the current y offset.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        the scrolling offset
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getText"></a>
+    <strong>gui:getText ()</strong>
+    </dt>
+    <dd>
+    Returns the text of a GUI object.
+Only text-related objects support this function, e.g. labels, buttons and text fields.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        The current text of that object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getTouchPoint"></a>
+    <strong>gui:getTouchPoint ()</strong>
+    </dt>
+    <dd>
+    Returns the active touch point that is active in this GUI object if there
+is any and if this object is touch sensitive (like buttons, canvases, ...).
+The values returned are all nil otherwise.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        x Current absolute x location of the touch point.</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        y Current absolute y location of the touch point.</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        firstX Absolute x location of the touch point when it was initiated.</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        firstY Absolute y location of the touch point when it was initiated.</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        speedX X movement of this touch point since the last update.</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        speedY Y movement of this touch point since the last update.</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        time The unix time in ms when the touch point was initiated. Can be used for identifying the touch point.</li>
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example"><span class="keyword">local</span> x,y = obj:getTouchPoint()</pre></li>
+        <li><pre class="example"><span class="keyword">local</span> _,_,_,_,_,_,time = obj:getTouchPoint()</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "gui:getWidth"></a>
+    <strong>gui:getWidth ()</strong>
+    </dt>
+    <dd>
+    Returns the width of the GUI object.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The width of the GUI object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getX"></a>
+    <strong>gui:getX ()</strong>
+    </dt>
+    <dd>
+    Returns the local x location of the GUI object relative to its parent.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The x location of the GUI object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:getY"></a>
+    <strong>gui:getY ()</strong>
+    </dt>
+    <dd>
+    Returns the local y location of the GUI object relative to its parent.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The y location of the GUI object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:isActive"></a>
+    <strong>gui:isActive ()</strong>
+    </dt>
+    <dd>
+    For text fields: returns whether the text field is currently selected for
+input.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True iff this text field is currently active.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:isEnabled"></a>
+    <strong>gui:isEnabled ()</strong>
+    </dt>
+    <dd>
+    Returns whether this GUI object is enabled right now.
+A disabled object will not be clickable.
+Disabled buttons will be drawn differently.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        True if this object is enabled.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:isMouseOver"></a>
+    <strong>gui:isMouseOver ()</strong>
+    </dt>
+    <dd>
+    Determines whether the mouse pointer is currently over the GUI object.
+Returns always false if there is no mouse pointer.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True if the mouse pointer is hovering the object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:isValid"></a>
+    <strong>gui:isValid ()</strong>
+    </dt>
+    <dd>
+    Determines whether this GUI object is valid.
+A GUI object is valid if it's part of the current GUI hierarchy.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        True if this object is part of the active GUI hierarchy.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:isVisible"></a>
+    <strong>gui:isVisible ()</strong>
+    </dt>
+    <dd>
+    Returns whether this GUI object is set to be visible right now.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        Returns true iff this GUI object is set to be visible.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:layout"></a>
+    <strong>gui:layout ()</strong>
+    </dt>
+    <dd>
+    Issues a recalculation of this GUI object's layout and its children.
+Calling this function should not be necessary since it will usually be
+called automatically when an object changes.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:removeHotkey"></a>
+    <strong>gui:removeHotkey (key[, mod=nil])</strong>
+    </dt>
+    <dd>
+    Removes a hotkey from the GUI object.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><span class="type">number</span></span>
+         The keycode of a key to remove.
+        </li>
+        <li><span class="parameter">mod</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The modifier of a key to remove.
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        Returns true iff such a hotkey was actually assigned.
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/GUI.html#gui:addHotkey">gui:addHotkey</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "gui:setActive"></a>
+    <strong>gui:setActive ()</strong>
+    </dt>
+    <dd>
+    Marks a text field as active, meaning that it will be focused for
+user input.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:setChildIndex"></a>
+    <strong>gui:setChildIndex (index)</strong>
+    </dt>
+    <dd>
+    Sets the child index of this GUI object.
+By changing the child index of an object you can alter the drawing order
+and/or listing order between this object and its siblings.
+The index should be in range 1 to <em>:countChildren()</em> of the parent object.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">index</span>
+            <span class="types"><span class="type">number</span></span>
+         The child index to apply to this object.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:setEnabled"></a>
+    <strong>gui:setEnabled (state)</strong>
+    </dt>
+    <dd>
+    Enables or disables this GUI object.
+A disabled object will not be clickable.
+Disabled buttons will be drawn differently.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">state</span>
+            <span class="types"><span class="type">boolean</span></span>
+         Whether to enable this object.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:setFont"></a>
+    <strong>gui:setFont (font)</strong>
+    </dt>
+    <dd>
+    Sets the font of a GUI object.
+Only text related objects support this function, e.g. labels, buttons, ...
+Text fields do not support this function.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">font</span>
+            <span class="types"><span class="type">font</span></span>
+         The font to apply to this object.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:setIcon"></a>
+    <strong>gui:setIcon (icon)</strong>
+    </dt>
+    <dd>
+    Sets the icon of a GUI object.
+Supported GUI objects are dialogs, buttons and icons.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">icon</span>
+            <span class="types"><span class="type">int</span></span>
+         The frame to use as an icon
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:setId"></a>
+    <strong>gui:setId (id)</strong>
+    </dt>
+    <dd>
+    Sets the id of the GUI object.
+An id can be assigned to any GUI object to identify it.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The id to apply to the GUI object.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:setPadding"></a>
+    <strong>gui:setPadding (left, top, right, bottom)</strong>
+    </dt>
+    <dd>
+    Sets the padding of this GUI object.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">left</span>
+            <span class="types"><span class="type">number</span></span>
+         Padding on the left side.
+        </li>
+        <li><span class="parameter">top</span>
+            <span class="types"><span class="type">number</span></span>
+         Padding on the top side.
+        </li>
+        <li><span class="parameter">right</span>
+            <span class="types"><span class="type">number</span></span>
+         Padding on the right side.
+        </li>
+        <li><span class="parameter">bottom</span>
+            <span class="types"><span class="type">number</span></span>
+         Padding on the bottom side.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:setPosition"></a>
+    <strong>gui:setPosition (x, y)</strong>
+    </dt>
+    <dd>
+    Sets the position of that GUI object to the given location.
+The location is relative to the inner area of the parent object.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+         X coordinate.
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         Y coordinate.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:setShiftY"></a>
+    <strong>gui:setShiftY (y)</strong>
+    </dt>
+    <dd>
+    Sets the scrolling offset for a list box.
+This is useful to restore the scrolling after rebuilding a list box.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         the scrolling offset to set
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:setShowBorder"></a>
+    <strong>gui:setShowBorder (state)</strong>
+    </dt>
+    <dd>
+    Sets the visibility of the border and background of a textframe or listbox.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">state</span>
+            <span class="types"><span class="type">boolean</span></span>
+         The visibility state to apply to the border/background.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:setSize"></a>
+    <strong>gui:setSize (width, height)</strong>
+    </dt>
+    <dd>
+    Sets the size of the GUI object.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">width</span>
+            <span class="types"><span class="type">number</span></span>
+         The width to set.
+        </li>
+        <li><span class="parameter">height</span>
+            <span class="types"><span class="type">number</span></span>
+         The height to set.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:setText"></a>
+    <strong>gui:setText (text)</strong>
+    </dt>
+    <dd>
+    Sets the text of a GUI object.
+Only text-related objects support this function, e.g. labels, buttons and text fields.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">text</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The text to apply to this object.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:setTouchThrough"></a>
+    <strong>gui:setTouchThrough (state)</strong>
+    </dt>
+    <dd>
+    Sets the touch-through state of the GUI object.  If this is set to true
+touch events will not be consumed by the object and therefore affect other
+GUI objects that are behind it.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">state</span>
+            <span class="types"><span class="type">bool</span></span>
+         True to enable the touch through option.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gui:setVisible"></a>
+    <strong>gui:setVisible (state)</strong>
+    </dt>
+    <dd>
+    Sets this GUI object to be visible or invisible.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">state</span>
+            <span class="types"><span class="type">boolean</span></span>
+         The visibility state to set.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2026-11-20 13:32:29 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

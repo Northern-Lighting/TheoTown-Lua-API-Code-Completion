@@ -1,0 +1,632 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua API</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Lua API</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_NeighborCity">Class NeighborCity </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/Array.html">Array</a></li>
+  <li><a href="../modules/Builder.html">Builder</a></li>
+  <li><a href="../modules/Building.html">Building</a></li>
+  <li><a href="../modules/Car.html">Car</a></li>
+  <li><a href="../modules/City.html">City</a></li>
+  <li><a href="../modules/DSA.html">DSA</a></li>
+  <li><a href="../modules/Debug.html">Debug</a></li>
+  <li><a href="../modules/Draft.html">Draft</a></li>
+  <li><a href="../modules/Drawing.html">Drawing</a></li>
+  <li><a href="../modules/GUI.html">GUI</a></li>
+  <li><strong>NeighborCity</strong></li>
+  <li><a href="../modules/Runtime.html">Runtime</a></li>
+  <li><a href="../modules/Script.html">Script</a></li>
+  <li><a href="../modules/TheoTown.html">TheoTown</a></li>
+  <li><a href="../modules/Tile.html">Tile</a></li>
+  <li><a href="../modules/Util.html">Util</a></li>
+  <li><a href="../modules/Vector.html">Vector</a></li>
+  <li><a href="../modules/string.html">string</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../topics/00-intro.md.html">Introduction</a></li>
+  <li><a href="../topics/01-lua.md.html">Lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>NeighborCity</code></h1>
+<p>Neighbor City library for TheoTown.</p>
+<p>This library provides functions to manage custom, virtual neighboring cities
+that the player can trade with.
+The goal is to extend the user experience especially in Online Mode where by
+default no neighborhood commercial is available.</p>
+
+<p>Each neighbor city belongs to the draft that created it. Because of that,
+uninstalling a plugin that created a virtual neighbor will also remove that
+neighbor city.</p>
+
+<p>This library is only available while a city is open.</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#create">create (id[, name=nil])</a></td>
+	<td class="summary">Creates a new virtual neighboring city using the given id and name.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get">get (id)</a></td>
+	<td class="summary">Returns the neighbor city object of this draft that has the given id.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getNeighbors">getNeighbors ()</a></td>
+	<td class="summary">Returns an array of all neighbor city objects that belong to this draft.</td>
+	</tr>
+</table>
+<h2><a href="#Class_NeighborCity">Class NeighborCity </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#neighborCity:delete">neighborCity:delete ()</a></td>
+	<td class="summary">Deletes this neighbor city so it can no longer be used for trading.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neighborCity:getBodyDisposal">neighborCity:getBodyDisposal ()</a></td>
+	<td class="summary">Returns the amount of body disposal services this neighbor city can export.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neighborCity:getId">neighborCity:getId ()</a></td>
+	<td class="summary">Returns the unique id of this neighbor city.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neighborCity:getName">neighborCity:getName ()</a></td>
+	<td class="summary">Returns the displayed name for this city.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neighborCity:getPower">neighborCity:getPower ()</a></td>
+	<td class="summary">Returns the amount of power this neighbor city can export.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neighborCity:getPowerExport">neighborCity:getPowerExport ()</a></td>
+	<td class="summary">Returns the current power trade with this neighbor city.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neighborCity:getWasteDisposal">neighborCity:getWasteDisposal ()</a></td>
+	<td class="summary">Returns the amount of waste disposal services this neighbor city can export.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neighborCity:getWater">neighborCity:getWater ()</a></td>
+	<td class="summary">Returns the amount of water this neighbor city can export.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neighborCity:isValid">neighborCity:isValid ()</a></td>
+	<td class="summary">Determines whether this neighbor city object is valid.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neighborCity:setBodyDisposal">neighborCity:setBodyDisposal (amount)</a></td>
+	<td class="summary">Sets the amount of body disposal services this neighbor city can export.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neighborCity:setName">neighborCity:setName (name)</a></td>
+	<td class="summary">Sets a visible name for this city.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neighborCity:setPower">neighborCity:setPower (amount)</a></td>
+	<td class="summary">Sets the amount of power this neighbor city can export.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neighborCity:setWasteDisposal">neighborCity:setWasteDisposal (amount)</a></td>
+	<td class="summary">Sets the amount of waste disposal services this neighbor city can export.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neighborCity:setWater">neighborCity:setWater (amount)</a></td>
+	<td class="summary">Sets the amount of water this neighbor city can export.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "create"></a>
+    <strong>create (id[, name=nil])</strong>
+    </dt>
+    <dd>
+    Creates a new virtual neighboring city using the given id and name.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         An id unique to the calling draft that identifies the
+neighbor. If a neighbor with the same id was already created it will be
+replaced by the new one.
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         A name that will be shown for the created city.
+If no name was provided the game will generate a random one.
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/NeighborCity.html#NeighborCity">NeighborCity</a></span>
+        A neighbor city object.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get"></a>
+    <strong>get (id)</strong>
+    </dt>
+    <dd>
+    Returns the neighbor city object of this draft that has the given id.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The id that should be found.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/NeighborCity.html#NeighborCity">NeighborCity</a></span>
+        The neighbor city object with the given id or nil if
+no such neighbor object exists.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getNeighbors"></a>
+    <strong>getNeighbors ()</strong>
+    </dt>
+    <dd>
+    Returns an array of all neighbor city objects that belong to this draft.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">Array</span></span>
+        An array of all virtual neighbor cities.
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Class_NeighborCity"></a>Class NeighborCity </h2>
+
+        This type represents NeighborCity objects.
+    <dl class="function">
+    <dt>
+    <a name = "neighborCity:delete"></a>
+    <strong>neighborCity:delete ()</strong>
+    </dt>
+    <dd>
+    Deletes this neighbor city so it can no longer be used for trading.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neighborCity:getBodyDisposal"></a>
+    <strong>neighborCity:getBodyDisposal ()</strong>
+    </dt>
+    <dd>
+    Returns the amount of body disposal services this neighbor city can export.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The amount of body disposal services that can be exported from
+the neighbor city.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neighborCity:getId"></a>
+    <strong>neighborCity:getId ()</strong>
+    </dt>
+    <dd>
+    Returns the unique id of this neighbor city.
+The id is unique between the neighbor cities that belong to the calling draft.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        The id associated during the creation process.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neighborCity:getName"></a>
+    <strong>neighborCity:getName ()</strong>
+    </dt>
+    <dd>
+    Returns the displayed name for this city.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        The name of the neighbor city.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neighborCity:getPower"></a>
+    <strong>neighborCity:getPower ()</strong>
+    </dt>
+    <dd>
+    Returns the amount of power this neighbor city can export.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The amount of power that can be exported from the neighbor city.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neighborCity:getPowerExport"></a>
+    <strong>neighborCity:getPowerExport ()</strong>
+    </dt>
+    <dd>
+    Returns the current power trade with this neighbor city.
+Positive values indicate exports to it; negative values indicate imports from it.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neighborCity:getWasteDisposal"></a>
+    <strong>neighborCity:getWasteDisposal ()</strong>
+    </dt>
+    <dd>
+    Returns the amount of waste disposal services this neighbor city can export.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The amount of waste disposal services that can be exported from
+the neighbor city.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neighborCity:getWater"></a>
+    <strong>neighborCity:getWater ()</strong>
+    </dt>
+    <dd>
+    Returns the amount of water this neighbor city can export.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The amount of water that can be exported from the neighbor city.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neighborCity:isValid"></a>
+    <strong>neighborCity:isValid ()</strong>
+    </dt>
+    <dd>
+    Determines whether this neighbor city object is valid.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True if this neighbor city object is still valid.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neighborCity:setBodyDisposal"></a>
+    <strong>neighborCity:setBodyDisposal (amount)</strong>
+    </dt>
+    <dd>
+    Sets the amount of body disposal services this neighbor city can export.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">amount</span>
+            <span class="types"><span class="type">int</span></span>
+         The amount of body disposal services that can be exported
+from the neighbor city.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neighborCity:setName"></a>
+    <strong>neighborCity:setName (name)</strong>
+    </dt>
+    <dd>
+    Sets a visible name for this city.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The new name of the neighbor city.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neighborCity:setPower"></a>
+    <strong>neighborCity:setPower (amount)</strong>
+    </dt>
+    <dd>
+    Sets the amount of power this neighbor city can export.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">amount</span>
+            <span class="types"><span class="type">int</span></span>
+         The amount of power that can be exported from the
+neighbor city.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neighborCity:setWasteDisposal"></a>
+    <strong>neighborCity:setWasteDisposal (amount)</strong>
+    </dt>
+    <dd>
+    Sets the amount of waste disposal services this neighbor city can export.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">amount</span>
+            <span class="types"><span class="type">int</span></span>
+         The amount of waste disposal services that can be exported
+from the neighbor city.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neighborCity:setWater"></a>
+    <strong>neighborCity:setWater (amount)</strong>
+    </dt>
+    <dd>
+    Sets the amount of water this neighbor city can export.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">amount</span>
+            <span class="types"><span class="type">int</span></span>
+         The amount of water that can be exported from the
+neighbor city.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2026-11-20 13:32:29 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

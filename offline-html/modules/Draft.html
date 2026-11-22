@@ -1,0 +1,2343 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua API</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Lua API</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_Draft">Class Draft </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/Array.html">Array</a></li>
+  <li><a href="../modules/Builder.html">Builder</a></li>
+  <li><a href="../modules/Building.html">Building</a></li>
+  <li><a href="../modules/Car.html">Car</a></li>
+  <li><a href="../modules/City.html">City</a></li>
+  <li><a href="../modules/DSA.html">DSA</a></li>
+  <li><a href="../modules/Debug.html">Debug</a></li>
+  <li><strong>Draft</strong></li>
+  <li><a href="../modules/Drawing.html">Drawing</a></li>
+  <li><a href="../modules/GUI.html">GUI</a></li>
+  <li><a href="../modules/NeighborCity.html">NeighborCity</a></li>
+  <li><a href="../modules/Runtime.html">Runtime</a></li>
+  <li><a href="../modules/Script.html">Script</a></li>
+  <li><a href="../modules/TheoTown.html">TheoTown</a></li>
+  <li><a href="../modules/Tile.html">Tile</a></li>
+  <li><a href="../modules/Util.html">Util</a></li>
+  <li><a href="../modules/Vector.html">Vector</a></li>
+  <li><a href="../modules/string.html">string</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../topics/00-intro.md.html">Introduction</a></li>
+  <li><a href="../topics/01-lua.md.html">Lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Draft</code></h1>
+<p>Draft library for TheoTown</p>
+
+<p>A draft can be considered a single "plugin object" like the template for a
+building.</p>
+<p> This library contains functions and methods to access drafts and
+query basic information about them.</p>
+
+<p>Multiple scripts can be attached to a single draft.</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+local d = Draft.getDraft(&apos;$park00&apos;)
+print(d:getId())</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#append">append (json)</a></td>
+	<td class="summary">Adds a JSON code to the list of JSON codes that will be loaded by the game.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#callAll">callAll (name[, arg1[, arg2[, ...]]])</a></td>
+	<td class="summary">Calls the event function called <em>name</em> on all scripts if defined.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getDraft">getDraft (id)</a></td>
+	<td class="summary">Returns the draft of the given id.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getDrafts">getDrafts ([tag])</a></td>
+	<td class="summary">Returns an array of drafts that have the given tag defined.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#merge">merge (json)</a></td>
+	<td class="summary">Merges the provided JSON object into the json object that is being
+loaded by the game right now.</td>
+	</tr>
+</table>
+<h2><a href="#Class_Draft">Class Draft </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#draft:call">draft:call (name[, arg1[, arg2[, ...]]])</a></td>
+	<td class="summary">Calls the event function called <em>name</em> on all scripts of the draft if defined.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getAuthor">draft:getAuthor ()</a></td>
+	<td class="summary">Returns the author of the draft as defined in its json definition.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getBridgePrice">draft:getBridgePrice ()</a></td>
+	<td class="summary">Returns the bridge price defined for this road draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getBuildHeight">draft:getBuildHeight ()</a></td>
+	<td class="summary">Returns the build height of the building.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getCapacity">draft:getCapacity ()</a></td>
+	<td class="summary">Returns the capacity of a car draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getColors">draft:getColors ()</a></td>
+	<td class="summary">Returns an array of hex colors for shading the primary frames of this draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getContent">draft:getContent ()</a></td>
+	<td class="summary">For data drafts only: returns the raw json definition of the draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getDepotCapacity">draft:getDepotCapacity ()</a></td>
+	<td class="summary">Returns the amount of vehicles that can be stored in the given depot building.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getDiamondPrice">draft:getDiamondPrice ()</a></td>
+	<td class="summary">Returns the diamond price defined for this draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getFrame">draft:getFrame ([frameIndex=1])</a></td>
+	<td class="summary">Returns a frame specified by its index (starting with 1).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getFrameCount">draft:getFrameCount ()</a></td>
+	<td class="summary">Returns the number of frames defined in that draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getFrameType">draft:getFrameType ([frameIndex=1])</a></td>
+	<td class="summary">Returns the frame type of a frame based on its index (starting with 1).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getHeight">draft:getHeight ()</a></td>
+	<td class="summary">Returns the height of the building.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getId">draft:getId ()</a></td>
+	<td class="summary">Returns the ID of the draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getLevel">draft:getLevel ()</a></td>
+	<td class="summary">Returns the wealth level of building drafts.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getMeta">draft:getMeta ()</a></td>
+	<td class="summary">Returns the meta table of the draft if available.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getMonthlyPrice">draft:getMonthlyPrice ()</a></td>
+	<td class="summary">Returns the monthly price defined for this draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getOrdinal">draft:getOrdinal ()</a></td>
+	<td class="summary">Returns the ordinality of the draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getOverlayColors">draft:getOverlayColors ()</a></td>
+	<td class="summary">Returns an array of hex colors for shading the overlay frames of this draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getOverlayFrame">draft:getOverlayFrame ([frameIndex=1])</a></td>
+	<td class="summary">Returns an overlay frame specified by its index (starting with 1).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getOverlayFrameCount">draft:getOverlayFrameCount ()</a></td>
+	<td class="summary">Returns the number of overlay frames defined in this car draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getPluginId">draft:getPluginId ()</a></td>
+	<td class="summary">Returns the plugin ID of the plugin the draft belongs to.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getPower">draft:getPower ()</a></td>
+	<td class="summary">Returns the amount of power the building produces.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getPreviewFrame">draft:getPreviewFrame ([frameIndex=1])</a></td>
+	<td class="summary">Returns a preview frame specified by its index (starting with 1).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getPreviewFrameCount">draft:getPreviewFrameCount ()</a></td>
+	<td class="summary">Returns the number of preview frames defined in that draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getPrice">draft:getPrice ()</a></td>
+	<td class="summary">Returns the price defined for this draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getScripts">draft:getScripts ()</a></td>
+	<td class="summary">Returns an array of all attached scripts to this draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getSpeed">draft:getSpeed ()</a></td>
+	<td class="summary">Returns the speed of a car draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getTail">draft:getTail ()</a></td>
+	<td class="summary">Returns the tail of a car draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getText">draft:getText ()</a></td>
+	<td class="summary">Returns the localized description of the draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getTitle">draft:getTitle ()</a></td>
+	<td class="summary">Returns the localized title of the draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getTunnelDiamondPrice">draft:getTunnelDiamondPrice ()</a></td>
+	<td class="summary">Returns the diamond price defined for this road draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getTunnelPrice">draft:getTunnelPrice ()</a></td>
+	<td class="summary">Returns the tunnel price defined for this road draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getType">draft:getType ()</a></td>
+	<td class="summary">Returns a string that represents the concrete type of the draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getUnifiedId">draft:getUnifiedId ()</a></td>
+	<td class="summary">Returns the unified ID of the draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getWater">draft:getWater ()</a></td>
+	<td class="summary">Returns the amount of water the building produces.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:getWidth">draft:getWidth ()</a></td>
+	<td class="summary">Returns the width of the building.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:hasDecorations">draft:hasDecorations ()</a></td>
+	<td class="summary">Returns true iff the draft is a road draft and has automatic road decorations.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:hasLights">draft:hasLights ()</a></td>
+	<td class="summary">Returns true if a building, road, road decoration, or fence draft has an
+animation spot whose animation is marked as a light or a switching light.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isAnimation">draft:isAnimation ()</a></td>
+	<td class="summary">Returns <strong>true</strong> iff the draft defines an animation.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isBuilding">draft:isBuilding ()</a></td>
+	<td class="summary">Returns <strong>true</strong> iff the draft defines a building.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isCar">draft:isCar ()</a></td>
+	<td class="summary">Returns <strong>true</strong> iff the draft defines a car.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isCategory">draft:isCategory ()</a></td>
+	<td class="summary">Returns <strong>true</strong> iff the draft defines a category.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isCommercial">draft:isCommercial ()</a></td>
+	<td class="summary">Returns <strong>true</strong> iff the draft defines a commercial building.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isComposition">draft:isComposition ()</a></td>
+	<td class="summary">Returns true iff the building is a composition.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isFinal">draft:isFinal ()</a></td>
+	<td class="summary">Returns <strong>true</strong> iff the draft is declared as final (isFinal in json
+definition).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isGround">draft:isGround ()</a></td>
+	<td class="summary">Returns <strong>true</strong> iff the draft defines a ground type.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isIndustrial">draft:isIndustrial ()</a></td>
+	<td class="summary">Returns <strong>true</strong> iff the draft defines an industrial building.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isLoaded">draft:isLoaded ()</a></td>
+	<td class="summary">True unless the plugin is unloaded right now.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isPlugin">draft:isPlugin ()</a></td>
+	<td class="summary">Returns true iff the draft is part of a plugin (also local ones).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isRCI">draft:isRCI ()</a></td>
+	<td class="summary">Returns <strong>true</strong> iff the draft defines a building that is either residential,
+commercial or industrial.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isResidential">draft:isResidential ()</a></td>
+	<td class="summary">Returns <strong>true</strong> iff the draft defines a residential building.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isRoad">draft:isRoad ()</a></td>
+	<td class="summary">Returns <strong>true</strong> iff the draft defines a road.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isRoadDecoration">draft:isRoadDecoration ()</a></td>
+	<td class="summary">Returns <strong>true</strong> iff the draft defines a road decoration.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isTemplate">draft:isTemplate ()</a></td>
+	<td class="summary">Returns <strong>true</strong> iff the draft defines a draft template.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isTree">draft:isTree ()</a></td>
+	<td class="summary">Returns <strong>true</strong> iff the draft defines a tree.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isUnlocked">draft:isUnlocked ()</a></td>
+	<td class="summary">Returns whether this draft is unlocked.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:isVisible">draft:isVisible ()</a></td>
+	<td class="summary">Returns <strong>true</strong> iff the draft is visible (corresponds to negated hidden
+attribute in json).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:setFrame">draft:setFrame (frameIndex, frame)</a></td>
+	<td class="summary">Overrides a frame by index.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:setFrameType">draft:setFrameType (frameIndex, frameType)</a></td>
+	<td class="summary">Sets the frame type of a frame based on its index (starting with 1).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:setPreviewFrame">draft:setPreviewFrame (frameIndex, frame)</a></td>
+	<td class="summary">Overrides a frame by index.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draft:setVisible">draft:setVisible (state)</a></td>
+	<td class="summary">Sets the visibility state of the draft (corresponds to negated hidden
+attribute in json).</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "append"></a>
+    <strong>append (json)</strong>
+    </dt>
+    <dd>
+    Adds a JSON code to the list of JSON codes that will be loaded by the game.
+Can only be called during the main call of the Lua script. That is,
+when the script's main body is called.
+Can be useful to generate JSON code dynamically.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">json</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         A string containing the JSON code to load.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> json1 = <span class="string">[[
+[
+  {
+    "id":"somerandoasdfjldjfkl1",
+    "type":"script",
+    "script":"function script:init() Debug.toast('Appending draft is working 1') end"
+  }
+]
+]]</span>
+Draft.append(json1)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "callAll"></a>
+    <strong>callAll (name[, arg1[, arg2[, ...]]])</strong>
+    </dt>
+    <dd>
+    Calls the event function called <em>name</em> on all scripts if defined.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">arg1</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">arg2</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">...</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getDraft"></a>
+    <strong>getDraft (id)</strong>
+    </dt>
+    <dd>
+    Returns the draft of the given id.  <strong>nil</strong> is returned if no draft
+of the given id was found.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">draft</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getDrafts"></a>
+    <strong>getDrafts ([tag])</strong>
+    </dt>
+    <dd>
+    Returns an array of drafts that have the given tag defined.  If no tag is
+provided this function returns a list of all available drafts.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tag</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">array</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "merge"></a>
+    <strong>merge (json)</strong>
+    </dt>
+    <dd>
+    Merges the provided JSON object into the json object that is being
+loaded by the game right now.
+Can only be called during the main call of the Lua script. That is,
+when the script's main body is called.
+Can be useful to define JSON code dynamically for the current draft.
+Will only have an effect for attributes that were not read by the game, yet.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">json</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         A string containing the JSON code to merge.
+Must be a JSON object.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+<span class="keyword">local</span> json = <span class="string">[[
+  {
+    "animation":[{"id":"3x2l_right_1","x":1,"y":2}]
+  }
+]]</span>
+Draft.merge(json)</pre>
+    </ul>
+
+</dd>
+</dl>
+    <h2><a name="Class_Draft"></a>Class Draft </h2>
+
+        This type represents drafts.
+    <dl class="function">
+    <dt>
+    <a name = "draft:call"></a>
+    <strong>draft:call (name[, arg1[, arg2[, ...]]])</strong>
+    </dt>
+    <dd>
+    Calls the event function called <em>name</em> on all scripts of the draft if defined.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">arg1</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">arg2</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">...</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getAuthor"></a>
+    <strong>draft:getAuthor ()</strong>
+    </dt>
+    <dd>
+    Returns the author of the draft as defined in its json definition.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        The author.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getBridgePrice"></a>
+    <strong>draft:getBridgePrice ()</strong>
+    </dt>
+    <dd>
+    Returns the bridge price defined for this road draft.
+The actual bridge price depends on its height.
+For levels of 2 and more the bridge price will usually be used twice.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The price of bridges.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getBuildHeight"></a>
+    <strong>draft:getBuildHeight ()</strong>
+    </dt>
+    <dd>
+    Returns the build height of the building.  Only available for building drafts.
+The build height is the visual height of the building divided by 8.
+Not to be confused with regular height which refers to the height of the
+basement of the building from top view.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getCapacity"></a>
+    <strong>draft:getCapacity ()</strong>
+    </dt>
+    <dd>
+    Returns the capacity of a car draft.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The capacity of the car, bus stop or building.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getColors"></a>
+    <strong>draft:getColors ()</strong>
+    </dt>
+    <dd>
+    Returns an array of hex colors for shading the primary frames of this draft.
+Only applicable to car drafts.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">array[string]</span> or <span class="type">nil</span></span>
+        An array of hex strings. Is nil if there are no colors.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getContent"></a>
+    <strong>draft:getContent ()</strong>
+    </dt>
+    <dd>
+    For data drafts only: returns the raw json definition of the draft.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        The json object of the data draft as a Lua table.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getDepotCapacity"></a>
+    <strong>draft:getDepotCapacity ()</strong>
+    </dt>
+    <dd>
+    Returns the amount of vehicles that can be stored in the given depot building.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The depot capacity.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getDiamondPrice"></a>
+    <strong>draft:getDiamondPrice ()</strong>
+    </dt>
+    <dd>
+    Returns the diamond price defined for this draft.  Not all draft types support
+to have a price. In the desktop version of the game this function will
+always return 0.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        Diamond price or 0 if there was no diamond price set.
+nil if the draft does not support to have a diamond price.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getFrame"></a>
+    <strong>draft:getFrame ([frameIndex=1])</strong>
+    </dt>
+    <dd>
+    Returns a frame specified by its index (starting with 1).
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">frameIndex</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+         (<em>default</em> 1)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        A frame, represented by a single number.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getFrameCount"></a>
+    <strong>draft:getFrameCount ()</strong>
+    </dt>
+    <dd>
+    Returns the number of frames defined in that draft.  Only available for
+draft types that use frames (e.g. buildings, roads and cars).
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getFrameType"></a>
+    <strong>draft:getFrameType ([frameIndex=1])</strong>
+    </dt>
+    <dd>
+    Returns the frame type of a frame based on its index (starting with 1).
+The frame type is a 0-255 integer number that can be accessed from within
+the shader. The values 0-64 can be considered as reserved by the game.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">frameIndex</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+         (<em>default</em> 1)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The frame type of the queried frame.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getHeight"></a>
+    <strong>draft:getHeight ()</strong>
+    </dt>
+    <dd>
+    Returns the height of the building.  Only available for building drafts.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getId"></a>
+    <strong>draft:getId ()</strong>
+    </dt>
+    <dd>
+    Returns the ID of the draft.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        The draft ID.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getLevel"></a>
+    <strong>draft:getLevel ()</strong>
+    </dt>
+    <dd>
+    Returns the wealth level of building drafts.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The level of the building ranging from 0 to 2 with 0 being poor.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getMeta"></a>
+    <strong>draft:getMeta ()</strong>
+    </dt>
+    <dd>
+    Returns the meta table of the draft if available.  nil otherwise.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getMonthlyPrice"></a>
+    <strong>draft:getMonthlyPrice ()</strong>
+    </dt>
+    <dd>
+    Returns the monthly price defined for this draft.  Not all draft types support
+to have a monthly price.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getOrdinal"></a>
+    <strong>draft:getOrdinal ()</strong>
+    </dt>
+    <dd>
+    Returns the ordinality of the draft.
+In case of ranks this matches the rank index.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getOverlayColors"></a>
+    <strong>draft:getOverlayColors ()</strong>
+    </dt>
+    <dd>
+    Returns an array of hex colors for shading the overlay frames of this draft.
+Only applicable to car drafts.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">array[string]</span> or <span class="type">nil</span></span>
+        An array of hex strings. Is nil if there are no colors.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getOverlayFrame"></a>
+    <strong>draft:getOverlayFrame ([frameIndex=1])</strong>
+    </dt>
+    <dd>
+    Returns an overlay frame specified by its index (starting with 1).
+Only applicable to car drafts.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">frameIndex</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+         (<em>default</em> 1)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        A frame, represented by a single number.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getOverlayFrameCount"></a>
+    <strong>draft:getOverlayFrameCount ()</strong>
+    </dt>
+    <dd>
+    Returns the number of overlay frames defined in this car draft.
+Only applicable to car drafts; returns 0 when no overlay frames are defined.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getPluginId"></a>
+    <strong>draft:getPluginId ()</strong>
+    </dt>
+    <dd>
+    Returns the plugin ID of the plugin the draft belongs to.
+Only plugins downloaded from Plugin Store have such an id.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        Plugin ID of the plugin the draft belongs to; 0 if the plugin was
+not downloaded from the Plugin Store or if the draft is not part of a plugin
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getPower"></a>
+    <strong>draft:getPower ()</strong>
+    </dt>
+    <dd>
+    Returns the amount of power the building produces.
+Negative numbers indicate consumption.
+For buildings only.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getPreviewFrame"></a>
+    <strong>draft:getPreviewFrame ([frameIndex=1])</strong>
+    </dt>
+    <dd>
+    Returns a preview frame specified by its index (starting with 1).
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">frameIndex</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+         (<em>default</em> 1)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        A preview frame, represented by a single number.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getPreviewFrameCount"></a>
+    <strong>draft:getPreviewFrameCount ()</strong>
+    </dt>
+    <dd>
+    Returns the number of preview frames defined in that draft.
+Preview frames are frames used to preview the draft in the toolbar.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getPrice"></a>
+    <strong>draft:getPrice ()</strong>
+    </dt>
+    <dd>
+    Returns the price defined for this draft.  Not all draft types support
+to have a price.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getScripts"></a>
+    <strong>draft:getScripts ()</strong>
+    </dt>
+    <dd>
+    Returns an array of all attached scripts to this draft.
+<strong>Do not</strong> modify the returned array.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">array</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getSpeed"></a>
+    <strong>draft:getSpeed ()</strong>
+    </dt>
+    <dd>
+    Returns the speed of a car draft.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The speed of the car.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getTail"></a>
+    <strong>draft:getTail ()</strong>
+    </dt>
+    <dd>
+    Returns the tail of a car draft.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">Array[CarDraft]</span> or <span class="type">nil</span></span>
+        Returns nil if the car has no tail.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getText"></a>
+    <strong>draft:getText ()</strong>
+    </dt>
+    <dd>
+    Returns the localized description of the draft.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        The description.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getTitle"></a>
+    <strong>draft:getTitle ()</strong>
+    </dt>
+    <dd>
+    Returns the localized title of the draft.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        The title.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getTunnelDiamondPrice"></a>
+    <strong>draft:getTunnelDiamondPrice ()</strong>
+    </dt>
+    <dd>
+    Returns the diamond price defined for this road draft.
+If a diamond price is set it will take precedence to a regular price.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The diamond price of tunnels.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getTunnelPrice"></a>
+    <strong>draft:getTunnelPrice ()</strong>
+    </dt>
+    <dd>
+    Returns the tunnel price defined for this road draft.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The price of tunnels.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getType"></a>
+    <strong>draft:getType ()</strong>
+    </dt>
+    <dd>
+    Returns a string that represents the concrete type of the draft.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getUnifiedId"></a>
+    <strong>draft:getUnifiedId ()</strong>
+    </dt>
+    <dd>
+    Returns the unified ID of the draft.
+The unified id is the id of the draft but adjusted to be used e.g. for
+file names.
+Duplicate unified ids are allowed.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        The unified draft ID.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getWater"></a>
+    <strong>draft:getWater ()</strong>
+    </dt>
+    <dd>
+    Returns the amount of water the building produces.
+Negative numbers indicate consumption.
+For buildings only.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:getWidth"></a>
+    <strong>draft:getWidth ()</strong>
+    </dt>
+    <dd>
+    Returns the width of the building.  Only available for building drafts.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:hasDecorations"></a>
+    <strong>draft:hasDecorations ()</strong>
+    </dt>
+    <dd>
+    Returns true iff the draft is a road draft and has automatic road decorations.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True if the road draft has road decorations
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:hasLights"></a>
+    <strong>draft:hasLights ()</strong>
+    </dt>
+    <dd>
+    Returns true if a building, road, road decoration, or fence draft has an
+animation spot whose animation is marked as a light or a switching light.
+Checks both regular and foreground animation spots where supported; returns
+false for other draft types or when no such spot exists. This describes the
+draft's animations, not whether a light is currently visible or turned on.
+
+    </ul>
+    </ul>
+    <h3>New feature:</h3>
+    <ul>
+         This is a new feature that was added in version <b>1.12.99</b>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True if the draft has a light animation spot.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isAnimation"></a>
+    <strong>draft:isAnimation ()</strong>
+    </dt>
+    <dd>
+    Returns <strong>true</strong> iff the draft defines an animation.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isBuilding"></a>
+    <strong>draft:isBuilding ()</strong>
+    </dt>
+    <dd>
+    Returns <strong>true</strong> iff the draft defines a building.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isCar"></a>
+    <strong>draft:isCar ()</strong>
+    </dt>
+    <dd>
+    Returns <strong>true</strong> iff the draft defines a car.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isCategory"></a>
+    <strong>draft:isCategory ()</strong>
+    </dt>
+    <dd>
+    Returns <strong>true</strong> iff the draft defines a category.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isCommercial"></a>
+    <strong>draft:isCommercial ()</strong>
+    </dt>
+    <dd>
+    Returns <strong>true</strong> iff the draft defines a commercial building.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isComposition"></a>
+    <strong>draft:isComposition ()</strong>
+    </dt>
+    <dd>
+    Returns true iff the building is a composition.
+Only available for building drafts.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True iff the building is a composition.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isFinal"></a>
+    <strong>draft:isFinal ()</strong>
+    </dt>
+    <dd>
+    Returns <strong>true</strong> iff the draft is declared as final (isFinal in json
+definition).  Cannot be altered during runtime.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True iff this draft is final.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isGround"></a>
+    <strong>draft:isGround ()</strong>
+    </dt>
+    <dd>
+    Returns <strong>true</strong> iff the draft defines a ground type.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isIndustrial"></a>
+    <strong>draft:isIndustrial ()</strong>
+    </dt>
+    <dd>
+    Returns <strong>true</strong> iff the draft defines an industrial building.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isLoaded"></a>
+    <strong>draft:isLoaded ()</strong>
+    </dt>
+    <dd>
+    True unless the plugin is unloaded right now.  This happens for example
+when the user enters a city in online mode that doesn't allow plugins.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True if the plugin is loaded, otherwise false.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isPlugin"></a>
+    <strong>draft:isPlugin ()</strong>
+    </dt>
+    <dd>
+    Returns true iff the draft is part of a plugin (also local ones).
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True iff the draft is part of a plugin
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isRCI"></a>
+    <strong>draft:isRCI ()</strong>
+    </dt>
+    <dd>
+    Returns <strong>true</strong> iff the draft defines a building that is either residential,
+commercial or industrial.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isResidential"></a>
+    <strong>draft:isResidential ()</strong>
+    </dt>
+    <dd>
+    Returns <strong>true</strong> iff the draft defines a residential building.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isRoad"></a>
+    <strong>draft:isRoad ()</strong>
+    </dt>
+    <dd>
+    Returns <strong>true</strong> iff the draft defines a road.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isRoadDecoration"></a>
+    <strong>draft:isRoadDecoration ()</strong>
+    </dt>
+    <dd>
+    Returns <strong>true</strong> iff the draft defines a road decoration.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isTemplate"></a>
+    <strong>draft:isTemplate ()</strong>
+    </dt>
+    <dd>
+    Returns <strong>true</strong> iff the draft defines a draft template.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isTree"></a>
+    <strong>draft:isTree ()</strong>
+    </dt>
+    <dd>
+    Returns <strong>true</strong> iff the draft defines a tree.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isUnlocked"></a>
+    <strong>draft:isUnlocked ()</strong>
+    </dt>
+    <dd>
+    Returns whether this draft is unlocked.
+A draft can be locked if e.g. it depends on a feature to be available.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True iff this draft is unlocked.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:isVisible"></a>
+    <strong>draft:isVisible ()</strong>
+    </dt>
+    <dd>
+    Returns <strong>true</strong> iff the draft is visible (corresponds to negated hidden
+attribute in json).
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:setFrame"></a>
+    <strong>draft:setFrame (frameIndex, frame)</strong>
+    </dt>
+    <dd>
+    Overrides a frame by index.  Starting index is 1.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">frameIndex</span>
+            <span class="types"><span class="type">int</span></span>
+         The frame position to overwrite.
+        </li>
+        <li><span class="parameter">frame</span>
+            <span class="types"><span class="type">int</span></span>
+         New frame.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:setFrameType"></a>
+    <strong>draft:setFrameType (frameIndex, frameType)</strong>
+    </dt>
+    <dd>
+    Sets the frame type of a frame based on its index (starting with 1).
+The frame type is a 0-255 integer number that can be accessed from within
+the shader. The values 0-64 can be considered as reserved by the game.
+You should only use frame types that are either defined by the game or
+were previously allocated using Drawing.allocateFrameType().
+Use the frameType value 0 to indicate that the frame has no specific type
+(in this case Drawing.setFrameType will take precedence).
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">frameIndex</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">frameType</span>
+            <span class="types"><span class="type">int</span></span>
+         The frame type to set.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        The previously set frame type of the frame.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:setPreviewFrame"></a>
+    <strong>draft:setPreviewFrame (frameIndex, frame)</strong>
+    </dt>
+    <dd>
+    Overrides a frame by index.  Starting index is 1.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">frameIndex</span>
+            <span class="types"><span class="type">int</span></span>
+         The frame position to overwrite.
+        </li>
+        <li><span class="parameter">frame</span>
+            <span class="types"><span class="type">int</span></span>
+         New preview frame.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draft:setVisible"></a>
+    <strong>draft:setVisible (state)</strong>
+    </dt>
+    <dd>
+    Sets the visibility state of the draft (corresponds to negated hidden
+attribute in json).
+For buildings, the visibility state determines whether they appear in
+the toolbar.
+You may have to call City.rebuildUI() for the change to become visible
+in the toolbar.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">state</span>
+            <span class="types"><span class="type">bool</span></span>
+         The new visibility state.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2026-11-20 13:32:29 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

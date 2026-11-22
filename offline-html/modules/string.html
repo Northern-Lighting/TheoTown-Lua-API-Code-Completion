@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua API</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Lua API</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/Array.html">Array</a></li>
+  <li><a href="../modules/Builder.html">Builder</a></li>
+  <li><a href="../modules/Building.html">Building</a></li>
+  <li><a href="../modules/Car.html">Car</a></li>
+  <li><a href="../modules/City.html">City</a></li>
+  <li><a href="../modules/DSA.html">DSA</a></li>
+  <li><a href="../modules/Debug.html">Debug</a></li>
+  <li><a href="../modules/Draft.html">Draft</a></li>
+  <li><a href="../modules/Drawing.html">Drawing</a></li>
+  <li><a href="../modules/GUI.html">GUI</a></li>
+  <li><a href="../modules/NeighborCity.html">NeighborCity</a></li>
+  <li><a href="../modules/Runtime.html">Runtime</a></li>
+  <li><a href="../modules/Script.html">Script</a></li>
+  <li><a href="../modules/TheoTown.html">TheoTown</a></li>
+  <li><a href="../modules/Tile.html">Tile</a></li>
+  <li><a href="../modules/Util.html">Util</a></li>
+  <li><a href="../modules/Vector.html">Vector</a></li>
+  <li><strong>string</strong></li>
+</ul>
+<h2>Topics</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../topics/00-intro.md.html">Introduction</a></li>
+  <li><a href="../topics/01-lua.md.html">Lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>string</code></h1>
+<p>This module extends the functionality contained in the string table
+for convenience.</p>
+<p>See the
+<a href="https://www.lua.org/manual/5.3/manual.html#6.4">official string documentation</a>
+for other functions that are available in the string table.</p>
+
+<p>Since the string table is the hardwired __index table for string objects
+you can call them using the short : notion.</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+local str = &apos;Hello World&apos;
+print(string.startsWith(str, &apos;Hello&apos;))     -- Prints true
+print(str:startsWith(&apos;Hello&apos;))             -- Equivalent to previous line
+
+-- Note that you have to put parentheses () around a string if you want to call a function on it directly
+print((&apos;Hello World&apos;):startsWith(&apos;Hello&apos;)) -- Prints true
+
+print(Array(str:split(&apos; &apos;)))               -- Prints {Hello, World}
+print(str:split(&apos; &apos;)[1])                   -- Prints Hello
+print(str:split(&apos; &apos;)[2])                   -- Prints World</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#contains">contains (needle)</a></td>
+	<td class="summary">Returns true iff the string matches the given Lua pattern.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#endsWith">endsWith (part)</a></td>
+	<td class="summary">Checks whether the string ends with the given string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#split">split (sep)</a></td>
+	<td class="summary">Splits the string into non-empty fields using separator characters.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#startsWith">startsWith (part)</a></td>
+	<td class="summary">Checks whether the string starts with the given string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#trim">trim ()</a></td>
+	<td class="summary">Removes whitespace from the start and end of the string.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "contains"></a>
+    <strong>contains (needle)</strong>
+    </dt>
+    <dd>
+    Returns true iff the string matches the given Lua pattern.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">needle</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The Lua pattern to search for (escape pattern characters
+to search for them literally).
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True if the pattern matches somewhere in the string.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "endsWith"></a>
+    <strong>endsWith (part)</strong>
+    </dt>
+    <dd>
+    Checks whether the string ends with the given string.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">part</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The string to check if it ends with it.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True iff self ends with the string part.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "split"></a>
+    <strong>split (sep)</strong>
+    </dt>
+    <dd>
+    Splits the string into non-empty fields using separator characters.
+Adjacent separators are skipped; the default separator is ':'.
+Uses implementation from <a href="http://lua-users.org/wiki/SplitJoin">here</a>.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sep</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Separator characters, e.g. ',' (Lua pattern character classes
+such as '%s' also work). This is not a literal multi-character delimiter.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        A table containing the fields.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "startsWith"></a>
+    <strong>startsWith (part)</strong>
+    </dt>
+    <dd>
+    Checks whether the string starts with the given string.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">part</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The string to check if it starts with it.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True iff self starts with the string part.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "trim"></a>
+    <strong>trim ()</strong>
+    </dt>
+    <dd>
+    Removes whitespace from the start and end of the string.
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        The string without starting and ending spaces.
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2026-11-20 13:32:29 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
