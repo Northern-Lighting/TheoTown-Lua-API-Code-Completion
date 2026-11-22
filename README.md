@@ -1,5 +1,11 @@
 # TheoTown Lua API Offline Package
 
+A helper for TheoTown plugin creators.
+
+<img width="1002" height="336" alt="e64a5af288267293068e16f866d21e59" src="https://github.com/user-attachments/assets/cf2f981b-7b45-4a04-bf4c-de691973d77d" />
+
+Make Autocomplete Possible.
+
 Generated from the official TheoTown Lua API documentation:
 
 - Source: https://doc.theotown.com/
